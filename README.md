@@ -6,7 +6,7 @@
               |___|            
 
 
-# Anyline Examples App 
+# AnylineJS
 
 [Anyline](https://www.anyline.com) is a mobile OCR SDK, which can be customized to scan all kinds of numbers, characters, text and codes.
 
