@@ -18,6 +18,8 @@ AnylineJS is a standalone Anyline version for the browser.
 
 Not included in the bundle are the Example Sheets with testing material. They can be downloaded here: [https://anyline.com/samples](https://anyline.com/samples)
 
-In its inital version the UI is wired into the SDK. Using custom user interfaces will be supported in the coming releases. AnylineJS has to be served from a web server that supports HTTPS. For full documentation visit: [https://documentation.anyline.com/toc/platforms/javascript/index.html](https://documentation.anyline.com/toc/platforms/javascript/index.html)
+In its inital version the UI is hard wired into the SDK. Using custom user interfaces will be supported in the coming releases. AnylineJS has to be served from a web server that supports HTTPS. (Don't forget to add 'https://' if you are testing AnylineJS).
+
+For full documentation visit: [https://documentation.anyline.com/toc/platforms/javascript/index.html](https://documentation.anyline.com/toc/platforms/javascript/index.html)
 
 **The license included in the AnylineJS Repository only allows AnylineJS to run on 127.0.0.1**
