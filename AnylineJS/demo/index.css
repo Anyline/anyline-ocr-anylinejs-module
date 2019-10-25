@@ -20,3 +20,21 @@ body {
   z-index: 100;
   margin: 20px;
 }
+
+.result {
+  overflow: auto;
+  font-size: 8px;
+}
+
+.resultRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: flex-start;
+  padding-top: 5px;
+}
+
+.resultLabel {
+  margin-right: 40px;
+  font-weight: bold;
+}

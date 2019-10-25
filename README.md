@@ -22,4 +22,4 @@ For now, only Serial Number and Meter Reading is available. Limited UI customiza
 
 For full documentation visit: [https://documentation.anyline.com/toc/platforms/javascript/index.html](https://documentation.anyline.com/toc/platforms/javascript/index.html)
 
-**The license included in the AnylineJS Repository only allows AnylineJS to run on 127.0.0.1**
+**The license included in the AnylineJS Repository only allows AnylineJS to run on 127.0.0.1 and 192.168.0.10**
