@@ -10,16 +10,29 @@
 
 [Anyline](https://www.anyline.com) is a mobile OCR SDK, which can be customized to scan all kinds of numbers, characters, text and codes.
 
+### CDN Version
+
+If you want to use AnylineJS the easy way you can use the CDN version at `https://js.anyline.com/v16/anyline.js`:
+
+`<script src="https://js.anyline.com/v16/anyline.js"></script>`
+
+### Self hosting
+
+
 AnylineJS is a standalone Anyline version for the browser.
 
 - **AnylineJS/demo**: Contains **AnylineJS** implementation examples
 - **LICENSE**: The Third Party License Agreements
 - **README**: Information about the repository
 
-Not included in the bundle are the Example Sheets with testing material. They can be downloaded here: [https://anyline.com/samples](https://anyline.com/samples)
 
-For now, only Serial Number and Meter Reading is available. Limited UI customizations are available. AnylineJS has to be served from a web server that supports HTTPS. (Don't forget to add 'https://' if you are testing AnylineJS).
+
+For now, only Serial Number, Meter Reading and MRZ is available. AnylineJS has to be served from a web server that supports HTTPS. (Don't forget to add 'https://' if you are testing AnylineJS).
+
+### Documentation
 
 For full documentation visit: [https://documentation.anyline.com/toc/platforms/javascript/index.html](https://documentation.anyline.com/toc/platforms/javascript/index.html)
+
+To test Anyline download the Example Sheets with testing material. They can be downloaded here: [https://anyline.com/samples](https://anyline.com/samples)
 
 **The license included in the AnylineJS Repository only allows AnylineJS to run on 127.0.0.1 and 192.168.0.10**

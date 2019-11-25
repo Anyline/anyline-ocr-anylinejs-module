@@ -123,4 +123,6 @@ function mountAnylineJS(preset) {
   };
 
   Anyline.startScanning();
+
+  window.Anyline = Anyline;
 }
