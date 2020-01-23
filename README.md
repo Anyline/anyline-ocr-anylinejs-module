@@ -12,9 +12,9 @@
 
 ### CDN Version
 
-If you want to use AnylineJS the easy way you can use the CDN version at `https://js.anyline.com/v16/anyline.js`:
+If you want to use AnylineJS the easy way you can use the CDN version at `https://js.anyline.com/v18/anyline.js`:
 
-`<script src="https://js.anyline.com/v16/anyline.js"></script>`
+`<script src="https://js.anyline.com/v18/anyline.js"></script>`
 
 ### Self hosting
 
@@ -27,7 +27,7 @@ AnylineJS is a standalone Anyline version for the browser.
 
 
 
-For now, only Serial Number, Meter Reading and MRZ is available. AnylineJS has to be served from a web server that supports HTTPS. (Don't forget to add 'https://' if you are testing AnylineJS).
+For now, only Serial Number, Meter Reading, License Plate and MRZ is available. AnylineJS has to be served from a web server that supports HTTPS. (Don't forget to add 'https://' if you are testing AnylineJS).
 
 ### Documentation
 
