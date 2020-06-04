@@ -1,5 +1,28 @@
 const { init, errorCodes } = window.anylinejs;
 
+const entityMap = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+  '/': '&#x2F;',
+  '`': '&#x60;',
+  '=': '&#x3D;',
+};
+
+function escapeHtml(string) {
+  return String(string).replace(/[&<>"'`=\/]/g, function(s) {
+    return entityMap[s];
+  });
+}
+
+function replaceVerticalBar(string) {
+  return String(string).replace(/[|]/g, function(s) {
+    return '\n';
+  });
+}
+
 const viewConfig = {
   // captureResolution: '1080p',
   outerColor: '000000',
@@ -43,32 +66,9 @@ const viewConfig = {
 };
 
 const anylicense =
-  'eyAiZGVidWdSZXBvcnRpbmciOiAib24iLCAiaW1hZ2VSZXBvcnRDYWNoaW5nIjogZmFsc2UsICJqc0lkZW50aWZpZXIiOiBbICIxMjcuMC4wLjEiLCAibG9jYWxob3N0IiBdLCAibGljZW5zZUtleVZlcnNpb24iOiAyLCAibWFqb3JWZXJzaW9uIjogIjIwIiwgIm1heERheXNOb3RSZXBvcnRlZCI6IDAsICJwaW5nUmVwb3J0aW5nIjogdHJ1ZSwgInBsYXRmb3JtIjogWyAiSlMiIF0sICJzY29wZSI6IFsgIkFMTCIgXSwgInNob3dQb3BVcEFmdGVyRXhwaXJ5IjogZmFsc2UsICJzaG93V2F0ZXJtYXJrIjogZmFsc2UsICJ0b2xlcmFuY2VEYXlzIjogMCwgInZhbGlkIjogIjIwMjAtMDYtMzAiIH0KcGRvdEdBMnpBYWxuMEgrbGp4dE1SMmJXR1JFSGtoMXZyK1BGVFZjUE1DUkFpdFllbnNIRnc4RWJPOHlENzJNcQpmN0tUeERBWmF3WkpIRW5xUHphZ003U3pOMjVBbVJPK2dQYW1Jc2R5NkNKZFpHWHhGTHp5elVnZnAxWmVLdzE3CmdzNkJDMmF6dUZTYTdsS0h5MU40M2JQei8zRUR1dFAzMDFuaFV1cGJhendkYjBZN3VBUkFUcWdrL0k2Tm9HQWgKeWZJT2NLR1QzMWJnTFgvUGNqRGtMeFJWL1FQeksyMHczTERhRXNRbVlNOTlnNGRKME8xbTI1OG9iVkh3Nkw2ZwplRFNqYnNWaTJPS0VPUzhSZWgwM0oxTnZwVFlSemFsYTJDNExKOExvNjhtN0p2WTdaNnNnSDJzVFhZK25VakMrCi85K3NYWmVERlFMbHRWUkVNbnpmZ0E9PQo=';
+  'eyAiZGVidWdSZXBvcnRpbmciOiAib24iLCAiaW1hZ2VSZXBvcnRDYWNoaW5nIjogZmFsc2UsICJqc0lkZW50aWZpZXIiOiBbICIxMjcuMC4wLjEiLCAibG9jYWxob3N0IiBdLCAibGljZW5zZUtleVZlcnNpb24iOiAyLCAibWFqb3JWZXJzaW9uIjogIjIwIiwgIm1heERheXNOb3RSZXBvcnRlZCI6IDAsICJwaW5nUmVwb3J0aW5nIjogdHJ1ZSwgInBsYXRmb3JtIjogWyAiSlMiIF0sICJzY29wZSI6IFsgIkFMTCIgXSwgInNob3dQb3BVcEFmdGVyRXhwaXJ5IjogZmFsc2UsICJzaG93V2F0ZXJtYXJrIjogZmFsc2UsICJ0b2xlcmFuY2VEYXlzIjogMCwgInZhbGlkIjogIjIwMjAtMDctMzAiIH0KdGVqMGVGYW1MWUlHM1VPa1FyM3A3andsYVliUWdGTXlxdDZjUHU2WU1NbTJtTWdoSXQyVmM5ZVRiS2JsMVVrTwpMN0JqVEVGTFNZQVNYV3AwL2RBdWV0dWpYeGtOOW9GMXRvYXRuRFB0MnkvY1p4emlmZnBZbTlocy94VXB3dzVRCml6SHZ4ZGhDb0ZyUW1xdnNxUThWRHNxNExveE00c0dIdCtQb1FIMkdLWnRaUDc4NmJRN3AwdzUyZkRmYkpOd1QKOXVpTXRHQ0s3ais3ZkE4TGo0OTllMUtZZDdKbENSZS9XQndvY2k3MnVFZ1VkWXl3bW1HRHJIVFFWcHZFQzMydAp3UnRDU0F6ZlJwRU9mMThRb0VqK29pbUxyZEQ5d1k1VDlBQ2EwZmZ1b0ZIbUJLZ0RrRVdDRytnaEhxd2NwZmNoCkx5b3N2bkJWYml1QTBKQ2F6a0d4VGc9PQo=';
 
 const root = document.getElementById('root');
-
-const entityMap = {
-  '&': '&amp;',
-  '<': '&lt;',
-  '>': '&gt;',
-  '"': '&quot;',
-  "'": '&#39;',
-  '/': '&#x2F;',
-  '`': '&#x60;',
-  '=': '&#x3D;',
-};
-
-function escapeHtml(string) {
-  return String(string).replace(/[&<>"'`=\/]/g, function(s) {
-    return entityMap[s];
-  });
-}
-
-function replaceVerticalBar(string) {
-  return String(string).replace(/[|]/g, function(s) {
-    return '\n';
-  });
-}
 
 function mountAnylineJS(preset) {
   const Anyline = init({
