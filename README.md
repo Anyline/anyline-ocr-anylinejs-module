@@ -12,9 +12,9 @@
 
 ### CDN Version
 
-If you want to use AnylineJS the easy way you can use the CDN version at `https://js.anyline.com/v20/anyline.js`:
+If you want to use AnylineJS the easy way you can use the CDN version at `https://js.anyline.com/v21/anyline.js`:
 
-`<script src="https://js.anyline.com/v20/anyline.js"></script>`
+`<script src="https://js.anyline.com/v21/anyline.js"></script>`
 
 ### Self hosting
 
@@ -36,4 +36,4 @@ For full documentation visit: [https://documentation.anyline.com/toc/platforms/j
 
 To test Anyline download the Example Sheets with testing material. They can be downloaded here: [https://anyline.com/samples](https://anyline.com/samples)
 
-**The license included in the AnylineJS Repository only allows AnylineJS to run on 127.0.0.1 and 192.168.0.10**
+**The license included in the AnylineJS Repository only allows AnylineJS to run on 127.0.0.1 and localhost**
