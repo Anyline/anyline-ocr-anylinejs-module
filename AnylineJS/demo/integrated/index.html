@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../index.css" />
   </head>
 
-  <body>
+  <body style="overflow:scroll">
     <!--[if IE]>
       <p class="browserupgrade">
         You are using an <strong>outdated</strong> browser. Please
@@ -22,12 +22,13 @@
     <!-- Add your site or application content here -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="../../anyline.js"></script>
+    <script src="../license.js"></script>
     <script src="../index.js"></script>
 
     <select class="preset-select" onchange="mountAnylineJS(this)">
       <option value="" selected>Select Use-Case</option>
       <option value="barcode">Barcode</option>
-      <option value="id">MRZ</option>      
+      <option value="id">MRZ</option>
       <option value="vin">VIN</option>
       <option value="tin">TIN</option>
       <option value="container">Container</option>
@@ -39,5 +40,10 @@
       <option value="lpt">License Plate</option>
       <option value="ocr">Serial Number</option>
     </select>
+
+    <button onclick="remountAnylineJS()">Remount</button>
+    <div id="scrolltest">
+      container to demonstrate scoll on page with anylinejs
+    </div>
   </body>
 </html>

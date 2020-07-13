@@ -65,17 +65,19 @@ const viewConfig = {
   ],
 };
 
-const anylicense =
-  'eyAiZGVidWdSZXBvcnRpbmciOiAib24iLCAiaW1hZ2VSZXBvcnRDYWNoaW5nIjogZmFsc2UsICJqc0lkZW50aWZpZXIiOiBbICIxMjcuMC4wLjEiLCAibG9jYWxob3N0IiBdLCAibGljZW5zZUtleVZlcnNpb24iOiAyLCAibWFqb3JWZXJzaW9uIjogIjIwIiwgIm1heERheXNOb3RSZXBvcnRlZCI6IDAsICJwaW5nUmVwb3J0aW5nIjogdHJ1ZSwgInBsYXRmb3JtIjogWyAiSlMiIF0sICJzY29wZSI6IFsgIkFMTCIgXSwgInNob3dQb3BVcEFmdGVyRXhwaXJ5IjogZmFsc2UsICJzaG93V2F0ZXJtYXJrIjogZmFsc2UsICJ0b2xlcmFuY2VEYXlzIjogMCwgInZhbGlkIjogIjIwMjAtMDctMzAiIH0KdGVqMGVGYW1MWUlHM1VPa1FyM3A3andsYVliUWdGTXlxdDZjUHU2WU1NbTJtTWdoSXQyVmM5ZVRiS2JsMVVrTwpMN0JqVEVGTFNZQVNYV3AwL2RBdWV0dWpYeGtOOW9GMXRvYXRuRFB0MnkvY1p4emlmZnBZbTlocy94VXB3dzVRCml6SHZ4ZGhDb0ZyUW1xdnNxUThWRHNxNExveE00c0dIdCtQb1FIMkdLWnRaUDc4NmJRN3AwdzUyZkRmYkpOd1QKOXVpTXRHQ0s3ais3ZkE4TGo0OTllMUtZZDdKbENSZS9XQndvY2k3MnVFZ1VkWXl3bW1HRHJIVFFWcHZFQzMydAp3UnRDU0F6ZlJwRU9mMThRb0VqK29pbUxyZEQ5d1k1VDlBQ2EwZmZ1b0ZIbUJLZ0RrRVdDRytnaEhxd2NwZmNoCkx5b3N2bkJWYml1QTBKQ2F6a0d4VGc9PQo=';
 
 const root = document.getElementById('root');
+let selectedPreset = undefined;
 
 function mountAnylineJS(preset) {
+  selectedPreset = preset;
   const Anyline = init({
+    config: {},
     preset: preset.value,
     viewConfig,
-    license: anylicense,
+    license: demoLicense,
     element: root,
+    debugAnyline: true,
     anylinePath: '../../anylinejs'
   });
 
@@ -104,6 +106,7 @@ function mountAnylineJS(preset) {
       },
       onAfterClose: () => {
         modalOpen = false;
+        // Anyline.startScanning(); does not work right now when stopScanning before
       },
     });
   };
@@ -130,3 +133,10 @@ function mountAnylineJS(preset) {
 
   window.Anyline = Anyline;
 }
+
+function remountAnylineJS() {
+  Anyline.stopScanning();
+  Anyline.dispose();
+  mountAnylineJS(selectedPreset);
+}
+
