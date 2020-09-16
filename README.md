@@ -13,9 +13,9 @@ Visit [js.anyline.com](https://js.anyline.com) for a demo of AnylineJS.
 
 ### CDN Version
 
-If you want to use AnylineJS the easy way you can use the CDN version at `https://js.anyline.com/v23/anyline.js`:
+If you want to use AnylineJS the easy way you can use the CDN version:
 
-`<script src="https://js.anyline.com/v23/anyline.js"></script>`
+`<script src="https://js.anyline.com/release/v23/anyline.js"></script>`
 
 ### Self hosting
 
