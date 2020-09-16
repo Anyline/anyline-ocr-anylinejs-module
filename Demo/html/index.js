@@ -78,7 +78,7 @@ function mountAnylineJS(preset) {
     license: demoLicense,
     element: root,
     debugAnyline: true,
-    anylinePath: '../../anylinejs'
+    anylinePath: '../../anylinejs/anylinejs'
   });
 
   let modalOpen = false;
