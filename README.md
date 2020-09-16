@@ -13,16 +13,17 @@ Visit [js.anyline.com](https://js.anyline.com) for a demo of AnylineJS.
 
 ### CDN Version
 
-If you want to use AnylineJS the easy way you can use the CDN version at `https://js.anyline.com/v22/anyline.js`:
+If you want to use AnylineJS the easy way you can use the CDN version at `https://js.anyline.com/v23/anyline.js`:
 
-`<script src="https://js.anyline.com/v22/anyline.js"></script>`
+`<script src="https://js.anyline.com/v23/anyline.js"></script>`
 
 ### Self hosting
 
 
 AnylineJS is a standalone Anyline version for the browser.
 
-- **AnylineJS/demo**: Contains **AnylineJS** implementation examples
+- **Demo/html**: Contains **AnylineJS** implementation examples
+- **Demo/anylinejs**: Contains the files needed to self-host **AnylineJS**
 - **LICENSE**: The Third Party License Agreements
 - **README**: Information about the repository
 

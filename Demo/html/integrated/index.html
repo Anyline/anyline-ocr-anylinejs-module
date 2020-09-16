@@ -2,13 +2,13 @@
 <html class="no-js" lang="">
   <head>
     <meta charset="utf-8" />
-    <title>anylinejs demo | fullscreen</title>
+    <title>anylinejs demo | integrated</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="../index.css" />
   </head>
 
-  <body>
+  <body style="overflow:scroll">
     <!--[if IE]>
       <p class="browserupgrade">
         You are using an <strong>outdated</strong> browser. Please
@@ -17,12 +17,11 @@
       </p>
     <![endif]-->
 
-    <div id="root" style="height:100%"></div>
+    <div id="root" style="margin:5em;width:50vw;height:50vh"></div>
 
     <!-- Add your site or application content here -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-
-    <script src="../../anyline.js"></script>
+    <script src="../../anylinejs/anyline.js"></script>
     <script src="../license.js"></script>
     <script src="../index.js"></script>
 
@@ -42,6 +41,9 @@
       <option value="ocr">Serial Number</option>
     </select>
 
-    <script></script>
+    <button onclick="remountAnylineJS()">Remount</button>
+    <div id="scrolltest">
+      container to demonstrate scoll on page with anylinejs
+    </div>
   </body>
 </html>
