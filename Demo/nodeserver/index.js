@@ -16,13 +16,13 @@ var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
 var dirname = process.argv.slice(2)[0];
+var port = process.argv.slice(2)[1] ? process.argv.slice(2)[1] : 8443;
 
-var servedPath = path.join(__dirname, dirname)
+var servedir = path.join(__dirname, dirname);
 
-console.log("Serving", servedPath);
+console.log("\n *** Serving\n\tDirectory:", servedir, "\n\tPort:", port,  "\n\tURL: https://127.0.0.1:" + port);
 
-app.use(serveIndex(servedPath));
-app.use(express.static(servedPath)); 
+app.use(serveIndex(servedir));
+app.use(express.static(servedir)); 
 
-httpServer.listen(8080);
-httpsServer.listen(8443);
+httpsServer.listen(port);
