@@ -52,3 +52,14 @@ To test Anyline download the Example Sheets with testing material. They can be d
     yarn start
 
 Now you can visit https://127.0.0.1:8443/demo/fullscreen/index.html. The HTTPS server uses a self-generated certificate so you might need to bypass the security measures of your browser.
+
+
+###  Available links:
+<br>
+Worker Demo link -- https://js.anyline.com/release/v24/demo/fullscreen/index.html<br>
+Worker Archive link -- https://js.anyline.com/release/v24/anylinejs.zip<br>
+Worker CDN link -- https://js.anyline.com/release/v24/anyline.js<br>
+<br>
+Main Demo link -- https://js.anyline.com/beta/v24_main/demo/fullscreen/index.html<br>
+Main Archive link -- https://js.anyline.com/beta/v24_main/anylinejs.zip<br>
+Main CDN link -- https://js.anyline.com/beta/v24_main/anyline.js<br>
