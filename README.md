@@ -31,7 +31,7 @@ AnylineJS is a standalone Anyline version for the browser.
 
 The main-thread version is currently in beta and can be downloaded here: 
 
-Download link -- https://js.anyline.com/beta/v24_main/anylinejs.zip
+Download link -- https://js.anyline.com/beta/v24_main/anylinejs.zip<br>
 CDN link -- https://js.anyline.com/release/v24_main/anyline.js
 
 Vehicle identification number (VIN), shipping container (Horizontal and Vertical), Barcode, Serial number, license plate, MRZ, e-card (Beta), german ID front (Beta), austrian, german and UK drivers licenses (Beta) and meter scanning are supported. 
