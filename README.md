@@ -15,10 +15,9 @@ Visit [js.anyline.com](https://js.anyline.com) for a demo of AnylineJS.
 
 If you want to use AnylineJS the easy way you can use the CDN version:
 
-`<script src="https://js.anyline.com/release/v23/anyline.js"></script>`
+`<script src="https://js.anyline.com/release/v24/anyline.js"></script>`
 
 ### Self hosting
-
 
 AnylineJS is a standalone Anyline version for the browser.
 
@@ -28,6 +27,12 @@ AnylineJS is a standalone Anyline version for the browser.
 - **README**: Information about the repository
 
 
+### Main-thread version
+
+The main-thread version is currently in beta and can be downloaded here: 
+
+Download link -- https://js.anyline.com/beta/v24_main/anylinejs.zip
+CDN link -- https://js.anyline.com/release/v24_main/anyline.js
 
 Vehicle identification number (VIN), shipping container (Horizontal and Vertical), Barcode, Serial number, license plate, MRZ, e-card (Beta), german ID front (Beta), austrian, german and UK drivers licenses (Beta) and meter scanning are supported. 
 AnylineJS has to be served from a web server that supports HTTPS. (Don't forget to add 'https://' if you are testing AnylineJS).

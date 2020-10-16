@@ -50,7 +50,7 @@ const viewConfig = {
       // cancelOnResult: false,
       // "delayStartScanTime": 2000,
       scanFeedback: {
-        style: 'contour_point',
+        style: 'rect',
         strokeColor: '0099FF',
         fillColor: '300099FF',
         strokeWidth: 2,
