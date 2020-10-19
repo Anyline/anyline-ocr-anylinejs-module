@@ -43,11 +43,6 @@ const viewConfig = {
         strokeColor: 'FFFFFFFF',
         feedbackStrokeColor: '0099FF',
       },
-      // flash: {
-      //   mode: 'manual',
-      //   alignment: 'top_left',
-      // },
-      // cancelOnResult: false,
       // "delayStartScanTime": 2000,
       scanFeedback: {
         style: 'rect',
