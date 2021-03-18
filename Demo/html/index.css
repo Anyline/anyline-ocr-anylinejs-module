@@ -21,28 +21,14 @@ body {
   margin: 20px;
 }
 
-.result {
-  overflow: auto;
-  font-size: 8px;
-}
-
-.resultRow {
+.toolbar {
+  position: fixed;
+  top: 0;
+  margin: 20px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-self: flex-start;
-  padding-top: 5px;
+  flex-direction: column;
 }
 
-.resultLabel {
-  margin-right: 40px;
-  font-weight: bold;
-}
-
-#scrolltest {
-  height: 2000px;
-  width: 300px;
-  background: red;
-  opacity: 0.5;
-  padding: 0.5em;
+button {
+  margin: 5px;
 }
