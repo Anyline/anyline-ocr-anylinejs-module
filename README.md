@@ -15,7 +15,7 @@ Visit [js.anyline.com](https://js.anyline.com) for a demo of AnylineJS.
 
 If you want to use AnylineJS the easy way you can use the CDN version:
 
-`<script src="https://js.anyline.com/release/v24/anyline.js"></script>`
+`<script src="https://js.anyline.com/release/29/anyline.js"></script>`
 
 ### Self hosting
 
@@ -31,8 +31,8 @@ AnylineJS is a standalone Anyline version for the browser.
 
 The main-thread version is currently in beta and can be downloaded here: 
 
-Download link -- https://js.anyline.com/beta/v24_main/anylinejs.zip<br>
-CDN link -- https://js.anyline.com/release/v24_main/anyline.js
+Download link -- https://js.anyline.com/release/29_main/anylinejs.zip<br>
+CDN link -- https://js.anyline.com/release/29_main/anyline.js
 
 Vehicle identification number (VIN), shipping container (Horizontal and Vertical), Barcode, Serial number, license plate, MRZ, e-card (Beta), german ID front (Beta), austrian, german and UK drivers licenses (Beta) and meter scanning are supported. 
 AnylineJS has to be served from a web server that supports HTTPS. (Don't forget to add 'https://' if you are testing AnylineJS).
@@ -56,10 +56,10 @@ Now you can visit https://127.0.0.1:8443/demo/fullscreen/index.html. The HTTPS s
 
 ###  Available links:
 <br>
-Worker Demo link -- https://js.anyline.com/release/v24/demo/fullscreen/index.html<br>
-Worker Archive link -- https://js.anyline.com/release/v24/anylinejs.zip<br>
-Worker CDN link -- https://js.anyline.com/release/v24/anyline.js<br>
+Worker Demo link -- https://js.anyline.com/release/29/demo/index.html<br>
+Worker Archive link -- https://js.anyline.com/release/29/anylinejs.zip<br>
+Worker CDN link -- https://js.anyline.com/release/29/anyline.js<br>
 <br>
-Main Demo link -- https://js.anyline.com/beta/v24_main/demo/fullscreen/index.html<br>
-Main Archive link -- https://js.anyline.com/beta/v24_main/anylinejs.zip<br>
-Main CDN link -- https://js.anyline.com/beta/v24_main/anyline.js<br>
+Main Demo link -- https://js.anyline.com/beta/29_main/demo/index.html<br>
+Main Archive link -- https://js.anyline.com/beta/29_main/anylinejs.zip<br>
+Main CDN link -- https://js.anyline.com/beta/29_main/anyline.js<br>
