@@ -51,7 +51,7 @@ To test Anyline download the Example Sheets with testing material. They can be d
     yarn install
     yarn start
 
-Now you can visit https://127.0.0.1:8443/demo/fullscreen/index.html. The HTTPS server uses a self-generated certificate so you might need to bypass the security measures of your browser.
+Now you can visit https://127.0.0.1:8443/demo/index.html. The HTTPS server uses a self-generated certificate so you might need to bypass the security measures of your browser.
 
 
 ###  Available links:
