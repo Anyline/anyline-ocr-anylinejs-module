@@ -11,6 +11,10 @@
 [Anyline](https://www.anyline.com) is a mobile OCR SDK, which can be customized to scan all kinds of numbers, characters, text and codes.
 Visit [js.anyline.com](https://js.anyline.com) for a demo of AnylineJS.
 
+### Install
+
+`npm install @anyline/anyline-js`
+
 ### CDN Version
 
 If you want to use AnylineJS the easy way you can use the CDN version:
