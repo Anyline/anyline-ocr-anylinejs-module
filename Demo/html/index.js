@@ -69,7 +69,7 @@ function mountAnylineJS(preset) {
 function remountAnylineJS() {
   Anyline.stopScanning();
   Anyline.dispose();
-  mountAnylineJS();
+  mountAnylineJS(selectedPreset);
 }
 
 function enableFlash() {
