@@ -58,7 +58,7 @@ Alternatively you can also directly import `anyline.js` using a script tag:
 This will expose anylinejs to the window scope:
 
 ```JavaScript
-const { init } = window.anylinejs;`
+const { init } = window.anylinejs;
 ```
 
 3. Initialize AnylineJS
