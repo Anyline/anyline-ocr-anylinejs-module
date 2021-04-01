@@ -1,69 +1,108 @@
-
-     _____         _ _         
-    |  _  |___ _ _| |_|___ ___ 
-    |     |   | | | | |   | -_|
-    |__|__|_|_|_  |_|_|_|_|___|
-              |___|            
-
-
 # AnylineJS
 
 [Anyline](https://www.anyline.com) is a mobile OCR SDK, which can be customized to scan all kinds of numbers, characters, text and codes.
-Visit [js.anyline.com](https://js.anyline.com) for a demo of AnylineJS.
-
-### Install
-
-`npm install @anyline/anyline-js`
-
-### CDN Version
-
-If you want to use AnylineJS the easy way you can use the CDN version:
-
-`<script src="https://js.anyline.com/release/29/anyline.js"></script>`
-
-### Self hosting
 
 AnylineJS is a standalone Anyline version for the browser.
 
-- **Demo/html**: Contains **AnylineJS** implementation examples
-- **Demo/anylinejs**: Contains the files needed to self-host **AnylineJS**
+Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS.
+
+## Supported Usecases
+
+- Vehicle identification number (VIN), 
+- shipping container (Horizontal and Vertical),
+- Barcode, 
+- Serial number, 
+- license plate, 
+- MRZ, 
+- EHIC (eCard), 
+- german ID front (Beta), 
+- austrian, german and UK drivers licenses (Beta)
+- meter scanning
+
+## Content
+
+- **anyline.js**: Main lib to self-host **AnylineJS**
+- **anylinejs**: Contains the files needed to self-host **AnylineJS**
+- **demo**: Contains **AnylineJS** implementation examples
 - **LICENSE**: The Third Party License Agreements
 - **README**: Information about the repository
 
-
-### Main-thread version
-
-The main-thread version is currently in beta and can be downloaded here: 
-
-Download link -- https://js.anyline.com/release/29_main/anylinejs.zip<br>
-CDN link -- https://js.anyline.com/release/29_main/anyline.js
-
-Vehicle identification number (VIN), shipping container (Horizontal and Vertical), Barcode, Serial number, license plate, MRZ, e-card (Beta), german ID front (Beta), austrian, german and UK drivers licenses (Beta) and meter scanning are supported. 
-AnylineJS has to be served from a web server that supports HTTPS. (Don't forget to add 'https://' if you are testing AnylineJS).
-
-### Documentation
+## Documentation
 
 For full documentation visit: [https://documentation.anyline.com/toc/platforms/javascript/index.html](https://documentation.anyline.com/toc/platforms/javascript/index.html)
 
-To test Anyline download the Example Sheets with testing material. They can be downloaded here: [https://anyline.com/samples](https://anyline.com/samples)
+To test Anyline download the Example Sheets with testing material: [https://anyline.com/samples](https://anyline.com/samples)
 
-**The license included in the AnylineJS Repository only allows AnylineJS to run on 127.0.0.1 and localhost**
+## Install
 
-### Try it locally
+`npm install @anyline/anyline-js`
 
-    cd AnylineJS
-    yarn install
-    yarn start
+## Usage
 
-Now you can visit https://127.0.0.1:8443/demo/index.html. The HTTPS server uses a self-generated certificate so you might need to bypass the security measures of your browser.
+1. Copy the content of `anylinejs` to your webserver. In some cases you need to configure your webserver to serve `data` and `wasm.gz` files.
+
+AnylineJS has to be served from a web server that supports HTTPS.
+
+2. Import AnylineJS
+
+```JavaScript
+import { init } from '@anyline/anyline-js;
+```
+
+Alternatively you can also directly import `anyline.js` using a script tag:
+
+```HTML
+<script src="anyline.js"></script>
+```
+
+This will expose anylinejs to the window scope:
+
+```JavaScript
+const { init } = window.anylinejs;`
+```
+
+3. Initialize AnylineJS
+
+```JavaScript
+const Anyline = init({
+  preset: 'meter', // id, ocr, eCard, ...
+  license: 'add_your_license_key_here',
+  // html container where anylineJS should be mounted to
+  element: document.getElementById('root'),
+  // location of the data files from step 1 (can also be an https link)
+  anylinePath: '../anylinejs',
+});
+```
+
+4. Start scanning
+
+```JavaScript
+Anyline.startScanning().catch(console.error)
+```
+
+## Main-thread version
+
+The main-thread version is currently in beta and can be downloaded here (You can try to use it as a fallback for older devices): 
+
+Download link -- https://js.anyline.com/release/29.1_main/anylinejs.zip<br>
+CDN link -- https://js.anyline.com/release/29.1_main/anyline.js
 
 
-###  Available links:
+## Try it locally
+
+`npm run demo`
+
+Visit https://127.0.0.1:8443/demo. The HTTPS server uses a self-generated certificate so you might need to bypass the security measures of your browser.
+
+
+**The license included in the demo only allows AnylineJS to run on 127.0.0.1 and localhost**
+
+##  Available links:
 <br>
-Worker Demo link -- https://js.anyline.com/release/29/demo/index.html<br>
-Worker Archive link -- https://js.anyline.com/release/29/anylinejs.zip<br>
-Worker CDN link -- https://js.anyline.com/release/29/anyline.js<br>
+Worker Demo link -- https://js.anyline.com/release/29.1/demo/index.html<br>
+Worker Archive link -- https://js.anyline.com/release/29.1/anylinejs.zip<br>
+Worker CDN link -- https://js.anyline.com/release/29.1/anyline.js<br>
 <br>
-Main Demo link -- https://js.anyline.com/beta/29_main/demo/index.html<br>
-Main Archive link -- https://js.anyline.com/beta/29_main/anylinejs.zip<br>
-Main CDN link -- https://js.anyline.com/beta/29_main/anyline.js<br>
+Main Demo link -- https://js.anyline.com/beta/29.1_main/demo/index.html<br>
+Main Archive link -- https://js.anyline.com/beta/29.1_main/anylinejs.zip<br>
+Main CDN link -- https://js.anyline.com/beta/29.1_main/anyline.js<br>
