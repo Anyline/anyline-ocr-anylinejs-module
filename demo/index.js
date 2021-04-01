@@ -31,15 +31,13 @@ function mountAnylineJS(preset) {
   selectedPreset = preset;
 
   Anyline = window.anylinejs.init({
-    config: {
-      estimateMainCamera: !new URLSearchParams(window.location.search).get('c'),
-    },
+    config: {},
     preset: preset.value,
     viewConfig,
     license: demoLicense,
     element: root,
     debugAnyline: true,
-    anylinePath: '../anylinejs/anylinejs'
+    anylinePath: '../anylinejs'
   });
 
   Anyline.onResult = result => {
@@ -51,10 +49,11 @@ function mountAnylineJS(preset) {
     if (code === window.anylinejs.errorCodes.WEBCAM_ERROR) {
       console.error('webcam error: ', message);
     }
+    console.error(code, message)
   };
 
   Anyline.onLoad = () => {
-    console.log('ANYLINE LOADED on main thread');
+    console.log('ANYLINE LOADED');
   };
 
   
