@@ -46,7 +46,7 @@ AnylineJS has to be served from a web server that supports HTTPS.
 2. Import AnylineJS
 
 ```JavaScript
-import { init } from '@anyline/anyline-js;
+import { init } from '@anyline/anyline-js';
 ```
 
 Alternatively you can also directly import `anyline.js` using a script tag:
