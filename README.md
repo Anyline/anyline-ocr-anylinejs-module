@@ -84,8 +84,8 @@ Anyline.startScanning().catch(console.error)
 
 The main-thread version is currently in beta and can be downloaded here (You can try to use it as a fallback for older devices): 
 
-Download link -- https://js.anyline.com/beta/29.1_main/anylinejs.zip<br>
-CDN link -- https://js.anyline.com/beta/29.1_main/anyline.js
+Download link -- https://js.anyline.com/beta/30.0.0_main/anylinejs.zip<br>
+CDN link -- https://js.anyline.com/beta/30.0.0_main/anyline.js
 
 
 ## Try it locally
@@ -99,10 +99,10 @@ Visit https://127.0.0.1:8443/demo. The HTTPS server uses a self-generated certif
 
 ##  Available links:
 <br>
-Worker Demo link -- https://js.anyline.com/release/29.1/demo/index.html<br>
-Worker Archive link -- https://js.anyline.com/release/29.1/anylinejs.zip<br>
-Worker CDN link -- https://js.anyline.com/release/29.1/anyline.js<br>
+Worker Demo link -- https://js.anyline.com/release/30.0.0/demo/index.html<br>
+Worker Archive link -- https://js.anyline.com/release/30.0.0/anylinejs.zip<br>
+Worker CDN link -- https://js.anyline.com/release/30.0.0/anyline.js<br>
 <br>
-Main Demo link -- https://js.anyline.com/beta/29.1_main/demo/index.html<br>
-Main Archive link -- https://js.anyline.com/beta/29.1_main/anylinejs.zip<br>
-Main CDN link -- https://js.anyline.com/beta/29.1_main/anyline.js<br>
+Main Demo link -- https://js.anyline.com/beta/30.0.0_main/demo/index.html<br>
+Main Archive link -- https://js.anyline.com/beta/30.0.0_main/anylinejs.zip<br>
+Main CDN link -- https://js.anyline.com/beta/30.0.0_main/anyline.js<br>
