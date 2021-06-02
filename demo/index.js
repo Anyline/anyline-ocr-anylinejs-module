@@ -1,26 +1,3 @@
-const viewConfig = {
-  outerColor: '000000',
-  outerAlpha: 0.5,
-  cutouts: [
-    {
-      cancelOnResult: false,
-      cutoutConfig: {
-        strokeWidth: 2,
-        cornerRadius: 4,
-        strokeColor: 'FFFFFFFF',
-        feedbackStrokeColor: '0099FF',
-      },
-      scanFeedback: {
-        style: 'contour_point',
-        strokeColor: '0099FF',
-        fillColor: '300099FF',
-        strokeWidth: 2,
-        cornerRadius: 4,
-      },
-    },
-  ],
-};
-
 const root = document.getElementById('root');
 let selectedPreset = undefined;
 let Anyline;
@@ -33,7 +10,7 @@ function mountAnylineJS(preset) {
   Anyline = window.anylinejs.init({
     config: {},
     preset: preset.value,
-    viewConfig,
+    viewConfig: {},
     license: demoLicense,
     element: root,
     debugAnyline: true,
