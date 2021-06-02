@@ -103,7 +103,7 @@ Visit https://127.0.0.1:8443/demo. The HTTPS server uses a self-generated certif
 You can access the types by importing the `Types` object
 
 ```JavaScript
-import { Types } from '@anyline/anyline-js;
+import { Types } from '@anyline/anyline-js';
 ```
 
 ## Main-thread version
