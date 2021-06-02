@@ -1,7 +1,8 @@
 {
   "name": "@anyline/anyline-js",
-  "version": "30.0.0",
+  "version": "31.0.0",
   "description": "anyline sdk in the browser",
+  "types": "./types/src/Anyline-JS/index.d.ts",
   "main": "anyline.js",
   "scripts": {
     "demo": "npx http-server -S -C demo/cert/cert.pem -K demo/cert/key.pem --port 8443 -o /demo"
