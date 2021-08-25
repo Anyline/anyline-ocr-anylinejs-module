@@ -29,7 +29,7 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS
 
 ## Documentation
 
-[API documentation](https://js.anyline.com/release/32.0.0/docs/index.html)
+[API documentation](https://js.anyline.com/release/33.0.0/docs/index.html)
 
 For full documentation visit: [https://documentation.anyline.com/toc/platforms/javascript/index.html](https://documentation.anyline.com/toc/platforms/javascript/index.html)
 
@@ -106,20 +106,20 @@ You can access the types by importing the `Types` object
 import { Types } from '@anyline/anyline-js;
 ```
 
-## Main-thread version
+## Main-thread version ( not recomended )
 
 The main-thread version is currently in beta and can be downloaded here (You can try to use it as a fallback for older devices):
 
-Download link -- https://js.anyline.com/release/32.0.0_main/anylinejs.zip<br>
-CDN link -- https://js.anyline.com/release/32.0.0_main/anyline.js
+Download link -- https://js.anyline.com/release/33.0.0_main/anylinejs.zip<br>
+CDN link -- https://js.anyline.com/release/33.0.0_main/anyline.js
 
 ## Available links:
 
 <br>
-Worker Demo link -- https://js.anyline.com/release/32.0.0/demo/index.html<br>
-Worker Archive link -- https://js.anyline.com/release/32.0.0/anylinejs.zip<br>
-Worker CDN link -- https://js.anyline.com/release/32.0.0/anyline.js<br>
+Worker Demo link -- https://js.anyline.com/release/33.0.0/demo/index.html<br>
+Worker Archive link -- https://js.anyline.com/release/33.0.0/anylinejs.zip<br>
+Worker CDN link -- https://js.anyline.com/release/33.0.0/anyline.js<br>
 <br>
-Main Demo link -- https://js.anyline.com/beta/32.0.0_main/demo/index.html<br>
-Main Archive link -- https://js.anyline.com/beta/32.0.0_main/anylinejs.zip<br>
-Main CDN link -- https://js.anyline.com/beta/32.0.0_main/anyline.js<br>
+Main Demo link -- https://js.anyline.com/beta/33.0.0_main/demo/index.html<br>
+Main Archive link -- https://js.anyline.com/beta/33.0.0_main/anylinejs.zip<br>
+Main CDN link -- https://js.anyline.com/beta/33.0.0_main/anyline.js<br>
