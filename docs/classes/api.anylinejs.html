@@ -83,6 +83,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="api.anylinejs.html#camera" class="tsd-kind-icon">camera</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="api.anylinejs.html#onerror" class="tsd-kind-icon">on<wbr>Error</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="api.anylinejs.html#onframe" class="tsd-kind-icon">on<wbr>Frame</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="api.anylinejs.html#onload" class="tsd-kind-icon">on<wbr>Load</a></li>
@@ -92,14 +93,9 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="api.anylinejs.html#activateflash" class="tsd-kind-icon">activate<wbr>Flash</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="api.anylinejs.html#dispose" class="tsd-kind-icon">dispose</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="api.anylinejs.html#getstate" class="tsd-kind-icon">get<wbr>State</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="api.anylinejs.html#reappendcamera" class="tsd-kind-icon">reappend<wbr>Camera</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="api.anylinejs.html#refocus" class="tsd-kind-icon">refocus</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="api.anylinejs.html#resumescanning" class="tsd-kind-icon">resume<wbr>Scanning</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="api.anylinejs.html#setcamera" class="tsd-kind-icon">set<wbr>Camera</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="api.anylinejs.html#setnextcamera" class="tsd-kind-icon">set<wbr>Next<wbr>Camera</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="api.anylinejs.html#startscanning" class="tsd-kind-icon">start<wbr>Scanning</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="api.anylinejs.html#stopscanning" class="tsd-kind-icon">stop<wbr>Scanning</a></li>
 							</ul>
@@ -110,12 +106,27 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="camera" class="tsd-anchor"></a>
+					<h3>camera</h3>
+					<div class="tsd-signature tsd-kind-icon">camera<span class="tsd-signature-symbol">:</span> <a href="../interfaces/types.cameraapi.html" class="tsd-signature-type" data-tsd-kind="Interface">CameraAPI</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/Anyline-JS/interface/api.ts:129</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Camera API</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="onerror" class="tsd-anchor"></a>
 					<h3>on<wbr>Error</h3>
 					<div class="tsd-signature tsd-kind-icon">on<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.legacyerrorobject.html" class="tsd-signature-type" data-tsd-kind="Interface">LegacyErrorObject</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/Anyline-JS/interface/api.ts:64</li>
+							<li>Defined in src/Anyline-JS/interface/api.ts:89</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -156,10 +167,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="onframe" class="tsd-anchor"></a>
 					<h3>on<wbr>Frame</h3>
-					<div class="tsd-signature tsd-kind-icon">on<wbr>Frame<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>image<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, fullImage<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Frame<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>image<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, fullImage<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/Anyline-JS/interface/api.ts:93</li>
+							<li>Defined in src/Anyline-JS/interface/api.ts:116</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -171,7 +182,7 @@
 							<dd><p>image - current image</p>
 							</dd>
 							<dt>params</dt>
-							<dd><p>[fullImage] - current full image (if returnFullImage flag is set in the config object)</p>
+							<dd><p>fullImage - current full image</p>
 							</dd>
 						</dl>
 					</div>
@@ -180,7 +191,7 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>image<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, fullImage<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>image<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, fullImage<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
@@ -190,7 +201,7 @@
 												<h5>image: <span class="tsd-signature-type">string</span></h5>
 											</li>
 											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> fullImage: <span class="tsd-signature-type">string</span></h5>
+												<h5>fullImage: <span class="tsd-signature-type">string</span></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -206,7 +217,7 @@
 					<div class="tsd-signature tsd-kind-icon">on<wbr>Load<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>video<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLVideoElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/Anyline-JS/interface/api.ts:74</li>
+							<li>Defined in src/Anyline-JS/interface/api.ts:99</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -250,7 +261,7 @@
 					<div class="tsd-signature tsd-kind-icon">on<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>result<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.anylinejsresult.html" class="tsd-signature-type" data-tsd-kind="Interface">AnylineJSResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/Anyline-JS/interface/api.ts:84</li>
+							<li>Defined in src/Anyline-JS/interface/api.ts:107</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -260,9 +271,6 @@
 						<dl class="tsd-comment-tags">
 							<dt>params</dt>
 							<dd><p>result - object containing the scanned result and image</p>
-							</dd>
-							<dt>remarks</dt>
-							<dd><p>if returnFullImage flag is set in the config, the result object also contains the full result image</p>
 							</dd>
 						</dl>
 					</div>
@@ -292,44 +300,6 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="activateflash" class="tsd-anchor"></a>
-					<h3>activate<wbr>Flash</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">activate<wbr>Flash<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in src/Anyline-JS/interface/api.ts:358</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Activates the camera flash light</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>remarks</dt>
-									<dd><p>This feature works currently only on Google Chrome for Android</p>
-									</dd>
-									<dt>throws</dt>
-									<dd><p><a href="exceptions.onlyandroidchromeerror.html">OnlyAndroidChromeError</a>
-										This exception is thrown if the browser is not capabale of this feature</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>state: <span class="tsd-signature-type">boolean</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A promise</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="dispose" class="tsd-anchor"></a>
 					<h3>dispose</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -339,7 +309,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/Anyline-JS/interface/api.ts:332</li>
+									<li>Defined in src/Anyline-JS/interface/api.ts:354</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -361,7 +331,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/Anyline-JS/interface/api.ts:107</li>
+									<li>Defined in src/Anyline-JS/interface/api.ts:135</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -370,65 +340,6 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/api.state.html" class="tsd-signature-type" data-tsd-kind="Enumeration">State</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="reappendcamera" class="tsd-anchor"></a>
-					<h3>reappend<wbr>Camera</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">reappend<wbr>Camera<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in src/Anyline-JS/interface/api.ts:413</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Reappend the camera. This can help in case you experience a camera stream failure when resuming to the webapp after sleep / longer suspension.</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>remarks</dt>
-									<dd><p>example: window.onfocus = () =&gt; anyline.reappendCamera();</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="refocus" class="tsd-anchor"></a>
-					<h3>refocus</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">refocus<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in src/Anyline-JS/interface/api.ts:379</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Refocus the camera</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>remarks</dt>
-									<dd><p>This feature works currently only on Google Chrome for Android</p>
-									</dd>
-									<dt>throws</dt>
-									<dd><p><a href="exceptions.onlyandroidchromeerror.html">OnlyAndroidChromeError</a>
-										This exception is thrown if the browser is not capabale of this feature</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A promise</p>
 						</li>
 					</ul>
 				</section>
@@ -442,7 +353,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/Anyline-JS/interface/api.ts:320</li>
+									<li>Defined in src/Anyline-JS/interface/api.ts:342</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -461,46 +372,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setcamera" class="tsd-anchor"></a>
-					<h3>set<wbr>Camera</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Camera<span class="tsd-signature-symbol">(</span>deviceId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in src/Anyline-JS/interface/api.ts:397</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>deviceId: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setnextcamera" class="tsd-anchor"></a>
-					<h3>set<wbr>Next<wbr>Camera</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Next<wbr>Camera<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in src/Anyline-JS/interface/api.ts:387</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="startscanning" class="tsd-anchor"></a>
 					<h3>start<wbr>Scanning</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -510,7 +381,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/Anyline-JS/interface/api.ts:227</li>
+									<li>Defined in src/Anyline-JS/interface/api.ts:248</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -547,7 +418,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/Anyline-JS/interface/api.ts:305</li>
+									<li>Defined in src/Anyline-JS/interface/api.ts:327</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -598,6 +469,9 @@
 						<a href="api.anylinejs.html" class="tsd-kind-icon">AnylineJS</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="api.anylinejs.html#camera" class="tsd-kind-icon">camera</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="api.anylinejs.html#onerror" class="tsd-kind-icon">on<wbr>Error</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -610,28 +484,13 @@
 								<a href="api.anylinejs.html#onresult" class="tsd-kind-icon">on<wbr>Result</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="api.anylinejs.html#activateflash" class="tsd-kind-icon">activate<wbr>Flash</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="api.anylinejs.html#dispose" class="tsd-kind-icon">dispose</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="api.anylinejs.html#getstate" class="tsd-kind-icon">get<wbr>State</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="api.anylinejs.html#reappendcamera" class="tsd-kind-icon">reappend<wbr>Camera</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="api.anylinejs.html#refocus" class="tsd-kind-icon">refocus</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="api.anylinejs.html#resumescanning" class="tsd-kind-icon">resume<wbr>Scanning</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="api.anylinejs.html#setcamera" class="tsd-kind-icon">set<wbr>Camera</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="api.anylinejs.html#setnextcamera" class="tsd-kind-icon">set<wbr>Next<wbr>Camera</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="api.anylinejs.html#startscanning" class="tsd-kind-icon">start<wbr>Scanning</a>
