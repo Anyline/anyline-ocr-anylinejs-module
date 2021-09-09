@@ -110,8 +110,8 @@ import { Types } from '@anyline/anyline-js;
 
 The main-thread version is currently in beta and can be downloaded here (You can try to use it as a fallback for older devices):
 
-Download link -- https://js.anyline.com/release/33.0.0_main/anylinejs.zip<br>
-CDN link -- https://js.anyline.com/release/33.0.0_main/anyline.js
+Download link -- https://js.anyline.com/beta/33.0.0_main/anylinejs.zip<br>
+CDN link -- https://js.anyline.com/beta/33.0.0_main/anyline.js
 
 ## Available links:
 
