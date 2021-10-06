@@ -18,6 +18,7 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS
 - german ID front,
 - austrian, german and UK drivers licenses
 - meter scanning
+- card detect
 
 ## Content
 
@@ -60,7 +61,7 @@ Alternatively you can also directly import `anyline.js` using a script tag:
 This will expose anylinejs to the window scope:
 
 ```JavaScript
-const { init } = window.anylinejs;`
+const { init } = window.anylinejs;
 ```
 
 3. Initialize AnylineJS
@@ -85,9 +86,9 @@ anyline.startScanning().catch(console.error);
 5. Handle the scan result
 
 ```JavaScript
-anyline.onResult((data) => {
+anyline.onResult = (data) => {
   console.log(data)
-});
+};
 ```
 
 ## Try it locally
