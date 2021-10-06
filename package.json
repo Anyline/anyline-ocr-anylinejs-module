@@ -1,11 +1,12 @@
 {
   "name": "@anyline/anyline-js",
-  "version": "33.0.0",
+  "version": "34.0.0",
   "description": "anyline sdk in the browser",
   "types": "./types/src/Anyline-JS/index.d.ts",
   "main": "anyline.js",
   "scripts": {
-    "demo": "npx http-server -S -C demo/cert/cert.pem -K demo/cert/key.pem --port 8443 -o /demo"
+    "demo": "npx http-server --port 8080 -o /demo",
+    "demo:network": "npx http-server -S -C demo/cert/cert.pem -K demo/cert/key.pem --port 8443 -o /demo"
   },
   "repository": {
     "type": "git",
