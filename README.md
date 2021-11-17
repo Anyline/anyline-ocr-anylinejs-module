@@ -18,7 +18,6 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS
 - german ID front,
 - austrian, german and UK drivers licenses
 - meter scanning
-- card detect
 
 ## Content
 
@@ -30,7 +29,7 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS
 
 ## Documentation
 
-[API documentation](https://js.anyline.com/release/34.0.0/docs/index.html)
+[API documentation](https://js.anyline.com/release/35.0.0/docs/index.html)
 
 For full documentation visit: [https://documentation.anyline.com/toc/platforms/javascript/index.html](https://documentation.anyline.com/toc/platforms/javascript/index.html)
 
@@ -61,14 +60,14 @@ Alternatively you can also directly import `anyline.js` using a script tag:
 This will expose anylinejs to the window scope:
 
 ```JavaScript
-const { init } = window.anylinejs;
+const { init } = window.anylinejs;`
 ```
 
 3. Initialize AnylineJS
 
 ```JavaScript
 const anyline = init({
-  preset: 'meter', // id, ocr, eCard, ...
+  preset: 'meter', // id, ocr, ehic, ...
   license: 'enter_your_license_key_here',
   // html container where anylineJS should be mounted to
   element: document.getElementById('root'),
@@ -86,9 +85,9 @@ anyline.startScanning().catch(console.error);
 5. Handle the scan result
 
 ```JavaScript
-anyline.onResult = (data) => {
+anyline.onResult((data) => {
   console.log(data)
-};
+});
 ```
 
 ## Try it locally
@@ -111,16 +110,16 @@ import { Types } from '@anyline/anyline-js;
 
 The main-thread version is currently in beta and can be downloaded here (You can try to use it as a fallback for older devices):
 
-Download link -- https://js.anyline.com/beta/34.0.0_main/anylinejs.zip<br>
-CDN link -- https://js.anyline.com/beta/34.0.0_main/anyline.js
+Download link -- https://js.anyline.com/beta/35.0.0_main/anylinejs.zip<br>
+CDN link -- https://js.anyline.com/beta/35.0.0_main/anyline.js
 
 ## Available links:
 
 <br>
-Worker Demo link -- https://js.anyline.com/release/34.0.0/demo/index.html<br>
-Worker Archive link -- https://js.anyline.com/release/34.0.0/anylinejs.zip<br>
-Worker CDN link -- https://js.anyline.com/release/34.0.0/anyline.js<br>
+Worker Demo link -- https://js.anyline.com/release/35.0.0/demo/index.html<br>
+Worker Archive link -- https://js.anyline.com/release/35.0.0/anylinejs.zip<br>
+Worker CDN link -- https://js.anyline.com/release/35.0.0/anyline.js<br>
 <br>
-Main Demo link -- https://js.anyline.com/beta/34.0.0_main/demo/index.html<br>
-Main Archive link -- https://js.anyline.com/beta/34.0.0_main/anylinejs.zip<br>
-Main CDN link -- https://js.anyline.com/beta/34.0.0_main/anyline.js<br>
+Main Demo link -- https://js.anyline.com/beta/35.0.0_main/demo/index.html<br>
+Main Archive link -- https://js.anyline.com/beta/35.0.0_main/anylinejs.zip<br>
+Main CDN link -- https://js.anyline.com/beta/35.0.0_main/anyline.js<br>
