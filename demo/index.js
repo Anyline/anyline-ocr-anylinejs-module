@@ -16,14 +16,14 @@ async function mountAnylineJS(preset) {
       anylinePath: '../anylinejs',
     });
 
-    anyline.onResult = result => {
+    anyline.onResult = (result) => {
       console.log('Result: ', result);
       alert(JSON.stringify(result.result, null, 2));
     };
 
     await appendCameraSwitcher(anyline);
 
-    await anyline.startScanning().catch(e => alert(e.message));
+    await anyline.startScanning().catch((e) => alert(e.message));
   } catch (e) {
     alert(e.message);
     console.error(e);
@@ -37,6 +37,11 @@ function mirrorCamera() {
   mirrored = newState;
 }
 
+function reappendCamera() {
+  if (!anyline) return;
+  anyline.camera.reappend();
+}
+
 async function appendCameraSwitcher(anyline) {
   if (document.getElementById('cameraSwitcher')) return;
 
@@ -45,7 +50,7 @@ async function appendCameraSwitcher(anyline) {
     audio: false,
   });
 
-  stream.getTracks().forEach(track => {
+  stream.getTracks().forEach((track) => {
     stream.removeTrack(track);
     track.stop();
   });
@@ -53,13 +58,13 @@ async function appendCameraSwitcher(anyline) {
   const devices = (await navigator.mediaDevices.enumerateDevices()) || [];
   renderSelect({
     options: devices
-      .filter(m => m.kind === 'videoinput')
-      .map(camera => ({
+      .filter((m) => m.kind === 'videoinput')
+      .map((camera) => ({
         text: camera.label,
         value: camera.deviceId,
       }))
       .reduce((acc, camera) => [...acc, camera], [{ text: 'switch cam' }]),
-    onSelect: deviceId => deviceId && anyline.camera.setCamera(deviceId),
+    onSelect: (deviceId) => deviceId && anyline.camera.setCamera(deviceId),
   });
 }
 
@@ -71,14 +76,14 @@ function renderSelect({ options, onSelect }) {
   selectEl.id = 'cameraSwitcher';
   parent.appendChild(selectEl);
 
-  options.forEach(option => {
+  options.forEach((option) => {
     const optionEl = document.createElement('option');
     optionEl.value = option.value;
     optionEl.text = option.text;
     selectEl.appendChild(optionEl);
   });
 
-  selectEl.onchange = e => onSelect(e.target.value);
+  selectEl.onchange = (e) => onSelect(e.target.value);
 }
 
 function remountAnylineJS() {
