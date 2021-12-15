@@ -9,6 +9,11 @@ async function mountAnylineJS(preset) {
 
     anyline = window.anylinejs.init({
       config: {},
+      viewConfig: {
+            cutouts: [{
+                cancelOnResult: false,                
+            }],
+      },
       preset: preset.value,
       license: demoLicense,
       element: root,
@@ -19,6 +24,7 @@ async function mountAnylineJS(preset) {
     anyline.onResult = (result) => {
       console.log('Result: ', result);
       alert(JSON.stringify(result.result, null, 2));
+      remountAnylineJS();
     };
 
     await appendCameraSwitcher(anyline);
