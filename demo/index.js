@@ -24,7 +24,6 @@ async function mountAnylineJS(preset) {
     anyline.onResult = (result) => {
       console.log('Result: ', result);
       alert(JSON.stringify(result.result, null, 2));
-      remountAnylineJS();
     };
 
     await appendCameraSwitcher(anyline);
