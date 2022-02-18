@@ -112,7 +112,7 @@ You can access the types by importing the `Types` object
 import { Types } from '@anyline/anyline-js;
 ```
 
-## Main-thread version ( not recomended )
+## Main-thread version (not recommended)
 
 The main-thread version is currently in beta and can be downloaded here (You can try to use it as a fallback for older devices):
 
