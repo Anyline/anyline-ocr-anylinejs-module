@@ -1,10 +1,9 @@
 import CameraManager from './camera.manager';
-import { DOMElement } from 'react';
 declare type Dependencies = {
     cameraManager: CameraManager;
 };
 declare type Params = {
-    anylineJScontainerEl: DOMElement;
+    anylineJScontainerEl: HTMLElement | null;
     scaleDown?: boolean;
     /** @default true */
     mirrorOnDesktop?: boolean;
