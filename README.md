@@ -8,17 +8,16 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS
 
 ## Supported Usecases
 
-- Barcode,
-- Meter,
 - Vehicle identification number (VIN),
-- License plate,
-- Shipping container (Horizontal and Vertical),
+- shipping container (Horizontal and Vertical),
+- Barcode,
 - Serial number,
+- license plate,
 - MRZ,
-- Tire size specifications,
-- German ID front,
-- Austrian, german and UK drivers licenses,
 - EHIC (eCard),
+- german ID front,
+- austrian, german and UK drivers licenses
+- meter scanning
 
 ## Content
 
