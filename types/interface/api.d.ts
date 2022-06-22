@@ -21,6 +21,7 @@ export declare class AnylineJS {
      * @param {AnylineJSParams} params - AnylineJS parameters
      */
     constructor(params: AnylineJSParams, dependencies: Dependencies);
+    preload(): void;
     getFaceAuthToken(): Promise<string> | boolean;
     /**
      *
@@ -68,7 +69,7 @@ export declare class AnylineJS {
      */
     getState(): State;
     private initalize;
-    private handleImageRequest;
+    handleImageRequest(): Promise<void>;
     private postHooks;
     /**
      * Starts the scan process
