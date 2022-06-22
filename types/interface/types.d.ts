@@ -137,6 +137,21 @@ export interface AnylineJSConfig {
     mirrorOnDesktop?: boolean;
 }
 /**
+ * @typedef LockOrientation
+ * @type {Object}
+ */
+interface LockPortraitOrientation {
+    /**
+     * lock - Defines whether or not the screen orientation should be locked to portrait.
+     */
+    lock: boolean;
+    /**
+     * element - Element used for fullscreen mode. This is required in order to lock the screen.
+     * If no element was set it will default to the element set as root in the configuration (AnylineJSParams).
+     */
+    element?: HTMLElement;
+}
+/**
  * @typedef AnylineJSparams
  * @type {Object}
  */
@@ -150,9 +165,17 @@ export interface AnylineJSParams {
      */
     element: HTMLElement;
     /**
+     * lockOrientation - If set locks the screen orientation to portrait.
+     */
+    lockPortraitOrientation?: LockPortraitOrientation;
+    /**
      * preset - Module preset
      */
     preset?: string;
+    /**
+     * preload - preloads the assets by a given preset (eg. 'barcode')
+     */
+    preload?: boolean;
     /**
      * anylinePath - Path to anylineJS data assets (defaults to cdn hosted assets)
      */
@@ -171,3 +194,4 @@ export interface AnylineJSParams {
     debugAnyline?: boolean | string;
     wasmPath?: string;
 }
+export {};
