@@ -21,7 +21,6 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS
 
 ## Content
 
-- **anyline.js**: Main lib to self-host **AnylineJS**
 - **anylinejs**: Contains the files needed to self-host **AnylineJS**
 - **demo**: Contains **AnylineJS** implementation examples
 - **LICENSE**: The Third Party License Agreements
@@ -126,20 +125,9 @@ You can access the types by importing the `Types` object
 import { Types } from '@anyline/anyline-js';
 ```
 
-## Main-thread version (not recommended)
-
-The main-thread version is currently in beta and can be downloaded here (You can try to use it as a fallback for older devices):
-
-Download link -- https://js.anyline.com/beta/40.0.0_main/anylinejs.zip<br>
-CDN link -- https://js.anyline.com/beta/40.0.0_main/anyline.js
-
 ## Available links:
 
 <br>
 Worker Demo link -- https://js.anyline.com/release/40.0.0/demo/index.html<br>
 Worker Archive link -- https://js.anyline.com/release/40.0.0/anylinejs.zip<br>
 Worker CDN link -- https://js.anyline.com/release/40.0.0/anyline.js<br>
-<br>
-Main Demo link -- https://js.anyline.com/beta/40.0.0_main/demo/index.html<br>
-Main Archive link -- https://js.anyline.com/beta/40.0.0_main/anylinejs.zip<br>
-Main CDN link -- https://js.anyline.com/beta/40.0.0_main/anyline.js<br>
