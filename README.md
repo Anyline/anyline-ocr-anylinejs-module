@@ -128,6 +128,6 @@ import { Types } from '@anyline/anyline-js';
 ## Available links:
 
 <br>
-Worker Demo link -- https://js.anyline.com/release/40.0.0/demo/index.html<br>
-Worker Archive link -- https://js.anyline.com/release/40.0.0/anylinejs.zip<br>
-Worker CDN link -- https://js.anyline.com/release/40.0.0/anyline.js<br>
+Worker Demo link -- https://js.anyline.com/release/40.1.0/demo/index.html<br>
+Worker Archive link -- https://js.anyline.com/release/40.1.0/anylinejs.zip<br>
+Worker CDN link -- https://js.anyline.com/release/40.1.0/anyline.js<br>
