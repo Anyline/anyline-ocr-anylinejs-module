@@ -36,6 +36,7 @@ export default class ImageService {
         isRetry?: boolean;
         retry?: boolean;
     }): any;
+    closeStream(): void;
     /**
      * Can be called to prevent possible memory leaks
      */
