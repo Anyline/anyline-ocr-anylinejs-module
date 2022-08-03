@@ -3,6 +3,7 @@ import ImageSevice from '../services/image.service';
 import { AnylineJSParams, LegacyErrorObject, AnylineJSResult, CameraAPI } from './types';
 export declare enum State {
     INITALIZED = "initalized",
+    PAUSED = "paused",
     SCANNING = "scanning",
     STOPPED = "stopped",
     DISPOSED = "disposed"
@@ -48,6 +49,13 @@ export declare class AnylineJS {
      *
      */
     onResult: (result: AnylineJSResult) => void;
+    /**
+     * Callback called when a scan yielded in a performance log
+     *
+     * @params perflog - object containing the performance log
+     *
+     */
+    onPerformanceLog: (perflog: any) => void;
     /**
      * Callback called before a new frame is being processed
      *
@@ -95,13 +103,21 @@ export declare class AnylineJS {
      */
     stopScanning(): void;
     /**
+     * Pause the scan process
+     *
+     * @throws {@link NotScanningError}
+     * This exception is thrown if anylineJS was not started before calling this method
+     *
+     */
+    pauseScanning(): void;
+    /**
      * Resumes the scan process
      *
      * @throws {@link NotStoppedError}
      * This exception is thrown if anylineJS was not stopped before calling this method
      *
      */
-    resumeScanning(): void;
+    resumeScanning(): Promise<void>;
     /**
      * Disposes anylineJS by unmounting it from the dom and cleaning up
      *
