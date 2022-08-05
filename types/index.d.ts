@@ -1,5 +1,5 @@
 import errorCodes from './interface/errorCodes';
-import { init } from './interface/init';
+import { init, getAnylineWorker } from './interface/init';
 import * as Types from './interface/types';
-export { init, errorCodes, // deprecated
+export { getAnylineWorker, init, errorCodes, // deprecated
 Types, };
