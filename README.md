@@ -8,21 +8,19 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS
 
 ## Supported Usecases
 
-- Barcode,
-- Meter,
 - Vehicle identification number (VIN),
-- License plate,
-- Shipping container (Horizontal and Vertical),
+- shipping container (Horizontal and Vertical),
+- Barcode,
 - Serial number,
+- license plate,
 - MRZ,
-- Tire size specifications,
-- German ID front,
-- Austrian, german and UK drivers licenses,
 - EHIC (eCard),
+- german ID front,
+- austrian, german and UK drivers licenses
+- meter scanning
 
 ## Content
 
-- **anyline.js**: Main lib to self-host **AnylineJS**
 - **anylinejs**: Contains the files needed to self-host **AnylineJS**
 - **demo**: Contains **AnylineJS** implementation examples
 - **LICENSE**: The Third Party License Agreements
@@ -49,7 +47,7 @@ AnylineJS has to be served from a web server that supports HTTPS.
 2. Import AnylineJS
 
 ```JavaScript
-import { init } from '@anyline/anyline-js;'
+import { init } from '@anyline/anyline-js';
 ```
 
 Alternatively you can also directly import `anyline.js` using a script tag:
@@ -61,7 +59,7 @@ Alternatively you can also directly import `anyline.js` using a script tag:
 This will expose anylinejs to the window scope:
 
 ```JavaScript
-const { init } = window.anylinejs;`
+const { init } = window.anylinejs;
 ```
 
 3. Initialize AnylineJS
@@ -91,6 +89,20 @@ anyline.onResult((data) => {
 });
 ```
 
+### Preload assets
+
+In order to use preloading update your configuration as shown below and call the preload method. [Example](demo/preload-example.js)
+
+```JavaScript
+const anyline = init({
+  ...
+  preload: true,
+  ...
+});
+
+anyline.preload();
+```
+
 ## Try it locally
 
 `npm run demo`
@@ -103,20 +115,19 @@ or
 
 In this case the HTTPS server uses a self-generated certificate so you might need to bypass the security measures of your browser. With a proper test-license issued for your internal ip-address you can test it on other devices on the network (i.E. for smartphone testing).
 
-**The license included in the demo only allows AnylineJS to run on 127.0.0.1 and localhost**
+**The license included in the demo only allows AnylineJS to run on 127.0.0.1**
 
 ### Typescript support
 
 You can access the types by importing the `Types` object
 
 ```JavaScript
-import { Types } from '@anyline/anyline-js;'
+import { Types } from '@anyline/anyline-js';
 ```
 
 ## Available links:
 
 <br>
-Worker Demo link -- https://js.anyline.com/release/41.0.1/demo/index.html<br>
-Worker Archive link -- https://js.anyline.com/release/41.0.1/anylinejs.zip<br>
-Worker CDN link -- https://js.anyline.com/release/41.0.1/anyline.js<br>
-<br>
+Worker Demo link -- https://js.anyline.com/release/41.0.0/demo/index.html<br>
+Worker Archive link -- https://js.anyline.com/release/41.0.0/anylinejs.zip<br>
+Worker CDN link -- https://js.anyline.com/release/41.0.0/anyline.js<br>
