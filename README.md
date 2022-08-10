@@ -8,6 +8,7 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS
 
 ## Supported Usecases
 
+- Tire Size,
 - Vehicle identification number (VIN),
 - shipping container (Horizontal and Vertical),
 - Barcode,
