@@ -5,6 +5,7 @@ export declare function getAnylineWorker({ mock, params, }: {
     params: AnylineJSParams;
 }): {
     onLoaded: () => void;
+    onPreloaded: () => void;
     onImagereq: () => void;
     terminate: () => void;
     launch: () => void;
