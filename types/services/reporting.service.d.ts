@@ -22,7 +22,7 @@ export default class ReportingService {
         manufacturer: string;
         os: string;
     };
-    private sendInitialReportingInfo;
-    sendImageReportingInfo(): void;
+    prepareReporting(msg: any): void;
+    sendReporting(json: any, url: string, sendAsync: boolean): void;
 }
 export {};

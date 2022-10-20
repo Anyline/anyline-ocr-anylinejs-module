@@ -177,6 +177,10 @@ export interface AnylineJSParams {
      */
     preload?: boolean;
     /**
+     * preloadCallback - set a callback to execute custom code after all assets were loaded. Callback will override the default behavior.
+     */
+    preloadCallback?: () => void;
+    /**
      * anylinePath - Path to anylineJS data assets (defaults to cdn hosted assets)
      */
     anylinePath?: string;

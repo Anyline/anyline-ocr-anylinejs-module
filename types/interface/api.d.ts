@@ -16,6 +16,8 @@ declare type Dependencies = {
 export declare class AnylineJS {
     private params;
     private dependencies;
+    private preloadDone;
+    private startScanningRequested;
     /**
      * Mounts anylineJS into the DOM and exposes api
      * @internal
