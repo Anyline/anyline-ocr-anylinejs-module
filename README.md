@@ -29,7 +29,7 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS
 
 ## Documentation
 
-[API documentation](https://js.anyline.com/release/41.0.1/docs/index.html)
+[API documentation](https://js.anyline.com/release/41.0.0/docs/index.html)
 
 For full documentation visit: [https://documentation.anyline.com/toc/platforms/javascript/index.html](https://documentation.anyline.com/toc/platforms/javascript/index.html)
 
@@ -129,6 +129,6 @@ import { Types } from '@anyline/anyline-js';
 ## Available links:
 
 <br>
-Worker Demo link -- https://js.anyline.com/release/41.0.2/demo/index.html<br>
-Worker Archive link -- https://js.anyline.com/release/41.0.2/anylinejs.zip<br>
-Worker CDN link -- https://js.anyline.com/release/41.0.2/anyline.js<br>
+Worker Demo link -- https://js.anyline.com/release/41.0.0/demo/index.html<br>
+Worker Archive link -- https://js.anyline.com/release/41.0.0/anylinejs.zip<br>
+Worker CDN link -- https://js.anyline.com/release/41.0.0/anyline.js<br>
