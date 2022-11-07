@@ -1,5 +1,5 @@
-import ImageService from './image.service';
 import platform from 'platform';
+import ImageService from './image.service';
 export declare type CustomStorage = {
     getItem: Function;
     setItem: Function;

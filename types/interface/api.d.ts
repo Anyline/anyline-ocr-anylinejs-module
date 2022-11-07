@@ -25,6 +25,7 @@ export declare class AnylineJS {
      */
     constructor(params: AnylineJSParams, dependencies: Dependencies);
     preload(): void;
+    setFocusDistance(setFocusDistance: number): void;
     getFaceAuthToken(): Promise<string> | boolean;
     /**
      *
