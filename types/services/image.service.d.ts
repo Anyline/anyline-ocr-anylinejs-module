@@ -10,7 +10,7 @@ declare type Params = {
 };
 export default class ImageService {
     private params;
-    cameraManager: CameraManager;
+    cameraManager: any;
     isMirrored: boolean;
     private cutoutList;
     private canvas;
