@@ -140,7 +140,7 @@ export interface AnylineJSConfig {
  * @typedef LockOrientation
  * @type {Object}
  */
-interface LockPortraitOrientation {
+export interface LockPortraitOrientation {
     /**
      * lock - Defines whether or not the screen orientation should be locked to portrait.
      */
@@ -189,6 +189,14 @@ export interface AnylineJSParams {
      */
     config?: AnylineJSConfig;
     /**
+     * Activate haptic feedback on mobile devices.
+     */
+    hapticFeedback?: boolean;
+    /**
+     * Activate haptic feedback on mobile devices.
+     */
+    blinkOnResult?: boolean;
+    /**
      * viewConfig - Appearance configuration of the cutout
      */
     viewConfig?: ViewConfig;
@@ -196,6 +204,8 @@ export interface AnylineJSParams {
      * debugAnyline - Flag to output more verbose logs | pass 'screen' to additionally render logging overlay (beta)
      */
     debugAnyline?: boolean | string;
+    /**
+     * Path to the web assembly binary.
+     */
     wasmPath?: string;
 }
-export {};

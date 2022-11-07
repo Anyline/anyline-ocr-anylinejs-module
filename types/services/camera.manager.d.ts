@@ -35,5 +35,6 @@ export default class CameraManager {
     closeStream(): void;
     setFlashState(state: boolean): Promise<void>;
     refocus(): Promise<void>;
+    setFocusDistance(focusDistance: number | undefined): Promise<void>;
 }
 export {};
