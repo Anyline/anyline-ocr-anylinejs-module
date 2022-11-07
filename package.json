@@ -1,6 +1,6 @@
 {
   "name": "@anyline/anyline-js",
-  "version": "41.0.3",
+  "version": "42.0.0",
   "description": "anyline sdk in the browser",
   "types": "./types/index.d.ts",
   "main": "anyline.js",
