@@ -2,6 +2,7 @@ const root = document.getElementById('root');
 let selectedPreset = undefined;
 let anyline;
 let mirrored = false;
+let controlsVisible = true;
 
 async function mountAnylineJS(preset) {
   try {
@@ -9,6 +10,7 @@ async function mountAnylineJS(preset) {
 
     anyline = window.anylinejs.init({
       config: {},
+      hapticFeedback: true,
       viewConfig: {
             cutouts: [{
                 cancelOnResult: false,                
@@ -26,7 +28,14 @@ async function mountAnylineJS(preset) {
       alert(JSON.stringify(result.result, null, 2));
     };
 
+    // Callback gets all scanned barcodes passed which are visible within the cutout.
+    // anyline.onScannedBarcodes = (result) => {
+    //   console.log(result)
+    // }
+
     await appendCameraSwitcher(anyline);
+
+    setElementVisibility(false);
 
     await anyline.startScanning().catch((e) => alert(e.message));
   } catch (e) {
@@ -122,4 +131,24 @@ async function refocus() {
   } catch (e) {
     alert(e.message);
   }
+}
+
+async function toggleVisibility() {
+  controlsVisible = !controlsVisible;
+  setElementVisibility(controlsVisible);
+}
+
+function setElementVisibility(visible) {
+  controlsVisible = visible;
+  document.getElementById('toggle-visibility')
+    .innerText = controlsVisible ? "Hide Controls" : "Show Controls"
+  const display = visible ? 'flex' : 'none';
+  const buttons =  document.getElementsByTagName('button');
+  const buttonsList = Array.prototype.slice.call(buttons);
+  
+  buttonsList.forEach(el => {
+    if (el.id !== 'toggle-visibility') {
+      el.style.display = display;
+    }
+  })
 }

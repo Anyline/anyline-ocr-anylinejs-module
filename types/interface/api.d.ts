@@ -25,7 +25,7 @@ export declare class AnylineJS {
      */
     constructor(params: AnylineJSParams, dependencies: Dependencies);
     preload(): void;
-    setFocusDistance(setFocusDistance: number): void;
+    setFocusDistance(focusDistance: number): void;
     getFaceAuthToken(): Promise<string> | boolean;
     /**
      *
@@ -53,6 +53,13 @@ export declare class AnylineJS {
      */
     onResult: (result: AnylineJSResult) => void;
     /**
+     * Callback called when any Barcodes are detected.
+     *
+     * @params result - object containing the scanned result and images
+     *
+     */
+    onScannedBarcodes: (result: AnylineJSResult) => void;
+    /**
      * Callback called when a scan yielded in a performance log
      *
      * @params perflog - object containing the performance log
@@ -70,6 +77,7 @@ export declare class AnylineJS {
     private state;
     private timeBeforeImageSend;
     private log2debug;
+    private isLoaded;
     /**
      * Camera API
      */
