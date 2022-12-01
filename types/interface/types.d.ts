@@ -193,9 +193,9 @@ export interface AnylineJSParams {
      */
     hapticFeedback?: boolean;
     /**
-     * Activate haptic feedback on mobile devices.
+     * Activate flash feedback on mobile devices.
      */
-    blinkOnResult?: boolean;
+    flashOnResult?: boolean;
     /**
      * viewConfig - Appearance configuration of the cutout
      */
