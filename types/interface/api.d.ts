@@ -77,7 +77,7 @@ export declare class AnylineJS {
     private state;
     private timeBeforeImageSend;
     private log2debug;
-    private isLoaded;
+    isLoaded: boolean;
     /**
      * Camera API
      */
