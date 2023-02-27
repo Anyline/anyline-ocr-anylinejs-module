@@ -1,5 +1,5 @@
 const root = document.getElementById('root');
-let selectedPreset = undefined;
+let selectedPreset;
 let anyline;
 let mirrored = false;
 let controlsVisible = true;
@@ -25,7 +25,9 @@ async function mountAnylineJS(preset) {
 
     anyline.onResult = (result) => {
       console.log('Result: ', result);
-      alert(JSON.stringify(result.result, null, 2));
+      Swal.fire(
+        JSON.stringify(result.result, null, 2),
+      );
     };
 
     // Callback gets all scanned barcodes passed which are visible within the cutout.
@@ -141,7 +143,7 @@ async function toggleVisibility() {
 function setElementVisibility(visible) {
   controlsVisible = visible;
   document.getElementById('toggle-visibility')
-    .innerText = controlsVisible ? "Hide Controls" : "Show Controls"
+    .innerText = controlsVisible ? "Hide Controls" : "Show Controls";
   const display = visible ? 'flex' : 'none';
   const buttons =  document.getElementsByTagName('button');
   const buttonsList = Array.prototype.slice.call(buttons);
@@ -150,5 +152,5 @@ function setElementVisibility(visible) {
     if (el.id !== 'toggle-visibility') {
       el.style.display = display;
     }
-  })
+  });
 }
