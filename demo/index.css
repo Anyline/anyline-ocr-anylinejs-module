@@ -46,12 +46,12 @@ button {
   font-weight: 0;
   font-size: 14px;
   color: #fff;
-  background-color: #0066CC;
+  background-color: #0066cc;
   padding: 10px 20px;
-  border: 2px solid #0066CC;
+  border: 2px solid #0066cc;
   box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
   border-radius: 0px 0px 0 12px;
-  transition : 1000ms;
+  transition: 1000ms;
   transform: translateY(0);
   display: flex;
   flex-direction: row;
@@ -62,22 +62,22 @@ button {
 }
 
 button:hover {
-  transition : 1000ms;
+  transition: 1000ms;
   padding: 10px 20px;
-  transform : translateY(-0px);
+  transform: translateY(-0px);
   border: solid 2px #0066cc;
 }
 
 #result-modal {
   display: none;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 6px;
   position: absolute;
   width: 280px;
   top: 100px;
   left: calc(50% - 140px);
   background: #000000;
-  border: solid #A9C0E1 1px;
+  border: solid #a9c0e1 1px;
   z-index: 9999;
   border-radius: 6px;
 }
@@ -104,4 +104,9 @@ button:hover {
 
 #multi-barcode-results {
   color: white;
+}
+
+.swal2-popup {
+  font-size: 0.3rem !important;
+  font-family: Arial, sans-serif;
 }
