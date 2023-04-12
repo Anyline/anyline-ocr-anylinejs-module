@@ -1,3 +1,5 @@
+@import url('./sidebar.css');
+
 html,
 body {
   overflow: hidden;
@@ -9,14 +11,16 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: #000000;
+  background: #121212;
+  font-family: Roboto, sans-serif;
 }
 
 .title {
-  width: 100px;
+  width: 100%;
   color: white;
   font-size: 26px;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
+  text-align: center;
 }
 
 .preset-select {
@@ -27,10 +31,11 @@ body {
   top: 0;
   left: 0;
   z-index: 100;
-  margin-bottom: 6px;
   height: 40px;
   outline: none;
   border: 0;
+  margin: 0 6px 6px;
+  width: calc(100% - 12px);
 }
 
 .toolbar {
@@ -42,7 +47,6 @@ body {
 }
 
 button {
-  font-family: Roboto, sans-serif;
   font-weight: 0;
   font-size: 14px;
   color: #fff;
@@ -50,22 +54,20 @@ button {
   padding: 10px 20px;
   border: 2px solid #0066cc;
   box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
-  border-radius: 0px 0px 0 12px;
-  transition: 1000ms;
-  transform: translateY(0);
+  /* transition: 1000ms; */
+  /* transform: translateY(0); */
   display: flex;
   flex-direction: row;
   align-items: center;
   cursor: pointer;
-  margin-bottom: 6px;
+  margin: 0 6px 6px;
   outline: none;
+  width: calc(100% - 12px);
 }
 
 button:hover {
-  transition: 1000ms;
-  padding: 10px 20px;
-  transform: translateY(-0px);
-  border: solid 2px #0066cc;
+  border: solid 2px #f9f9f9;
+  transition: .2s ease-in-out;
 }
 
 #result-modal {

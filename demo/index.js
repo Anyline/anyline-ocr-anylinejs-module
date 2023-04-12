@@ -1,10 +1,9 @@
 const root = document.getElementById('root');
-let selectedPreset;
-let anyline;
+let anyline = null;
 let mirrored = false;
-let controlsVisible = true;
+let selectedPreset = 'barcode';
 
-async function mountAnylineJS(preset) {
+async function mountAnylineWebSDK(preset) {
   try {
     selectedPreset = preset;
 
@@ -12,9 +11,11 @@ async function mountAnylineJS(preset) {
       config: {},
       hapticFeedback: true,
       viewConfig: {
-            cutouts: [{
-                cancelOnResult: false,                
-            }],
+        cutouts: [
+          {
+            cancelOnResult: false,
+          },
+        ],
       },
       preset: preset.value,
       license: demoLicense,
@@ -25,19 +26,19 @@ async function mountAnylineJS(preset) {
 
     anyline.onResult = (result) => {
       console.log('Result: ', result);
-      Swal.fire(
-        JSON.stringify(result.result, null, 2),
-      );
+      alert(JSON.stringify(result.result, null, 2));
     };
 
-    // Callback gets all scanned barcodes passed which are visible within the cutout.
+    /**
+     * Uncomment this to use the callback that
+     * gets all scanned barcodes passed which
+     * are visible within the cutout.
+     */
     // anyline.onScannedBarcodes = (result) => {
-    //   console.log(result)
-    // }
+    //   console.log(result);
+    // };
 
-    await appendCameraSwitcher(anyline);
-
-    setElementVisibility(false);
+    await appendCameraSelector(anyline);
 
     await anyline.startScanning().catch((e) => alert(e.message));
   } catch (e) {
@@ -46,20 +47,11 @@ async function mountAnylineJS(preset) {
   }
 }
 
-function mirrorCamera() {
-  if (!anyline) return;
-  const newState = !mirrored;
-  anyline.camera.mirrorStream(newState);
-  mirrored = newState;
-}
-
-function reappendCamera() {
-  if (!anyline) return;
-  anyline.camera.reappend();
-}
-
-async function appendCameraSwitcher(anyline) {
-  if (document.getElementById('cameraSwitcher')) return;
+/**
+ * Appends camera selector.
+ */
+async function appendCameraSelector(anyline) {
+  if (document.getElementById('camera-switcher')) return;
 
   const stream = await navigator.mediaDevices.getUserMedia({
     video: {},
@@ -72,6 +64,7 @@ async function appendCameraSwitcher(anyline) {
   });
 
   const devices = (await navigator.mediaDevices.enumerateDevices()) || [];
+
   renderSelect({
     options: devices
       .filter((m) => m.kind === 'videoinput')
@@ -84,12 +77,63 @@ async function appendCameraSwitcher(anyline) {
   });
 }
 
+/**
+ * Remount the Anyline Web SDK.
+ */
+function remountWebSDK() {
+  anyline.stopScanning();
+  anyline.dispose();
+  mountAnylineJS(selectedPreset);
+}
+
+/**
+ * Disable/Enable flash (for Chrome on Android).
+ */
+async function disableFlash() {
+  if (!anyline) return;
+  try {
+    await anyline.camera.activateFlash(false);
+  } catch (e) {
+    alert(e.message);
+  }
+}
+async function enableFlash() {
+  if (!anyline) return;
+  try {
+    await anyline.camera.activateFlash(true);
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+/**
+ * Mirrors the camera.
+ */
+function mirrorCamera() {
+  if (!anyline) return;
+  const newState = !mirrored;
+  anyline.camera.mirrorStream(newState);
+  mirrored = newState;
+}
+
+/**
+ * Reappends the camera.
+ */
+function reappendCamera() {
+  if (!anyline) return;
+  anyline.camera.reappend();
+}
+
+/**
+ * Renders a drop-down for selecting the available cameras.
+ */
 function renderSelect({ options, onSelect }) {
-  var parent = document.getElementsByClassName('toolbar')[0];
+  const parent = document.getElementById('sidebar');
 
   //Create and append select list
   const selectEl = document.createElement('select');
-  selectEl.id = 'cameraSwitcher';
+  selectEl.id = 'camera-switcher';
+  selectEl.classList.add('preset-select');
   parent.appendChild(selectEl);
 
   options.forEach((option) => {
@@ -102,30 +146,9 @@ function renderSelect({ options, onSelect }) {
   selectEl.onchange = (e) => onSelect(e.target.value);
 }
 
-function remountAnylineJS() {
-  anyline.stopScanning();
-  anyline.dispose();
-  mountAnylineJS(selectedPreset);
-}
-
-async function enableFlash() {
-  if (!anyline) return;
-  try {
-    await anyline.camera.activateFlash(true);
-  } catch (e) {
-    alert(e.message);
-  }
-}
-
-async function disableFlash() {
-  if (!anyline) return;
-  try {
-    await anyline.camera.activateFlash(false);
-  } catch (e) {
-    alert(e.message);
-  }
-}
-
+/**
+ * Refocus camera (for Chrome on Android).
+ */
 async function refocus() {
   if (!anyline) return;
   try {
@@ -135,22 +158,12 @@ async function refocus() {
   }
 }
 
-async function toggleVisibility() {
-  controlsVisible = !controlsVisible;
-  setElementVisibility(controlsVisible);
+/**
+ * Open/Close sidebar.
+ */
+function openSidebar() {
+  document.getElementById('sidebar').style.marginLeft = '0';
 }
-
-function setElementVisibility(visible) {
-  controlsVisible = visible;
-  document.getElementById('toggle-visibility')
-    .innerText = controlsVisible ? "Hide Controls" : "Show Controls";
-  const display = visible ? 'flex' : 'none';
-  const buttons =  document.getElementsByTagName('button');
-  const buttonsList = Array.prototype.slice.call(buttons);
-  
-  buttonsList.forEach(el => {
-    if (el.id !== 'toggle-visibility') {
-      el.style.display = display;
-    }
-  });
+function closeSidebar() {
+  document.getElementById('sidebar').style.marginLeft = '-250px';
 }
