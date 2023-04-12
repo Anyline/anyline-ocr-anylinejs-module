@@ -1,10 +1,10 @@
-# AnylineJS
+# Web SDK
 
 [Anyline](https://www.anyline.com) is a mobile OCR SDK, which can be customized to scan all kinds of numbers, characters, text and codes.
 
-AnylineJS is a standalone Anyline version for the browser.
+Web SDK is a standalone Anyline version for the browser.
 
-Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS.
+Visit [js.anyline.com](https://js.anyline.com) for an official demo of Web SDK.
 
 ## Supported Usecases
 
@@ -22,8 +22,8 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of AnylineJS
 
 ## Content
 
-- **anylinejs**: Contains the files needed to self-host **AnylineJS**
-- **demo**: Contains **AnylineJS** implementation examples
+- **anylinejs**: Contains the files needed to self-host **Web SDK**
+- **demo**: Contains **Web SDK** implementation examples
 - **LICENSE**: The Third Party License Agreements
 - **README**: Information about the repository
 
@@ -43,9 +43,9 @@ To test Anyline download the Example Sheets with testing material: [https://anyl
 
 1. Copy the content of `anylinejs` to your webserver. In some cases you need to configure your webserver to serve `data` and `wasm.gz` files.
 
-AnylineJS has to be served from a web server that supports HTTPS.
+Web SDK has to be served from a web server that supports HTTPS.
 
-2. Import AnylineJS
+2. Import Web SDK
 
 ```JavaScript
 import { init } from '@anyline/anyline-js';
@@ -63,7 +63,7 @@ This will expose anylinejs to the window scope:
 const { init } = window.anylinejs;
 ```
 
-3. Initialize AnylineJS
+3. Initialize Web SDK
 
 ```JavaScript
 const anyline = init({
@@ -116,7 +116,7 @@ or
 
 In this case the HTTPS server uses a self-generated certificate so you might need to bypass the security measures of your browser. With a proper test-license issued for your internal ip-address you can test it on other devices on the network (i.E. for smartphone testing).
 
-**The license included in the demo only allows AnylineJS to run on 127.0.0.1**
+**The license included in the demo only allows Web SDK to run on 127.0.0.1**
 
 ### Typescript support
 
@@ -129,6 +129,6 @@ import { Types } from '@anyline/anyline-js';
 ## Available links:
 
 <br>
-Worker Demo link -- https://js.anyline.com/release/41.0.0/demo/index.html<br>
-Worker Archive link -- https://js.anyline.com/release/41.0.0/anylinejs.zip<br>
-Worker CDN link -- https://js.anyline.com/release/41.0.0/anyline.js<br>
+Worker Demo link -- https://js.anyline.com/release/42.2.2/demo/index.html<br>
+Worker Archive link -- https://js.anyline.com/release/42.2.2/anylinejs.zip<br>
+Worker CDN link -- https://js.anyline.com/release/42.2.2/anyline.js<br>

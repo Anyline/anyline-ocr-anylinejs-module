@@ -1,3 +1,5 @@
+@import url('./sidebar.css');
+
 html,
 body {
   overflow: hidden;
@@ -9,16 +11,31 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background: #121212;
+  font-family: Roboto, sans-serif;
+}
+
+.title {
+  width: 100%;
+  color: white;
+  font-size: 26px;
+  margin-bottom: 12px;
+  text-align: center;
 }
 
 .preset-select {
-  position: fixed;
+  background-color: #8a8a8a;
+  color: white;
   font-size: 1em;
   padding: 0 10px;
   top: 0;
-  right: 0;
+  left: 0;
   z-index: 100;
-  margin: 20px;
+  height: 40px;
+  outline: none;
+  border: 0;
+  margin: 0 6px 6px;
+  width: calc(100% - 12px);
 }
 
 .toolbar {
@@ -30,5 +47,68 @@ body {
 }
 
 button {
-  margin: 5px;
+  font-weight: 0;
+  font-size: 14px;
+  color: #fff;
+  background-color: #0066cc;
+  padding: 10px 20px;
+  border: 2px solid #0066cc;
+  box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+  /* transition: 1000ms; */
+  /* transform: translateY(0); */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 6px 6px;
+  outline: none;
+  width: calc(100% - 12px);
+}
+
+button:hover {
+  border: solid 2px #f9f9f9;
+  transition: .2s ease-in-out;
+}
+
+#result-modal {
+  display: none;
+  color: #ffffff;
+  padding: 6px;
+  position: absolute;
+  width: 280px;
+  top: 100px;
+  left: calc(50% - 140px);
+  background: #000000;
+  border: solid #a9c0e1 1px;
+  z-index: 9999;
+  border-radius: 6px;
+}
+
+#result-modal h3 {
+  text-align: center;
+}
+
+#result-modal p {
+  text-align: center;
+  word-break: break-all;
+}
+
+.multi-barcode-container {
+  position: absolute;
+  width: 400px;
+  bottom: 0;
+  left: calc(50% - 200px);
+  color: white;
+}
+.multi-barcode-container p {
+  text-align: center;
+}
+
+#multi-barcode-results {
+  color: white;
+}
+
+.swal2-popup {
+  font-size: 0.3rem !important;
+  font-family: Arial, sans-serif;
 }
