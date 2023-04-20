@@ -129,6 +129,5 @@ import { Types } from '@anyline/anyline-js';
 ## Available links:
 
 <br>
-Worker Demo link -- https://js.anyline.com/release/42.2.2/demo/index.html<br>
-Worker Archive link -- https://js.anyline.com/release/42.2.2/anylinejs.zip<br>
-Worker CDN link -- https://js.anyline.com/release/42.2.2/anyline.js<br>
+Worker Demo link -- https://js.anyline.com/release/42.3.0/demo/index.html<br>
+Worker CDN link -- https://js.anyline.com/release/42.3.0/anyline.js<br>
