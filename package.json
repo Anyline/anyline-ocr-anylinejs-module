@@ -1,6 +1,6 @@
 {
   "name": "@anyline/anyline-js",
-  "version": "42.3.0",
+  "version": "42.3.1",
   "description": "anyline sdk in the browser",
   "types": "./types/index.d.ts",
   "main": "anyline.js",
@@ -20,13 +20,7 @@
     "scanner",
     "reader"
   ],
-  "author": "Matthias Klan <matthias.klan@anyline.com>",
-  "contributors": [
-    {
-      "name": "David Dengg",
-      "email": "david.dengg@anyline.com"
-    }
-  ],
+  "author": "David Dengg <david.dengg@anyline.com>",
   "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
     "url": "https://github.com/Anyline/anyline-ocr-anylinejs-module/issues"
