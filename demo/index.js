@@ -5,6 +5,7 @@ let selectedPreset = 'barcode';
 
 async function mountAnylineWebSDK(preset) {
   try {
+    closeSidebar();
     selectedPreset = preset;
 
     anyline = window.anylinejs.init({

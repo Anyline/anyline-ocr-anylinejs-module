@@ -1,4 +1,5 @@
 export default VideoStream;
 declare function VideoStream({ coverVideo }: {
     coverVideo: any;
-}): JSX.Element;
+}): React.JSX.Element;
+import React from "react";

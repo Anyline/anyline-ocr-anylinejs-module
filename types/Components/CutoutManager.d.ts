@@ -1,5 +1,6 @@
 export function CutoutManager({ parentEl, feedbackAnimationStyle }: {
     parentEl: any;
     feedbackAnimationStyle: any;
-}): JSX.Element;
+}): React.JSX.Element;
 export default CutoutManager;
+import React from "react";

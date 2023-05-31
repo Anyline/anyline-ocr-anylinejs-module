@@ -5,4 +5,5 @@ declare function Polygon({ points, morph, key, useStyles, ...rest }: {
     morph: any;
     key: any;
     useStyles?: boolean;
-}): JSX.Element;
+}): React.JSX.Element;
+import React from "react";
