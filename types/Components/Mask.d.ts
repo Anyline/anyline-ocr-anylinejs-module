@@ -1,4 +1,5 @@
 export default Mask;
 declare function Mask({ onInit }: {
     onInit?: () => void;
-}): JSX.Element;
+}): React.JSX.Element;
+import React from "react";

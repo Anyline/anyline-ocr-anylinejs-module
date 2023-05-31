@@ -5,4 +5,5 @@ declare function App({ parentEl, mediaConstraints, loadingScreen, coverVideo, fe
     loadingScreen: any;
     coverVideo: any;
     feedbackAnimationStyle: any;
-}): JSX.Element;
+}): React.JSX.Element;
+import React from "react";
