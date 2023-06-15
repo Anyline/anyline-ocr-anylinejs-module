@@ -1,2 +1,3 @@
 export default Editor;
-declare function Editor(): JSX.Element;
+declare function Editor(): React.JSX.Element;
+import React from "react";

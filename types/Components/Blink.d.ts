@@ -1,3 +1,4 @@
 export function Blink({ show }: {
     show: any;
-}): JSX.Element;
+}): React.JSX.Element;
+import React from "react";
