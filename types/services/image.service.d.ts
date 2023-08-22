@@ -51,6 +51,7 @@ export default class ImageService {
     getVideoInstance(): HTMLVideoElement;
     applyScalingFactor(data: any): any;
     cutoutBuffer(): ImageData;
+    getSubimage(imageData: any, frame: any): ImageData;
     cropImageBuffer({ compression, x, y, width, height, }?: {
         compression?: number;
         x?: number;

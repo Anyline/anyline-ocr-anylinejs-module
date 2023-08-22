@@ -29,7 +29,7 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of Web SDK.
 
 ## Documentation
 
-[API documentation](https://js.anyline.com/release/42.4.1/docs/index.html)
+[API documentation](https://js.anyline.com/release/42.5.0/docs/index.html)
 
 For full documentation visit: [https://documentation.anyline.com/web-sdk-component/latest/index.html](https://documentation.anyline.com/web-sdk-component/latest/index.html)
 
