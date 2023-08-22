@@ -14,6 +14,10 @@ type Dependencies = {
     uiService: UiServiceInterface;
     anylineWorker: any;
 };
+type ImageObject = {
+    fullImage: ImageData;
+    cutoutImage: ImageData;
+};
 export declare class AnylineJS {
     private params;
     private dependencies;
@@ -68,13 +72,11 @@ export declare class AnylineJS {
      */
     onPerformanceLog: (perflog: any) => void;
     /**
-     * Callback called before a new frame is being processed
+     * Returns an object with the full image and its cutout from the SDK.
      *
-     * @params image - current image
-     * @params fullImage - current full image
-     *
+     * @returns {ImageObject|undefined} - An object with full image and its cutout, or undefined if no image is in the buffer.
      */
-    onFrame: (image: string, fullImage: string) => void;
+    getFrame(): ImageObject;
     private state;
     private timeBeforeImageSend;
     private log2debug;
