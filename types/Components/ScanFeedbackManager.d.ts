@@ -10,5 +10,4 @@ declare function ScanFeedback({ config, initialRectStyle, cutoutId, hide, cutout
     hide: any;
     cutoutInfo: any;
     isAnimating: any;
-}): React.JSX.Element;
-import React from "react";
+}): JSX.Element;

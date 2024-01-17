@@ -1,3 +1,2 @@
 export default Loader;
-declare function Loader(): React.JSX.Element;
-import React from "react";
+declare function Loader(): JSX.Element;

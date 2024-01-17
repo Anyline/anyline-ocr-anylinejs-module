@@ -8,17 +8,17 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of Web SDK.
 
 ## Supported Usecases
 
-- Tire Size,
-- Vehicle identification number (VIN),
-- shipping container (Horizontal and Vertical),
-- Barcode,
-- Serial number,
-- license plate,
-- MRZ,
-- EHIC (eCard),
-- german ID front,
-- austrian, german and UK drivers licenses
-- meter scanning
+- Tire Size
+- Commercial Tire ID
+- Tire Identification Number
+- Vehicle Identification Number (VIN)
+- Shipping Container (Horizontal and Vertical)
+- 1D and 2D Barcodes
+- Serial Number
+- License Plate
+- MRZ
+- Austrian and German Drivers Licenses
+- Meter Scanning
 
 ## Content
 
@@ -29,7 +29,7 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of Web SDK.
 
 ## Documentation
 
-[API documentation](https://js.anyline.com/release/42.5.0/docs/index.html)
+[API documentation](https://js.anyline.com/release/51.2.0/docs/index.html)
 
 For full documentation visit: [https://documentation.anyline.com/web-sdk-component/latest/index.html](https://documentation.anyline.com/web-sdk-component/latest/index.html)
 
@@ -106,17 +106,18 @@ anyline.preload();
 
 ## Try it locally
 
+**Go to https://anyline.com/request/contact for a test-license**
+When you've received a license for your domain, edit your host file to route your domain to localhost. Then:
+
 `npm run demo`
 
-Visit http://127.0.0.1:8080/demo.
+Visit http://yourdomain.com:8080/demo
 
 or
 
 `npm run demo:network`
 
 In this case the HTTPS server uses a self-generated certificate so you might need to bypass the security measures of your browser. With a proper test-license issued for your internal ip-address you can test it on other devices on the network (i.E. for smartphone testing).
-
-**The license included in the demo only allows Web SDK to run on 127.0.0.1**
 
 ### Typescript support
 

@@ -13,5 +13,4 @@ declare function SvgCutout({ onAnimationStateChanged, animate, rect, cornerRadiu
     delay: any;
     children: any;
     feedbackAnimationStyle: any;
-}): React.JSX.Element;
-import React from "react";
+}): JSX.Element;
