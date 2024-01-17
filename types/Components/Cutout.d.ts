@@ -7,5 +7,4 @@ declare function Cutout({ onEnter, onEntered, onExit, onExited, cutout, resultRe
     cutout: any;
     resultReceived: any;
     feedbackAnimationStyle: any;
-}): React.JSX.Element;
-import React from "react";
+}): JSX.Element;
