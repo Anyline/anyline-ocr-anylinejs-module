@@ -52,8 +52,7 @@ export default class ImageService {
     applyScalingFactor(data: any): any;
     cutoutBuffer(): ImageData;
     getSubimage(imageData: any, frame: any): ImageData;
-    cropImageBuffer({ compression, x, y, width, height, }?: {
-        compression?: number;
+    cropImageBuffer({ x, y, width, height, }?: {
         x?: number;
         y?: number;
         width?: number;

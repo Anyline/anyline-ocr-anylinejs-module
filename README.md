@@ -29,7 +29,7 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of Web SDK.
 
 ## Documentation
 
-[API documentation](https://js.anyline.com/release/51.2.0/docs/index.html)
+[API documentation](https://js.anyline.com/release/51.3.1/docs/index.html)
 
 For full documentation visit: [https://documentation.anyline.com/web-sdk-component/latest/index.html](https://documentation.anyline.com/web-sdk-component/latest/index.html)
 
@@ -79,15 +79,17 @@ const anyline = init({
 4. Start scanning
 
 ```JavaScript
-anyline.startScanning().catch(console.error);
+anyline.startScanning().catch((e) => {
+  alert(e.message);
+});
 ```
 
 5. Handle the scan result
 
 ```JavaScript
-anyline.onResult((data) => {
-  console.log(data)
-});
+anyline.onResult = (result) => {
+  console.log(result)
+};
 ```
 
 ### Preload assets
