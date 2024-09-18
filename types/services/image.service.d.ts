@@ -48,11 +48,11 @@ export default class ImageService {
      * Can be called to prevent possible memory leaks
      */
     clearMemory(): void;
-    getVideoInstance(): HTMLVideoElement;
+    getVideoInstanceVisual(): HTMLVideoElement;
     applyScalingFactor(data: any): any;
     cutoutBuffer(): ImageData;
     getSubimage(imageData: any, frame: any): ImageData;
-    cropImageBuffer({ x, y, width, height, }?: {
+    cropImageBuffer({ x, y, width, height }?: {
         x?: number;
         y?: number;
         width?: number;

@@ -1,2 +1,2 @@
 export default mount;
-declare function mount(parentEl: any, config: {}, feedbackAnimationStyle: any): void;
+declare function mount(parentEl: any, params: any, feedbackAnimationStyle: any): void;

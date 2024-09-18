@@ -5,4 +5,14 @@ declare function Polygon({ points, morph, key, useStyles, ...rest }: {
     morph: any;
     key: any;
     useStyles?: boolean;
-}): JSX.Element;
+}): React.JSX.Element;
+declare namespace Polygon {
+    namespace propTypes {
+        let points: PropTypes.Validator<number[][]>;
+        let morph: PropTypes.Requireable<any>;
+        let key: PropTypes.Requireable<any>;
+        let useStyles: PropTypes.Requireable<boolean>;
+    }
+}
+import React from 'react';
+import PropTypes from 'prop-types';
