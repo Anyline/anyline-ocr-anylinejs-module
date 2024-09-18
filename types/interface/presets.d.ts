@@ -1,10 +1,5 @@
 export default mergePresetToConfigs;
-declare function mergePresetToConfigs(config: {}, viewConfig: {}, preset: any): {
-    viewConfig: {};
-    config: {};
-} | {
-    viewConfig: {
-        cutouts: any[];
-    };
-    config: {};
+declare function mergePresetToConfigs(config: any, viewConfig: any, preset: any): {
+    viewConfig: any;
+    config: any;
 };

@@ -13,11 +13,9 @@ async function preload(preset = DEFAULT_PRESET) {
 
     anyline = window.anylinejs.init({
       preload: true,
-      config: {},
-      viewConfig: {
-            cutouts: [{
-                cancelOnResult: false,                
-            }],
+      config: {
+        id: 'Any',
+        cancelOnResult: true,
       },
       preset: preset.value,
       license: demoLicense,
@@ -83,7 +81,7 @@ async function appendCameraSwitcher(anyline) {
 }
 
 function renderSelect({ options, onSelect }) {
-  var parent = document.getElementsByClassName('toolbar')[0];
+  let parent = document.getElementsByClassName('toolbar')[0];
 
   //Create and append select list
   const selectEl = document.createElement('select');
