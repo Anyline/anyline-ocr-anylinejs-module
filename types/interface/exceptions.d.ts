@@ -33,3 +33,6 @@ export declare class NotStoppedError extends AnylineError {
 export declare class MediaDevicesError extends AnylineError {
     constructor(e?: Error);
 }
+export declare class LicenseParseError extends AnylineError {
+    constructor(e?: Error);
+}

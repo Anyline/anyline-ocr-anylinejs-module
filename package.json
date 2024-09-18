@@ -1,7 +1,7 @@
 {
   "name": "@anyline/anyline-js",
-  "version": "51.3.1",
-  "description": "anyline sdk in the browser",
+  "version": "53.3.2",
+  "description": "Anyline Web SDK",
   "types": "./types/index.d.ts",
   "main": "anyline.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "scanner",
     "reader"
   ],
-  "author": "David Dengg <david.dengg@anyline.com>",
+  "author": "Independence Team <independence-team@anyline.com>",
   "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
     "url": "https://github.com/Anyline/anyline-ocr-anylinejs-module/issues"
