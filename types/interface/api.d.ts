@@ -1,16 +1,16 @@
 import { UiServiceInterface } from '../services/UI/ui.service.interface';
-import ImageSevice from '../services/image.service';
+import ImageService from '../services/image.service';
 import { NotStoppedError } from './exceptions';
 import { AnylineJSParams, LegacyErrorObject, AnylineJSResult, CameraAPI } from './types';
 export declare enum State {
-    INITALIZED = "initalized",
+    INITIALIZED = "initialized",
     PAUSED = "paused",
     SCANNING = "scanning",
     STOPPED = "stopped",
     DISPOSED = "disposed"
 }
 type Dependencies = {
-    imageService: ImageSevice;
+    imageService: ImageService;
     uiService: UiServiceInterface;
     anylineWorker: any;
 };
@@ -30,13 +30,12 @@ export declare class AnylineJS {
     constructor(params: AnylineJSParams, dependencies: Dependencies);
     preload(): void;
     setFocusDistance(focusDistance: number): void;
-    getFaceAuthToken(): Promise<string> | boolean;
     /**
      *
      * Callback called when some (not all) Errors occur
      * @deprecated since version 31.0.0 (Errors should be catched when calling the methods, which provides proper stack-trace)
      *
-     * @params error - Error object containing errorCode (.code) and .message
+     * @param error - Error object containing errorCode (.code) and .message
      *
      */
     onError: (error: LegacyErrorObject) => void;
@@ -45,28 +44,28 @@ export declare class AnylineJS {
      * Callback called when scanning is started
      * @deprecated since version 31.0.0 (startScanning is now resolving a promise)
      *
-     * @params video - video Element
+     * @param video - video Element
      *
      */
     onLoad: (video: HTMLVideoElement) => void;
     /**
      * Callback called when a scan yielded in a result
      *
-     * @params result - object containing the scanned result and image
+     * @param result - object containing the scanned result and image
      *
      */
     onResult: (result: AnylineJSResult) => void;
     /**
      * Callback called when any Barcodes are detected.
      *
-     * @params result - object containing the scanned result and images
+     * @param result - object containing the scanned result and images
      *
      */
     onScannedBarcodes: (result: AnylineJSResult) => void;
     /**
      * Callback called when a scan yielded in a performance log
      *
-     * @params perflog - object containing the performance log
+     * @param perflog - object containing the performance log
      *
      */
     onPerformanceLog: (perflog: any) => void;
@@ -89,7 +88,7 @@ export declare class AnylineJS {
      *
      */
     getState(): State;
-    private initalize;
+    private initialize;
     private lockPortrait;
     private lockLandscape;
     handleImageRequest(): Promise<void>;

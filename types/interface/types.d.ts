@@ -1,3 +1,6 @@
+export interface KeyAble {
+    [key: string]: any;
+}
 export interface ViewConfig {
     outerColor?: string;
     outerAlpha?: number;
@@ -5,7 +8,7 @@ export interface ViewConfig {
      * Feedback animation style. Defaults to a 'BLINK_ANIMATION' animation.
      */
     feedbackAnimationStyle?: FeedbackAnimationStyle;
-    cutouts: object[];
+    cutouts: KeyAble[];
 }
 export interface AnylineJSResult {
     result: any;
@@ -25,14 +28,14 @@ export interface CameraAPI {
     /**
      * Mirrors the stream (i.E for front-facing cameras)
      *
-     * @params state - if the stream should be mirrored or not
+     * @param state - if the stream should be mirrored or not
      *
      */
     mirrorStream(state: boolean): void;
     /**
      * Sets a specific camera as input
      *
-     * @params deviceId - the id of the camera
+     * @param deviceId - the id of the camera
      *
      */
     setCamera(deviceId: string): void;
@@ -68,73 +71,83 @@ export interface CameraAPI {
      */
     activateFlash(state: boolean): Promise<void>;
 }
-export interface AnylineJSConfig {
+/**
+ * @typedef StartVariable
+ * @type {Object}
+ */
+interface StartVariable {
+    key: string;
+    value: string | number | boolean;
+}
+/**
+ * @typedef PluginConfig
+ * @type {Object}
+ */
+export interface PluginConfig {
     /**
-     * use face authentication
+     * id - Sets a name for the scan plugin
      */
-    useFaceAuth?: boolean;
+    id?: string;
     /**
-     * estimateMainCamera - [default: true] Flag to disable camera estimation (not recommended)
+     * cancelOnResult - Sets whether or not to continue scanning once a result is found
      */
-    estimateMainCamera?: boolean;
+    cancelOnResult?: boolean;
     /**
-     * loadingScreen - HTML string to replace the default loader (`<div>loading...</div>`)
+     * startScanDelay - Sets an initial time period where scanned frames are not processed as results.
      */
-    loadingScreen?: string;
+    startScanDelay?: number;
     /**
-     * coverVideo - [default: true] Reverts a letterboxing fix (not recommended to set to false)
+     * startVariables - Allows to fine-tune a list of options for plugins.
      */
-    coverVideo?: boolean;
+    startVariables?: StartVariable[];
     /**
-     * initialFlashOn - [default: false] starts scanning with camera flash state (only Android Chrome support)
+     * barcodeConfig - Configuration for scanning barcode
      */
-    initialFlashOn?: boolean;
+    barcodeConfig?: KeyAble;
     /**
-     * scaleDown - [default: false] Scales down the processed image for potential performance boost in a few use cases (barcode)
+     * meterConfig - Configuration for scanning meters
      */
-    scaleDown?: boolean;
+    meterConfig?: KeyAble;
     /**
-     * hideFeedback - [default: false] hides the visual feedback while scanning
+     * universalIdConfig - Configuration for scanning all kinds of identification documents
      */
-    hideFeedback?: boolean;
-    slowMessageTimeout?: number;
+    universalIdConfig?: KeyAble;
     /**
-     * mediaConstraints - overwrite mediaConstraints of the camera feed (i.E to use a certain resolution or a specific camera)
+     * mrzConfig - Configuration for scanning machine-readable zones (MRZ) of passports and other IDs
      */
-    mediaConstraints?: MediaStreamConstraints;
+    mrzConfig?: KeyAble;
     /**
-     * module - manually set the scan module being used (not recommended, use the top level preset parameter)
+     * licensePlateConfig - Configuration for scanning license plates
      */
-    module?: string;
-    scanMode?: string;
+    licensePlateConfig?: KeyAble;
     /**
-     * minConfidence - percentage of minimal confidence when a result should be returned
+     * tinConfig - Configuration for scanning TIN numbers
      */
-    minConfidence?: number;
+    tinConfig?: KeyAble;
     /**
-     * charWhitelist - limit the scope of characters to be scanned (example "ABCDE0123")
+     * tireSizeConfig - Configuration for scanning Tire Size Specifications
      */
-    charWhitelist?: string;
+    tireSizeConfig?: KeyAble;
     /**
-     * videoSrc - Https url pointing to a video stream to exchange the camera feed (for debugging, testing purposes)
+     * commercialTireIdConfig - Configuration for scanning commercial Tire IDs
      */
-    videoSrc?: string;
+    commercialTireIdConfig?: KeyAble;
     /**
-     * retryCameraAccess - Flag if the system should retry camera access with fallback default media constraints
+     * tireMakeConfig - Configuration for scanning Tire Makes
      */
-    retryCameraAccess?: boolean;
+    tireMakeConfig?: KeyAble;
     /**
-     * useFullUrlBundleId - Flag to consider the whole url path as the bundleId (i.E  example.com/apps/scanner  vs. example.com)
+     * vinConfig - Configuration for scanning vehicle identification numbers (VIN)
      */
-    useFullUrlBundleId?: boolean;
+    vinConfig?: KeyAble;
     /**
-     * throttleImagePass - throttle the time between processing images (in ms)
+     * containerConfig - Configuration for scanning shipping container numbers
      */
-    throttleImagePass?: number;
+    containerConfig?: KeyAble;
     /**
-     * mirrorOnDesktop - (default: true) disable mirroring on desktop browsers (i.E if you are using a back-facing camera on desktop)
+     * ocrConfig - Configuration for general OCR scanning use-cases
      */
-    mirrorOnDesktop?: boolean;
+    ocrConfig?: KeyAble;
 }
 /**
  * @typedef LockOrientation
@@ -193,7 +206,7 @@ export interface AnylineJSParams {
     /**
      * config - AnylineJS configuration object
      */
-    config?: AnylineJSConfig;
+    config?: PluginConfig;
     /**
      * Activate haptic feedback on mobile devices.
      */
@@ -214,4 +227,57 @@ export interface AnylineJSParams {
      * Path to the web assembly binary.
      */
     wasmPath?: string;
+    /**
+     * estimateMainCamera - [default: true] Flag to disable camera estimation (not recommended)
+     */
+    estimateMainCamera?: boolean;
+    /**
+     * loadingScreen - HTML string to replace the default loader (`<div>loading...</div>`)
+     */
+    loadingScreen?: string;
+    /**
+     * coverVideo - [default: true] Reverts a letterbox fix (not recommended to set to false)
+     */
+    coverVideo?: boolean;
+    /**
+     * initialFlashOn - [default: false] starts scanning with camera flash state (only Android Chrome support)
+     */
+    initialFlashOn?: boolean;
+    /**
+     * scaleDown - [default: false] Scales down the processed image for potential performance boost in a few use cases (barcode)
+     */
+    scaleDown?: boolean;
+    /**
+     * slowMessageTimeout - [default: 14000] Sets a timeout to start scanning
+     */
+    slowMessageTimeout?: number;
+    /**
+     * mediaConstraints - overwrite mediaConstraints of the camera feed (i.E to use a certain resolution or a specific camera)
+     */
+    mediaConstraints?: MediaStreamConstraints;
+    /**
+     * videoSrc - Https url pointing to a video stream to exchange the camera feed (for debugging, testing purposes)
+     */
+    videoSrc?: string;
+    /**
+     * retryCameraAccess - Flag if the system should retry camera access with fallback default media constraints
+     */
+    retryCameraAccess?: boolean;
+    /**
+     * useFullUrlBundleId - Flag to consider the whole url path as the bundleId (i.E  example.com/apps/scanner  vs. example.com)
+     */
+    useFullUrlBundleId?: boolean;
+    /**
+     * throttleImagePass - throttle the time between processing images (in ms)
+     */
+    throttleImagePass?: number;
+    /**
+     * mirrorOnDesktop - (default: true) disable mirroring on desktop browsers (i.E if you are using a back-facing camera on desktop)
+     */
+    mirrorOnDesktop?: boolean;
+    /**
+     * correlationId -  UUIDv4 string to define user Correlation ID
+     */
+    correlationId?: string;
 }
+export {};
