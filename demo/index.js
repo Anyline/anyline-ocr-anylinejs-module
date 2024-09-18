@@ -9,15 +9,10 @@ async function mountAnylineWebSDK(preset) {
     selectedPreset = preset;
 
     anyline = window.anylinejs.init({
-      config: {},
-      hapticFeedback: true,
-      viewConfig: {
-        cutouts: [
-          {
-            cancelOnResult: false,
-          },
-        ],
+      config: {
+        cancelOnResult: false,
       },
+      hapticFeedback: true,
       preset: preset.value,
       license: demoLicense,
       element: root,
@@ -84,7 +79,7 @@ async function appendCameraSelector(anyline) {
 function remountWebSDK() {
   anyline.stopScanning();
   anyline.dispose();
-  mountAnylineJS(selectedPreset);
+  mountAnylineWebSDK(selectedPreset);
 }
 
 /**
