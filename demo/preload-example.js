@@ -21,6 +21,7 @@ async function preload(preset = DEFAULT_PRESET) {
       license: demoLicense,
       element: root,
       debugAnyline: true,
+      enableCaching: false,
       anylinePath: '../anylinejs',
     });
 
