@@ -279,5 +279,9 @@ export interface AnylineJSParams {
      * correlationId -  UUIDv4 string to define user Correlation ID
      */
     correlationId?: string;
+    /**
+     * enableCaching -  [default: true] Enable caching mechanism for large binary data
+     */
+    enableCaching?: boolean;
 }
 export {};
