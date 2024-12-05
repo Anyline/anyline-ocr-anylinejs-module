@@ -36,3 +36,6 @@ export declare class MediaDevicesError extends AnylineError {
 export declare class LicenseParseError extends AnylineError {
     constructor(e?: Error);
 }
+export declare class InvalidUserGateData extends AnylineError {
+    constructor(e?: Error);
+}

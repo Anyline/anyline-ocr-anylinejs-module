@@ -13,11 +13,11 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of Web SDK.
 - Tire Identification Number
 - Vehicle Identification Number (VIN)
 - Shipping Container (Horizontal and Vertical)
-- 1D and 2D Barcodes
+- 1D and 2D Barcode
 - Serial Number
 - License Plate
 - MRZ
-- Austrian and German Drivers Licenses
+- Austrian, German and Southern European Drivers Licenses
 - Meter Scanning
 
 ## Content
@@ -29,7 +29,7 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of Web SDK.
 
 ## Documentation
 
-[API documentation](https://js.anyline.com/release/54.1.0/docs/index.html)
+[API documentation](https://js.anyline.com/release/54.4.2/docs/index.html)
 
 For full documentation visit: [https://documentation.anyline.com/web-sdk-component/latest/index.html](https://documentation.anyline.com/web-sdk-component/latest/index.html)
 
@@ -67,7 +67,7 @@ const { init } = window.anylinejs;
 
 ```JavaScript
 const anyline = init({
-  preset: 'meter', // id, ocr, ehic, ...
+  preset: 'meter', // universalid_mrz, ocr, ...
   license: 'enter_your_license_key_here',
   // html container where anylineJS should be mounted to
   element: document.getElementById('root'),

@@ -9,6 +9,7 @@ export interface ViewConfig {
      */
     feedbackAnimationStyle?: FeedbackAnimationStyle;
     cutouts: KeyAble[];
+    feedbackStyle?: string;
 }
 export interface AnylineJSResult {
     result: any;
@@ -155,7 +156,7 @@ export interface PluginConfig {
  */
 export interface LockOrientation {
     /**
-     * lock - Defines whether or not the screen orientation should be locked to portrait.
+     * lock - Defines whether the screen orientation should be locked to portrait.
      */
     lock: boolean;
     /**
@@ -283,5 +284,10 @@ export interface AnylineJSParams {
      * enableCaching -  [default: true] Enable caching mechanism for large binary data
      */
     enableCaching?: boolean;
+    /**
+     * @ignore
+     * demo -  [default: undefined] Object containing information about authenticated users
+     */
+    demo?: object;
 }
 export {};
