@@ -31,7 +31,7 @@ export default class CameraManager {
     setCamera(deviceId: string): Promise<MediaStream>;
     collectCameras(): Promise<MediaDeviceInfo[]>;
     getStream(mediaConstraints?: MediaStreamConstraints): Promise<MediaStream>;
-    getOptimalMainSteam(): Promise<MediaStream>;
+    getOptimalMainStream(): Promise<MediaStream>;
     closeStream(): void;
     setFlashState(state: boolean): Promise<void>;
     refocus(): Promise<void>;
