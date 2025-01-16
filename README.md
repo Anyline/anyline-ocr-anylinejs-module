@@ -4,7 +4,7 @@
 
 Web SDK is a standalone Anyline version for the browser.
 
-Visit [js.anyline.com](https://js.anyline.com) for an official demo of Web SDK.
+Visit [web-trial.anyline.com](https://web-trial.com) for an official demo of Web SDK.
 
 ## Supported Usecases
 
@@ -29,7 +29,7 @@ Visit [js.anyline.com](https://js.anyline.com) for an official demo of Web SDK.
 
 ## Documentation
 
-[API documentation](https://js.anyline.com/release/54.4.3/docs/index.html)
+[API documentation](https://js.anyline.com/release/54.5.0/docs/index.html)
 
 For full documentation visit: [https://documentation.anyline.com/web-sdk-component/latest/index.html](https://documentation.anyline.com/web-sdk-component/latest/index.html)
 
@@ -132,5 +132,5 @@ import { Types } from '@anyline/anyline-js';
 ## Available links:
 
 <br>
-Demo link -- https://js.anyline.com 
+Demo link -- https://web-trial.anyline.com 
 <br>
