@@ -1,165 +1,198 @@
-const root = document.getElementById('root');
-let anyline = null;
-let mirrored = false;
-let selectedPreset = 'barcode';
+const rootElement = document.getElementById('root');
+let anylineInstance = null;
+let isMirrored = false;
+let currentPreset = 'tin';
 
-async function mountAnylineWebSDK(preset) {
+/**
+ * Initialize and mount the Anyline Web SDK.
+ * @param {HTMLSelectElement} selectElement
+ */
+async function mountAnylineWebSDK(selectElement) {
   try {
     closeSidebar();
-    selectedPreset = preset;
+    currentPreset = selectElement.value;
 
-    anyline = window.anylinejs.init({
-      config: {
-        cancelOnResult: false,
-      },
+    const baseConfig = {
+      cancelOnResult: false,
+    };
+
+    const advancedBarcodeConfig = {
+      ...baseConfig,
+      consecutiveEqualResultFilter: 0
+    };
+
+    const sdkConfig = currentPreset === 'all_barcode_formats' ? advancedBarcodeConfig : baseConfig;
+
+    anylineInstance = window.anylinejs.init({
+      config: sdkConfig,
       hapticFeedback: true,
-      preset: preset.value,
+      preset: currentPreset,
       license: demoLicense,
-      element: root,
-      debugAnyline: true,
+      element: rootElement,
+      debugAnyline: false,
       anylinePath: '../anylinejs',
     });
 
-    anyline.onResult = (result) => {
-      console.log('Result: ', result);
+    anylineInstance.onResult = (result) => {
+      console.log('Scan Result:', result);
       alert(JSON.stringify(result.result, null, 2));
     };
 
-    /**
-     * Uncomment this to use the callback that
-     * gets all scanned barcodes passed which
-     * are visible within the cutout.
-     */
-    // anyline.onScannedBarcodes = (result) => {
-    //   console.log(result);
-    // };
-
-    await appendCameraSelector(anyline);
-
-    await anyline.startScanning().catch((e) => alert(e.message));
-  } catch (e) {
-    alert(e.message);
-    console.error(e);
+    await appendCameraSelector(anylineInstance);
+    await anylineInstance.startScanning();
+  } catch (error) {
+    console.error(error);
+    alert(error.message);
   }
 }
 
 /**
- * Appends camera selector.
+ * Add camera device selector to the sidebar.
+ * @param {object} anylineInstance
  */
-async function appendCameraSelector(anyline) {
+async function appendCameraSelector(anylineInstance) {
   if (document.getElementById('camera-switcher')) return;
 
-  const stream = await navigator.mediaDevices.getUserMedia({
-    video: {},
-    audio: false,
-  });
+  const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+  stream.getTracks().forEach(track => track.stop());
 
-  stream.getTracks().forEach((track) => {
-    stream.removeTrack(track);
-    track.stop();
-  });
-
-  const devices = (await navigator.mediaDevices.enumerateDevices()) || [];
+  const videoInputs = (await navigator.mediaDevices.enumerateDevices())
+    .filter(device => device.kind === 'videoinput');
 
   renderSelect({
-    options: devices
-      .filter((m) => m.kind === 'videoinput')
-      .map((camera) => ({
-        text: camera.label,
-        value: camera.deviceId,
-      }))
-      .reduce((acc, camera) => [...acc, camera], [{ text: 'switch cam' }]),
-    onSelect: (deviceId) => deviceId && anyline.camera.setCamera(deviceId),
+    options: [{ text: 'Switch Camera', value: '' }, ...videoInputs.map(device => ({
+      text: device.label || 'Unnamed Camera',
+      value: device.deviceId,
+    }))],
+    onSelect: (deviceId) => {
+      if (deviceId) {
+        anylineInstance.camera.setCamera(deviceId);
+      }
+    }
   });
 }
 
 /**
- * Remount the Anyline Web SDK.
+ * Stop scanning and reset SDK.
  */
-function remountWebSDK() {
-  anyline.stopScanning();
-  anyline.dispose();
-  mountAnylineWebSDK(selectedPreset);
-}
-
-/**
- * Disable/Enable flash (for Chrome on Android).
- */
-async function disableFlash() {
-  if (!anyline) return;
-  try {
-    await anyline.camera.activateFlash(false);
-  } catch (e) {
-    alert(e.message);
-  }
-}
-async function enableFlash() {
-  if (!anyline) return;
-  try {
-    await anyline.camera.activateFlash(true);
-  } catch (e) {
-    alert(e.message);
+function stopWebSDK() {
+  if (anylineInstance) {
+    anylineInstance.stopScanning();
   }
 }
 
 /**
- * Mirrors the camera.
+ * Pause scanning (camera stays on).
  */
-function mirrorCamera() {
-  if (!anyline) return;
-  const newState = !mirrored;
-  anyline.camera.mirrorStream(newState);
-  mirrored = newState;
+function pauseWebSDK() {
+  if (anylineInstance) {
+    anylineInstance.pauseScanning();
+  }
 }
 
 /**
- * Reappends the camera.
+ * Resume paused scanning.
  */
-function reappendCamera() {
-  if (!anyline) return;
-  anyline.camera.reappend();
+function resumeWebSDK() {
+  if (anylineInstance) {
+    anylineInstance.resumeScanning();
+  }
 }
 
 /**
- * Renders a drop-down for selecting the available cameras.
- */
-function renderSelect({ options, onSelect }) {
-  const parent = document.getElementById('sidebar');
-
-  //Create and append select list
-  const selectEl = document.createElement('select');
-  selectEl.id = 'camera-switcher';
-  selectEl.classList.add('preset-select');
-  parent.appendChild(selectEl);
-
-  options.forEach((option) => {
-    const optionEl = document.createElement('option');
-    optionEl.value = option.value;
-    optionEl.text = option.text;
-    selectEl.appendChild(optionEl);
-  });
-
-  selectEl.onchange = (e) => onSelect(e.target.value);
-}
-
-/**
- * Refocus camera (for Chrome on Android).
+ * Refocus the camera.
  */
 async function refocus() {
-  if (!anyline) return;
+  if (!anylineInstance) return;
   try {
-    await anyline.camera.refocus();
-  } catch (e) {
-    alert(e.message);
+    await anylineInstance.camera.refocus();
+  } catch (error) {
+    alert(error.message);
   }
 }
 
 /**
- * Open/Close sidebar.
+ * Turn on camera flash.
+ */
+async function enableFlash() {
+  if (!anylineInstance) return;
+  try {
+    await anylineInstance.camera.activateFlash(true);
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
+/**
+ * Turn off camera flash.
+ */
+async function disableFlash() {
+  if (!anylineInstance) return;
+  try {
+    await anylineInstance.camera.activateFlash(false);
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
+/**
+ * Toggle camera mirroring.
+ */
+function mirrorCamera() {
+  if (!anylineInstance) return;
+  isMirrored = !isMirrored;
+  anylineInstance.camera.mirrorStream(isMirrored);
+}
+
+/**
+ * Reattach camera to the DOM.
+ */
+function reappendCamera() {
+  if (anylineInstance) {
+    anylineInstance.camera.reappend();
+  }
+}
+
+/**
+ * Create and render a select dropdown.
+ * @param {Object} params
+ * @param {Array} params.options - List of {text, value}
+ * @param {Function} params.onSelect - Callback on option select
+ */
+function renderSelect({ options, onSelect }) {
+  const sidebar = document.getElementById('sidebar');
+  const select = document.createElement('select');
+  select.id = 'camera-switcher';
+  select.className = 'preset-select';
+
+  options.forEach(opt => {
+    const optionElement = document.createElement('option');
+    optionElement.text = opt.text;
+    optionElement.value = opt.value;
+    select.appendChild(optionElement);
+  });
+
+  select.addEventListener('change', (e) => onSelect(e.target.value));
+  sidebar.appendChild(select);
+}
+
+/**
+ * Sidebar Controls
  */
 function openSidebar() {
   document.getElementById('sidebar').style.marginLeft = '0';
 }
+
 function closeSidebar() {
   document.getElementById('sidebar').style.marginLeft = '-250px';
+}
+
+/**
+ * Remount Web SDK (e.g. after configuration change)
+ */
+function remountWebSDK() {
+  if (currentPreset) {
+    const fakeSelect = { value: currentPreset };
+    mountAnylineWebSDK(fakeSelect);
+  }
 }

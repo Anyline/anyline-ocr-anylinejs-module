@@ -1,44 +1,46 @@
-export function setConfig(payload: any): {
+import { UiFeedbackUpdate } from '../Anyline-JS/services/uiFeedback/uiFeedback.service';
+import { GlobalState } from './global-state';
+import { ViewConfig } from '../Anyline-JS/interface/types';
+type Action<P> = {
     type: string;
-    payload: any;
+    payload: P;
 };
-export function setMask(payload: any): {
+type ActionFn<P> = (payload: P) => Action<P>;
+export declare const setConfig: ActionFn<ViewConfig>;
+type Mask = GlobalState['mask'];
+export declare const setMask: ActionFn<Mask>;
+export declare const addCutouts: (payload: unknown) => {
     type: string;
-    payload: any;
+    payload: unknown;
 };
-export function addCutouts(payload: any): {
+export declare const removeCutouts: ActionFn<string[]>;
+export declare const updateFeedback: ActionFn<{
+    [id: number]: {}[];
+}>;
+export declare const updateUiFeedback: (payload: UiFeedbackUpdate) => {
     type: string;
-    payload: any;
+    payload: UiFeedbackUpdate;
 };
-export function removeCutouts(payload: any): {
+export declare const resetDelay: (payload: unknown) => {
     type: string;
-    payload: any;
+    payload: unknown;
 };
-export function updateFeedback(payload: any): {
+export declare const setParentSize: (payload: unknown) => {
     type: string;
-    payload: any;
+    payload: unknown;
 };
-export function resetDelay(payload: any): {
+export declare const startScanning: () => {
     type: string;
-    payload: any;
 };
-export function setParentSize(payload: any): {
+export declare const stopScanning: (payload: unknown[]) => {
     type: string;
-    payload: any;
+    payload: unknown[];
 };
-export function startScanning(payload: any): {
+export declare const pauseScanning: () => {
     type: string;
-    payload: any;
 };
-export function stopScanning(payload: any): {
+export declare const setResultReceived: (payload: boolean) => {
     type: string;
-    payload: any;
+    payload: boolean;
 };
-export function pauseScanning(payload: any): {
-    type: string;
-    payload: any;
-};
-export function setResultReceived(payload: any): {
-    type: string;
-    payload: any;
-};
+export {};

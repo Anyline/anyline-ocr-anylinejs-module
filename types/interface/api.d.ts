@@ -1,7 +1,7 @@
 import { UiServiceInterface } from '../services/UI/ui.service.interface';
 import ImageService from '../services/image.service';
-import { NotStoppedError } from './exceptions';
-import { AnylineJSParams, LegacyErrorObject, AnylineJSResult, CameraAPI } from './types';
+import { AnylineJSParams, AnylineJSResult, CameraAPI, LegacyErrorObject } from './types';
+import { UiFeedbackService } from '../services/uiFeedback/uiFeedback.service';
 export declare enum State {
     INITIALIZED = "initialized",
     PAUSED = "paused",
@@ -13,19 +13,24 @@ type Dependencies = {
     imageService: ImageService;
     uiService: UiServiceInterface;
     anylineWorker: any;
+    uiFeedbackService?: UiFeedbackService;
+    window?: Window;
 };
 type ImageObject = {
     fullImage: ImageData;
-    cutoutImage: ImageData;
+    cutoutImage?: ImageData;
 };
 export declare class AnylineJS {
-    private params;
-    private dependencies;
+    private readonly params;
+    private readonly dependencies;
     private preloadDone;
+    private readonly window;
+    private readonly uiFeedbackService;
     /**
      * Mounts anylineJS into the DOM and exposes api
      * @internal
      * @param {AnylineJSParams} params - AnylineJS parameters
+     * @param {Dependencies} dependencies
      */
     constructor(params: AnylineJSParams, dependencies: Dependencies);
     preload(): void;
@@ -74,9 +79,10 @@ export declare class AnylineJS {
      *
      * @returns {ImageObject|undefined} - An object with full image and its cutout, or undefined if no image is in the buffer.
      */
-    getFrame(): ImageObject;
+    getFrame(): ImageObject | undefined;
     private state;
     private timeBeforeImageSend;
+    private fullFrameImage;
     private log2debug;
     isLoaded: boolean;
     /**
@@ -89,6 +95,7 @@ export declare class AnylineJS {
      */
     getState(): State;
     private initialize;
+    private handleInfoMessage;
     private lockPortrait;
     private lockLandscape;
     handleImageRequest(): Promise<void>;
@@ -110,28 +117,16 @@ export declare class AnylineJS {
     startScanning(): Promise<HTMLVideoElement | null>;
     /**
      * Stops the scan process
-     *
-     * @throws {@link NotScanningError}
-     * This exception is thrown if anylineJS was not started before calling this method
-     *
      */
     stopScanning(): void;
     /**
      * Pause the scan process
-     *
-     * @throws {@link NotScanningError}
-     * This exception is thrown if anylineJS was not started before calling this method
-     *
      */
     pauseScanning(): void;
     /**
      * Resumes the scan process
-     *
-     * @throws {@link NotStoppedError}
-     * This exception is thrown if anylineJS was not stopped before calling this method
-     *
      */
-    resumeScanning(): Promise<void | NotStoppedError>;
+    resumeScanning(): Promise<void>;
     /**
      * Disposes anylineJS by unmounting it from the dom and cleaning up
      *

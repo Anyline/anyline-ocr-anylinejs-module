@@ -1,6 +1,50 @@
 export interface KeyAble {
     [key: string]: any;
 }
+export interface ICutout {
+    cutoutConfig: {
+        alignment?: 'center' | 'top_half' | 'bottom_half';
+        style?: 'contour_rect' | 'rect';
+        ratioFromSize: {
+            width: number;
+            height: number;
+        };
+        delay?: number;
+        animation?: string;
+        width: number;
+        maxWidthPercent: string;
+        maxHeightPercent?: string;
+        outerColor?: string;
+        outerAlpha?: number;
+        strokeColor?: string;
+        inactiveStrokeColor?: string;
+        cropOffset?: {
+            x: number;
+            y: number;
+        };
+        cropPadding?: {
+            x: number;
+            y: number;
+        };
+        strokeWidth?: number;
+        cornerRadius?: number;
+        feedbackStrokeColor?: string;
+    };
+    scanFeedback?: {
+        style?: 'contour_rect' | 'rect';
+        animation?: 'traverse_multi';
+        animationDuration?: number;
+        timeout?: number;
+        strokeWidth?: number;
+        strokeColor?: string;
+        beepOnResult?: boolean;
+        vibrateOnResult?: boolean;
+        blinkAnimationOnResult?: boolean;
+    };
+}
+export interface Cutouts {
+    [key: string]: ICutout;
+}
 export interface ViewConfig {
     outerColor?: string;
     outerAlpha?: number;
@@ -8,12 +52,27 @@ export interface ViewConfig {
      * Feedback animation style. Defaults to a 'BLINK_ANIMATION' animation.
      */
     feedbackAnimationStyle?: FeedbackAnimationStyle;
-    cutouts: KeyAble[];
+    cutouts: ICutout[];
     feedbackStyle?: string;
+    animation?: string;
+}
+export interface TinPresets {
+    instruction_text?: string;
+    left_overlay_image?: string;
+    lighting_toodark_image?: string;
+    lighting_toobright_image?: string;
+}
+export interface UIFeedbackPresets {
+    tin_with_instruction_overlay_image_text_sound_feedback?: TinPresets;
+}
+export interface ViewPluginConfig {
+    uiFeedbackConfig?: {
+        presets: UIFeedbackPresets;
+    };
 }
 export interface AnylineJSResult {
     result: any;
-    fullImage: string;
+    fullImage: ImageData | undefined;
     scanTime: number;
 }
 /**
@@ -101,6 +160,14 @@ export interface PluginConfig {
      * startVariables - Allows to fine-tune a list of options for plugins.
      */
     startVariables?: StartVariable[];
+    /**
+     * consecutiveEqualResultFilter - This option allows to fine-tune the handling results of the same content when scanning continuously.
+     * If the option is set to -1, equal results will not be reported again until the scanning process is stopped.
+     * Setting this option to 0 will report equal results every time it is found.
+     * Setting this option to greater than 0 indicates how much time must pass by not detecting the result before it will be detected again.
+     * (This feature is currently only supported in Barcode scanning).
+     */
+    consecutiveEqualResultFilter?: number;
     /**
      * barcodeConfig - Configuration for scanning barcode
      */
@@ -289,5 +356,10 @@ export interface AnylineJSParams {
      * demo -  [default: undefined] Object containing information about authenticated users
      */
     demo?: object;
+    /**
+     * @ignore
+     * demo -  [default: undefined] internal development flags, not intended for external use
+     */
+    developmentFlags?: object;
 }
 export {};

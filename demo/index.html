@@ -1,88 +1,77 @@
 <!DOCTYPE html>
-<html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8" />
-    <title>Anyline Web SDK Showcase</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="index.css" />
-    <link rel="icon" href="data:," />
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Anyline Web SDK Demo showcasing various scanning presets" />
+  <title>Anyline Web SDK Demo</title>
+  
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <div id="root" style="height: 100%"></div>
+  <div class="toolbar">
+    <div id="main">
+      <button class="open-sidebar" onclick="openSidebar()">☰</button>  
+    </div>
+    <aside id="sidebar" class="sidebar" role="complementary" aria-label="Demo controls">
+      <a href="javascript:void(0)" class="close-sidebar" onclick="closeSidebar()">×</a>      <div class="title">Demo</div>
+      <select id="preset-select" class="preset-select" onchange="mountAnylineWebSDK(this)">
+        <option value="" selected>Select Use-Case</option>
+        <option value="lpt">License Plate</option>
+        <option value="lpt_eu">License Plate (EU)</option>
+        <option value="lpt_us">License Plate (US)</option>
+        <option value="lpt_canada">License Plate (Canada)</option>
+        <option value="universalid_mrz">Universal MRZ</option>
+        <option value="universalid_dl_at_de">UID DE/AT DL</option>
+        <option value="universalid_dl_at_de_strict">UID DE/AT DL Strict</option>
+        <option value="universalid_es_it_pt">Driving License IT/ES/PT</option>
+        <option value="meter">Meter</option>
+        <option value="dialmeter">Dial Meter</option>
+        <option value="verbund">Verbund</option>
+        <option value="vin">VIN</option>
+        <option value="ocr">Serial Number</option>
+        <option value="qr">QR Code</option>
+        <option value="barcode_pdf417_parsed">PDF417 (Parsed)</option>
+        <option value="barcode_pdf417">PDF417 (Raw)</option>
+        <option value="all_barcode_formats">All Barcode Formats</option>
+        <option value="legacy_barcode">Legacy Barcode</option>
+        <option value="container">Container (Horizontal)</option>
+        <option value="containerVertical">Container (Vertical)</option>
+        <option value="tire_size">Tire Size</option>
+        <option value="tin">TIN</option>
+        <option value="tin_dot">TIN DOT</option>
+        <option value="tire_id">Tire ID</option>
+      </select>
 
-  <body>
-    <!--[if IE]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
-
-    <div id="root" style="height: 100%"></div>
-
-    <!-- Add your site or application content here -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../anyline.js"></script>
-    <script src="license.js"></script>
-    <script src="index.js"></script>
-    
-    
-    <div class="toolbar">
-      <div id="main">
-        <button class="open-sidebar" onclick="openSidebar()">☰</button>  
-      </div>
-      
-      <div id="sidebar" class="sidebar">
-        <a href="javascript:void(0)" class="close-sidebar" onclick="closeSidebar()">×</a>
-        <div class="title">DEMO</div>
-        <!-- <button onclick="startScanning()">Start scanning</button> -->
-        <select class="preset-select" onchange="mountAnylineWebSDK(this)">
-          <option value="" selected>Select Use-Case</option>
-          <option value="lpt">License Plate</option>
-          <option value="lpt_eu">License Plate (EU)</option>
-          <option value="lpt_us">License Plate (US)</option>
-          <option value="universalid_mrz">Universal MRZ</option>
-          <option value="universalid_dl_at_de">UID DE/AT DL</option>
-          <option value="universalid_dl_at_de_strict">UID DE/AT DL Strict</option>
-          <option value="universalid_es_it_pt">Driving License IT/ES/PT </option>
-          <option value="meter">Meter</option>
-          <option value="dialmeter">Dial Meter</option>
-          <option value="verbund">Verbund</option>
-          <option value="vin">VIN</option>
-          <option value="ocr">Serial Number</option>
-          <option value="qr">QR code</option>
-          <option value="barcode_pdf417_parsed">PDF417 Scanner</option>
-          <option value="barcode_pdf417">PDF417 (raw)</option>
-          <option value="all_barcode_formats">All Barcode formats</option>
-          <option value="legacy_barcode">Legacy Barcode</option>
-          <option value="container">Container Horizontal</option>
-          <option value="containerVertical">Container Vertical</option>
-          <option value="tire_size">Tire Size</option>
-          <option value="tin">TIN</option>
-          <option value="tin_dot">TIN DOT</option>
-          <option value="tire_id">Tire ID</option>
-        </select>
+      <div class="button-group">
         <button onclick="remountWebSDK()">Remount</button>
+        <button onclick="stopWebSDK()">Stop</button>
+        <button onclick="pauseWebSDK()">Pause</button>
+        <button onclick="resumeWebSDK()">Resume</button>
+      </div>
+
+      <div class="button-group">
         <button onclick="refocus()">Refocus (chrome android)</button>
         <button onclick="enableFlash()">Flash On (chrome android)</button>
-        <button onclick="disableFlash()">Flash Off</button>
+        <button onclick="disableFlash()">Flash Off (chrome android)</button>
         <button onclick="mirrorCamera()">Mirror Camera</button>
         <button onclick="reappendCamera()">Reappend Camera</button>
       </div>
-    </div>
+    </aside>
+  </div>
 
-    <script>
-      document.getElementById("sidebar").style.marginLeft= "-250px";
-      function openNav() {
-        // document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("sidebar").style.marginLeft = "0";
-      }
-      
-      function closeNav() {
-        // document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("sidebar").style.marginLeft= "-250px";
-      }
-      </script>
-  </body>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+  <script src="../anyline.js" defer></script>
+  <script src="license.js" defer></script>
+  <script src="index.js" defer></script>
+
+  <script>
+    window.onload = () => {
+      document.getElementById('sidebar').style.marginLeft = '-250px';
+    };
+  </script>
+</body>
 </html>

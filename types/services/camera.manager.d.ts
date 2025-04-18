@@ -2,8 +2,8 @@ type Dependencies = {
     mediaDevices: MediaDevices;
 };
 export default class CameraManager {
-    private dependencies;
-    private idealDimensionConstraints;
+    private readonly dependencies;
+    private readonly idealDimensionConstraints;
     defaultConstraints: {
         video: {
             width: {
