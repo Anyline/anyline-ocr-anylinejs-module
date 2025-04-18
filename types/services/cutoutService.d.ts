@@ -1,8 +1,14 @@
-export function setupCutouts(currCutouts: any, newCutouts: any): any;
-export function setup(cutouts: any, newConfig: any, parentEl: any): any;
-export function setMask(newConfig: any): {
-    outerColor: any;
-    outerAlpha: any;
+import { StoredCutout, GlobalState, StoredCutouts } from '../store/global-state';
+import { ICutout, ViewConfig } from '../Anyline-JS/interface/types';
+export declare const setupCutouts: (currCutouts: {
+    [key: string]: ICutout;
+}, newCutouts: StoredCutout[]) => StoredCutouts;
+export declare const setup: (cutouts: StoredCutouts, newConfig: ViewConfig, parentEl: GlobalState["parent"]) => StoredCutouts;
+export declare const setMask: (newConfig: ViewConfig) => {
+    outerColor: string;
+    outerAlpha: number;
 };
-export function resetDelay(cutouts: any, cutoutIds: any): void;
-export function removeCutouts(cutouts: any, idsToRemove: any): any;
+export declare const resetDelay: (cutouts: any, cutoutIds: any) => void;
+export declare const removeCutouts: (cutouts: StoredCutouts, idsToRemove: string[]) => {
+    [key: string]: StoredCutout;
+};
