@@ -1,4 +1,4 @@
-import { ViewPluginConfig } from '../../interface/types';
+import { PresetName, UiFeedbackConfig } from '../../interface/types';
 export declare enum UIFeedbackUpdateType {
     Image = "image",
     Text = "text",
@@ -18,7 +18,7 @@ export type UiFeedbackStore = {
 };
 export declare class UiFeedbackService {
     private readonly feedbackHandler?;
-    constructor(preset?: string, config?: ViewPluginConfig['uiFeedbackConfig']);
+    constructor(activePreset?: PresetName, config?: UiFeedbackConfig);
     /**
      *
      * @param message_json

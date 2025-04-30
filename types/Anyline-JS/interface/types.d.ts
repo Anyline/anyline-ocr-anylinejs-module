@@ -56,18 +56,23 @@ export interface ViewConfig {
     feedbackStyle?: string;
     animation?: string;
 }
-export interface TinPresets {
-    instruction_text?: string;
-    left_overlay_image?: string;
-    lighting_toodark_image?: string;
-    lighting_toobright_image?: string;
+export interface UiFeedbackBase {
+    presetName: PresetName;
 }
-export interface UIFeedbackPresets {
-    tin_with_instruction_overlay_image_text_sound_feedback?: TinPresets;
+export interface UiFeedbackTin extends UiFeedbackBase {
+    presetName: 'tin';
+    lighting?: {
+        imageTooDark?: string;
+        imageTooBright?: string;
+    };
 }
+export interface UiFeedbackVin extends UiFeedbackBase {
+    presetName: 'vin';
+}
+export type UiFeedbackConfig = UiFeedbackTin | UiFeedbackVin;
 export interface ViewPluginConfig {
-    uiFeedbackConfig?: {
-        presets: UIFeedbackPresets;
+    uiFeedback?: {
+        dynamic: UiFeedbackConfig;
     };
 }
 export interface AnylineJSResult {
@@ -131,18 +136,10 @@ export interface CameraAPI {
      */
     activateFlash(state: boolean): Promise<void>;
 }
-/**
- * @typedef StartVariable
- * @type {Object}
- */
 interface StartVariable {
     key: string;
     value: string | number | boolean;
 }
-/**
- * @typedef PluginConfig
- * @type {Object}
- */
 export interface PluginConfig {
     /**
      * id - Sets a name for the scan plugin
@@ -217,10 +214,6 @@ export interface PluginConfig {
      */
     ocrConfig?: KeyAble;
 }
-/**
- * @typedef LockOrientation
- * @type {Object}
- */
 export interface LockOrientation {
     /**
      * lock - Defines whether the screen orientation should be locked to portrait.
@@ -234,10 +227,6 @@ export interface LockOrientation {
 }
 export type LockPortraitOrientation = LockOrientation;
 export type LandscapeOrientation = LockOrientation;
-/**
- * @typedef AnylineJSparams
- * @type {Object}
- */
 export interface AnylineJSParams {
     /**
      * license - AnylineJS license string
@@ -258,7 +247,7 @@ export interface AnylineJSParams {
     /**
      * preset - Module preset
      */
-    preset?: string;
+    preset?: PresetName;
     /**
      * preload - preloads the assets by a given preset (eg. 'barcode')
      */
@@ -362,4 +351,5 @@ export interface AnylineJSParams {
      */
     developmentFlags?: object;
 }
+export type PresetName = 'lpt' | 'lpt_eu' | 'lpt_us' | 'lpt_canada' | 'universalid_mrz' | 'universalid_dl_at_de' | 'universalid_dl_at_de_strict' | 'universalid_es_it_pt' | 'meter' | 'dialmeter' | 'verbund' | 'vin' | 'ocr' | 'qr' | 'barcode_pdf417_parsed' | 'barcode_pdf417' | 'all_barcode_formats' | 'legacy_barcode' | 'container' | 'containerVertical' | 'tire_size' | 'tin' | 'tin_dot' | 'tire_id';
 export {};

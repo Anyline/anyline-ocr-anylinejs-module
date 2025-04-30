@@ -29,7 +29,7 @@ Visit [web-trial.anyline.com](https://web-trial.com) for an official demo of Web
 
 ## Documentation
 
-[API documentation](https://js.anyline.com/release/55.0.1/docs/index.html)
+[API documentation](https://js.anyline.com/release/55.0.2/docs/index.html)
 
 For full documentation visit: [https://documentation.anyline.com/web-sdk-component/latest/index.html](https://documentation.anyline.com/web-sdk-component/latest/index.html)
 
