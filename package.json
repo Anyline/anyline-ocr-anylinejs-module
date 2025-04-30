@@ -1,8 +1,8 @@
 {
   "name": "@anyline/anyline-js",
-  "version": "55.0.1",
+  "version": "55.0.2",
   "description": "Anyline Web SDK",
-  "types": "./types/index.d.ts",
+  "types": "./types/Anyline-JS/index.d.ts",
   "main": "anyline.js",
   "scripts": {
     "demo": "npx http-server --port 8080 -o /demo",
