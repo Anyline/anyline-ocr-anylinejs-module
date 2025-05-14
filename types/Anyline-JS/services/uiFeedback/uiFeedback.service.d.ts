@@ -1,18 +1,19 @@
-import { PresetName, UiFeedbackConfig } from '../../interface/types';
+import { PresetName, UiFeedbackConfig, UiFeedbackImage } from '../../interface/types';
 export declare enum UIFeedbackUpdateType {
     Image = "image",
     Text = "text",
     Audio = "audio"
+}
+export interface UiFeedbackImageUpdate {
+    type: UIFeedbackUpdateType.Image;
+    value: UiFeedbackImage | null;
 }
 /**
  * value is null when the info message shows "acceptable" conditions
  * but UI still needs to be updated - for example, the previous
  * warning needs to be removed
  */
-export interface UiFeedbackUpdate {
-    type: UIFeedbackUpdateType;
-    value: string | null;
-}
+export type UiFeedbackUpdate = UiFeedbackImageUpdate;
 export type UiFeedbackStore = {
     [key in UIFeedbackUpdateType]?: UiFeedbackUpdate;
 };
