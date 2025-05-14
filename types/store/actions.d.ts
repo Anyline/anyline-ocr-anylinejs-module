@@ -19,7 +19,7 @@ export declare const updateFeedback: ActionFn<{
 }>;
 export declare const updateUiFeedback: (payload: UiFeedbackUpdate) => {
     type: string;
-    payload: UiFeedbackUpdate;
+    payload: import("../Anyline-JS/services/uiFeedback/uiFeedback.service").UiFeedbackImageUpdate;
 };
 export declare const resetDelay: (payload: unknown) => {
     type: string;

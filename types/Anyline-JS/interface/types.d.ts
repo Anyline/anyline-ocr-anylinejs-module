@@ -59,11 +59,15 @@ export interface ViewConfig {
 export interface UiFeedbackBase {
     presetName: PresetName;
 }
+export interface UiFeedbackImage {
+    src: string;
+    alt?: string;
+}
 export interface UiFeedbackTin extends UiFeedbackBase {
     presetName: 'tin';
     lighting?: {
-        imageTooDark?: string;
-        imageTooBright?: string;
+        imageTooDark?: UiFeedbackImage;
+        imageTooBright?: UiFeedbackImage;
     };
 }
 export interface UiFeedbackVin extends UiFeedbackBase {
