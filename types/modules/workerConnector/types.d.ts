@@ -69,6 +69,10 @@ export interface UiFeedbackTin extends UiFeedbackBase {
         imageTooDark?: UiFeedbackImage;
         imageTooBright?: UiFeedbackImage;
     };
+    distance?: {
+        imageMoveCloser?: UiFeedbackImage;
+        imageMoveBack?: UiFeedbackImage;
+    };
 }
 export interface UiFeedbackVin extends UiFeedbackBase {
     presetName: 'vin';

@@ -1,5 +1,5 @@
 import { StoredCutout, GlobalState, StoredCutouts } from '../store/global-state';
-import { ICutout, ViewConfig } from '../Anyline-JS/interface/types';
+import { ICutout, ViewConfig } from '../workerConnector/types';
 export declare const setupCutouts: (currCutouts: {
     [key: string]: ICutout;
 }, newCutouts: StoredCutout[]) => StoredCutouts;

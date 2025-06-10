@@ -1,6 +1,6 @@
-import { UiFeedbackUpdate } from '../Anyline-JS/services/uiFeedback/uiFeedback.service';
+import { UiFeedbackUpdate } from '../uiFeedback/uiFeedback.service';
 import { GlobalState } from './global-state';
-import { ViewConfig } from '../Anyline-JS/interface/types';
+import { ViewConfig } from '../workerConnector/types';
 type Action<P> = {
     type: string;
     payload: P;
@@ -19,7 +19,7 @@ export declare const updateFeedback: ActionFn<{
 }>;
 export declare const updateUiFeedback: (payload: UiFeedbackUpdate) => {
     type: string;
-    payload: import("../Anyline-JS/services/uiFeedback/uiFeedback.service").UiFeedbackImageUpdate;
+    payload: import("../uiFeedback/uiFeedback.service").UiFeedbackImageUpdate;
 };
 export declare const resetDelay: (payload: unknown) => {
     type: string;
