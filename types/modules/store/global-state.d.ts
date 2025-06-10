@@ -1,5 +1,5 @@
-import { UiFeedbackStore } from '../Anyline-JS/services/uiFeedback/uiFeedback.service';
-import { ICutout } from '../Anyline-JS/interface/types';
+import { UiFeedbackStore } from '../uiFeedback/uiFeedback.service';
+import { ICutout } from '../workerConnector/types';
 export interface StoredCutout extends ICutout {
     id: string;
     rect: {

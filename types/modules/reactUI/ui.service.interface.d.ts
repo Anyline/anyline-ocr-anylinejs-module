@@ -1,4 +1,4 @@
-import { AnylineJSParams, FeedbackAnimationStyle } from '../../interface/types';
+import { AnylineJSParams, FeedbackAnimationStyle } from '../workerConnector/types';
 export interface UiServiceConstructor {
     new (element: Element, param: AnylineJSParams | undefined, feedbackAnimationStyle: FeedbackAnimationStyle): UiServiceInterface;
 }

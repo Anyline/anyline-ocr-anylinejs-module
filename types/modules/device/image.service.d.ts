@@ -1,5 +1,5 @@
 import CameraManager from './camera.manager';
-import { StoredCutouts } from '../../store/global-state';
+import { StoredCutouts } from '../store/global-state';
 type Dependencies = {
     cameraManager: CameraManager;
 };

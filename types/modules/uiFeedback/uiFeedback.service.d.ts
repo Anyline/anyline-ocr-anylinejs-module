@@ -1,4 +1,14 @@
-import { PresetName, UiFeedbackConfig, UiFeedbackImage } from '../../interface/types';
+/**
+ * This module is responsible for managing user guidance.
+ * It exposes the UiFeedbackService with primary interface to process the json messages sent from the
+ * worker (and forwarded by api.ts). It parses the string and forwards it to the handler for a specific preset,
+ * and handler is responsible for determining whether a UI update is necessary based on selected uiFeedbackPreset
+ *
+ * Which handler is used is decided based on initialization parameters, the mappings for "preset - feedback handler"
+ * can be found in handlers.ts
+ */
+import { InfoMessageType } from '../workerConnector/info';
+import { PresetName, UiFeedbackConfig, UiFeedbackImage } from '../workerConnector/types';
 export declare enum UIFeedbackUpdateType {
     Image = "image",
     Text = "text",
@@ -7,6 +17,8 @@ export declare enum UIFeedbackUpdateType {
 export interface UiFeedbackImageUpdate {
     type: UIFeedbackUpdateType.Image;
     value: UiFeedbackImage | null;
+    infoType: InfoMessageType;
+    dispatchedAt: Date;
 }
 /**
  * value is null when the info message shows "acceptable" conditions
@@ -15,7 +27,9 @@ export interface UiFeedbackImageUpdate {
  */
 export type UiFeedbackUpdate = UiFeedbackImageUpdate;
 export type UiFeedbackStore = {
-    [key in UIFeedbackUpdateType]?: UiFeedbackUpdate;
+    [key in UIFeedbackUpdateType]?: {
+        [infoType: string]: UiFeedbackUpdate;
+    };
 };
 export declare class UiFeedbackService {
     private readonly feedbackHandler?;

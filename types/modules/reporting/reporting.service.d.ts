@@ -1,4 +1,4 @@
-import ImageService from './image.service';
+import ImageService from '../device/image.service';
 type Dependencies = {
     anylineWorker: any;
     imageService: ImageService;

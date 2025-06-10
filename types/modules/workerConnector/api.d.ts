@@ -1,7 +1,7 @@
-import { UiServiceInterface } from '../services/UI/ui.service.interface';
-import ImageService from '../services/image.service';
+import { UiServiceInterface } from '../reactUI/ui.service.interface';
+import ImageService from '../device/image.service';
 import { AnylineJSParams, AnylineJSResult, CameraAPI, LegacyErrorObject } from './types';
-import { UiFeedbackService } from '../services/uiFeedback/uiFeedback.service';
+import { UiFeedbackService } from '../uiFeedback/uiFeedback.service';
 export declare enum State {
     INITIALIZED = "initialized",
     PAUSED = "paused",
@@ -82,7 +82,7 @@ export declare class AnylineJS {
     getFrame(): ImageObject | undefined;
     private state;
     private timeBeforeImageSend;
-    private fullFrameImage;
+    private fullImage;
     private log2debug;
     isLoaded: boolean;
     /**
@@ -95,6 +95,7 @@ export declare class AnylineJS {
      */
     getState(): State;
     private initialize;
+    private handleRunSkippedMessage;
     private handleInfoMessage;
     private lockPortrait;
     private lockLandscape;
