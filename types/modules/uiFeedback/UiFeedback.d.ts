@@ -12,6 +12,7 @@ export interface FeedbackElementStyle {
     readonly desktopWidth: number;
     readonly distanceFromCutout: number;
 }
+export declare const updateInterval = 500;
 export declare function UiFeedbackComponent(config: UiFeedbackConfig): React.JSX.Element;
 interface GlobalProps {
     readonly cutout: StoredCutout;

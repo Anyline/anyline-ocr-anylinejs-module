@@ -43,7 +43,7 @@ export declare const infoMessages: {
     };
 };
 export declare const runSkippedCodes: {
-    [key: string]: InfoMessage;
+    [key: number]: InfoMessage;
 };
 export interface InfoMessage {
     name: InfoMessageType;
@@ -51,6 +51,6 @@ export interface InfoMessage {
 }
 export declare function isInfoMessage(obj: any): obj is InfoMessage;
 export interface RunSkippedMessage {
-    code: string;
+    code: number;
 }
 export declare function isRunSkippedMessage(obj: any): obj is RunSkippedMessage;
