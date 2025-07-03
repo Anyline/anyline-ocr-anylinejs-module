@@ -8,7 +8,7 @@
  * can be found in handlers.ts
  */
 import { InfoMessageType } from '../workerConnector/info';
-import { PresetName, UiFeedbackConfig, UiFeedbackImage } from '../workerConnector/types';
+import { UiFeedbackConfig, UiFeedbackImage } from '../workerConnector/types';
 export declare enum UIFeedbackUpdateType {
     Image = "image",
     Text = "text",
@@ -33,7 +33,7 @@ export type UiFeedbackStore = {
 };
 export declare class UiFeedbackService {
     private readonly feedbackHandler?;
-    constructor(activePreset?: PresetName, config?: UiFeedbackConfig);
+    constructor(config?: UiFeedbackConfig);
     /**
      *
      * @param message_json

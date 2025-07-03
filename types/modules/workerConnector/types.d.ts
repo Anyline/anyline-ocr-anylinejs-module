@@ -55,6 +55,12 @@ export interface ViewConfig {
     cutouts: ICutout[];
     feedbackStyle?: string;
     animation?: string;
+    uiFeedback?: {
+        dynamic?: UiFeedbackConfig;
+        static?: {
+            instructionText: string;
+        };
+    };
 }
 export interface UiFeedbackBase {
     presetName: PresetName;
@@ -78,11 +84,6 @@ export interface UiFeedbackVin extends UiFeedbackBase {
     presetName: 'vin';
 }
 export type UiFeedbackConfig = UiFeedbackTin | UiFeedbackVin;
-export interface ViewPluginConfig {
-    uiFeedback?: {
-        dynamic: UiFeedbackConfig;
-    };
-}
 export interface AnylineJSResult {
     result: any;
     fullImage: ImageData | undefined;

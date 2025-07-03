@@ -2,10 +2,9 @@ import React from 'react';
 import { GlobalState, StoredCutout } from "../store/global-state";
 import { UiFeedbackImageUpdate, UiFeedbackStore } from "./uiFeedback.service";
 export interface UiFeedbackConfig {
-    readonly staticFeedback?: FeedbackElementStyle & {
-        textContent: string;
+    readonly staticFeedback?: {
+        textContent?: string;
     };
-    readonly dynamicFeedback?: FeedbackElementStyle;
 }
 export interface FeedbackElementStyle {
     readonly mobileWidth: number;
