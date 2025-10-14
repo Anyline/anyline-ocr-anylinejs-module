@@ -12,6 +12,7 @@ export interface ICutout {
         delay?: number;
         animation?: string;
         width: number;
+        height?: number;
         maxWidthPercent: string;
         maxHeightPercent?: string;
         outerColor?: string;
@@ -26,6 +27,10 @@ export interface ICutout {
             x: number;
             y: number;
         };
+        offset?: {
+            x: number;
+            y: number;
+        };
         strokeWidth?: number;
         cornerRadius?: number;
         feedbackStrokeColor?: string;
@@ -37,6 +42,8 @@ export interface ICutout {
         timeout?: number;
         strokeWidth?: number;
         strokeColor?: string;
+        fillColor?: string;
+        cornerRadius?: number;
         beepOnResult?: boolean;
         vibrateOnResult?: boolean;
         blinkAnimationOnResult?: boolean;
