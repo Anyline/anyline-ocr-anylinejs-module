@@ -7,8 +7,10 @@ export interface UiFeedbackConfig {
     };
 }
 export interface FeedbackElementStyle {
-    readonly mobileWidth: number;
-    readonly desktopWidth: number;
+    readonly width: {
+        readonly smallScreen: number;
+        readonly largeScreen: number;
+    };
     readonly distanceFromCutout: number;
 }
 export declare const updateInterval = 500;
@@ -19,7 +21,6 @@ interface GlobalProps {
 }
 interface FeedbackProps {
     readonly globals: GlobalProps;
-    readonly style: FeedbackElementStyle;
     readonly position: 'top' | 'bottom';
 }
 export declare function FeedbackStatic(props: FeedbackProps & {
