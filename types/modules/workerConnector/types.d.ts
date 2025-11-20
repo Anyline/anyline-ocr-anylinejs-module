@@ -5,14 +5,15 @@ export interface ICutout {
     cutoutConfig: {
         alignment?: 'center' | 'top_half' | 'bottom_half';
         style?: 'contour_rect' | 'rect';
-        ratioFromSize: {
+        ratioFromSize?: {
             width: number;
             height: number;
         };
         delay?: number;
         animation?: string;
-        width: number;
-        maxWidthPercent: string;
+        width?: number;
+        height?: number;
+        maxWidthPercent?: string;
         maxHeightPercent?: string;
         outerColor?: string;
         outerAlpha?: number;
@@ -23,6 +24,10 @@ export interface ICutout {
             y: number;
         };
         cropPadding?: {
+            x: number;
+            y: number;
+        };
+        offset?: {
             x: number;
             y: number;
         };
@@ -37,6 +42,8 @@ export interface ICutout {
         timeout?: number;
         strokeWidth?: number;
         strokeColor?: string;
+        fillColor?: string;
+        cornerRadius?: number;
         beepOnResult?: boolean;
         vibrateOnResult?: boolean;
         blinkAnimationOnResult?: boolean;
@@ -52,7 +59,7 @@ export interface ViewConfig {
      * Feedback animation style. Defaults to a 'BLINK_ANIMATION' animation.
      */
     feedbackAnimationStyle?: FeedbackAnimationStyle;
-    cutouts: ICutout[];
+    cutouts?: ICutout[];
     feedbackStyle?: string;
     animation?: string;
     uiFeedback?: {
@@ -68,20 +75,38 @@ export interface UiFeedbackBase {
 export interface UiFeedbackImage {
     src: string;
     alt?: string;
+    /**
+     * width of the image, in pixels. smallScreen will be used when display width is less than 600px
+     */
+    style?: {
+        width?: {
+            smallScreen?: number;
+            largeScreen?: number;
+        };
+    };
 }
-export interface UiFeedbackTin extends UiFeedbackBase {
-    presetName: 'tin';
+export interface UiFeedbackLighting {
     lighting?: {
         imageTooDark?: UiFeedbackImage;
         imageTooBright?: UiFeedbackImage;
     };
+}
+export interface UiFeedbackDistance {
     distance?: {
         imageMoveCloser?: UiFeedbackImage;
         imageMoveBack?: UiFeedbackImage;
     };
 }
-export interface UiFeedbackVin extends UiFeedbackBase {
-    presetName: 'vin';
+export interface UiFeedbackFormat {
+    format?: {
+        invalidContent: UiFeedbackImage;
+    };
+}
+export interface UiFeedbackTin extends UiFeedbackLighting, UiFeedbackDistance {
+    presetName: 'tin';
+}
+export interface UiFeedbackVin extends UiFeedbackLighting, UiFeedbackDistance, UiFeedbackFormat {
+    presetName: 'vin_with_user_guidance';
 }
 export type UiFeedbackConfig = UiFeedbackTin | UiFeedbackVin;
 export interface AnylineJSResult {
@@ -258,6 +283,15 @@ export interface AnylineJSParams {
      */
     preset?: PresetName;
     /**
+     * pluginId - Specifies the scanning plugin to use (auto-set when using a preset, can be overridden).
+     *
+     * Available plugins: barcode, meter, universal_id, mrz, license_plate, tin, tire_size,
+     * commercial_tire_id, tire_make, vin, container, ocr, vin_with_user_guidance
+     *
+     * @example { preset: 'vin', pluginId: 'vin_with_user_guidance' } // Override preset's plugin
+     */
+    pluginId?: PluginId;
+    /**
      * preload - preloads the assets by a given preset (eg. 'barcode')
      */
     preload?: boolean;
@@ -360,5 +394,6 @@ export interface AnylineJSParams {
      */
     developmentFlags?: object;
 }
-export type PresetName = 'lpt' | 'lpt_eu' | 'lpt_us' | 'lpt_canada' | 'universalid_mrz' | 'universalid_dl_at_de' | 'universalid_dl_at_de_strict' | 'universalid_es_it_pt' | 'meter' | 'dialmeter' | 'verbund' | 'vin' | 'ocr' | 'qr' | 'barcode_pdf417_parsed' | 'barcode_pdf417' | 'all_barcode_formats' | 'legacy_barcode' | 'container' | 'containerVertical' | 'tire_size' | 'tin' | 'tin_dot' | 'tire_id';
+export type PresetName = 'lpt' | 'lpt_eu' | 'lpt_us' | 'lpt_canada' | 'universalid_mrz' | 'universalid_dl_at_de' | 'universalid_dl_at_de_strict' | 'universalid_es_it_pt' | 'meter' | 'dialmeter' | 'verbund' | 'vin' | 'vin_with_user_guidance' | 'ocr' | 'qr' | 'barcode_pdf417_parsed' | 'barcode_pdf417' | 'all_barcode_formats' | 'legacy_barcode' | 'container' | 'containerVertical' | 'tire_size' | 'tin' | 'tin_dot' | 'tire_id';
+export type PluginId = 'barcode' | 'meter' | 'universal_id' | 'mrz' | 'license_plate' | 'tin' | 'tire_size' | 'commercial_tire_id' | 'tire_make' | 'vin_with_user_guidance' | 'vin' | 'container' | 'ocr' | 'verbund';
 export {};

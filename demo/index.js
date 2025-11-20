@@ -23,15 +23,45 @@ async function mountAnylineWebSDK(selectElement) {
 
     const sdkConfig = currentPreset === 'all_barcode_formats' ? advancedBarcodeConfig : baseConfig;
 
-    anylineInstance = window.anylinejs.init({
-      config: sdkConfig,
-      hapticFeedback: true,
-      preset: currentPreset,
-      license: demoLicense,
-      element: rootElement,
-      debugAnyline: false,
-      anylinePath: '../anylinejs',
-    });
+    const tinFeedbackConfig = {
+      dynamic: window.anylinejs.uiFeedbackPresets.tin,
+      static: {
+        instructionText: `Please make sure the entire ${currentPreset === 'tin' ? 'TIN' : 'DOT number'} is inside the cutout.`
+      },
+    }
+
+    const uiFeedbackConfigs = {
+      'tin': tinFeedbackConfig,
+      'tin_dot': tinFeedbackConfig,
+      'vin_with_user_guidance': {
+        dynamic: window.anylinejs.uiFeedbackPresets.vin,
+        static: {
+          instructionText: "Please make sure the entire VIN is inside the cutout."
+        }
+      }
+    }
+
+    const parameters = {
+        config: sdkConfig,
+        hapticFeedback: true,
+        preset: currentPreset,
+        license: demoLicense,
+        element: rootElement,
+        debugAnyline: false,
+        anylinePath: '../anylinejs',
+        viewConfig: {
+            uiFeedback: uiFeedbackConfigs[currentPreset],
+        },
+    }
+
+    if (currentPreset === 'vin_with_user_guidance') {
+        // we do this separately because vinConfig shouldn't be defined
+        // if another preset is selected, and it shouldn't be undefined if vin (without user guidance)
+        // is selected
+        parameters.config.vinConfig = { validateCheckDigit: true}
+    }
+
+    anylineInstance = window.anylinejs.init(parameters);
 
     anylineInstance.onResult = (result) => {
       console.log('Scan Result:', result);

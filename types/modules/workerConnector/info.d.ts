@@ -1,6 +1,7 @@
 export declare enum InfoMessageType {
     lighting = "$lightingCondition",
-    distance = "distance"
+    distance = "distance",
+    format = "$format_invalid_content"
 }
 export declare enum LightingCondition {
     good = "GOOD",
@@ -8,9 +9,13 @@ export declare enum LightingCondition {
     bright = "BRIGHT"
 }
 export declare enum Distance {
-    good = "GOOD",
+    good = "GOOD",// this value does not come from the core, we just have it to have 'off' for storybook
     tooFar = "TOOFAR",
     tooClose = "TOOCLOSE"
+}
+export declare enum Format {
+    invalidContent = "INVALID",
+    validContent = "VALID"
 }
 export declare const infoMessages: {
     lighting: {
@@ -39,6 +44,12 @@ export declare const infoMessages: {
         tooClose: {
             name: InfoMessageType;
             value: Distance;
+        };
+    };
+    imageFormat: {
+        invalidContent: {
+            name: InfoMessageType;
+            value: Format;
         };
     };
 };

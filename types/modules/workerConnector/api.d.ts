@@ -104,7 +104,9 @@ export declare class AnylineJS {
     /**
      * Starts the scan process
      *
-     * @returns A promise resolving the video element of the feed
+     * @returns A promise resolving to:
+     * - `HTMLVideoElement` when called from INITIALIZED state (starts camera and scanning)
+     * - `undefined` when called from STOPPED or PAUSED states
      *
      * @throws PermissionError
      * This exception is thrown if the camera access was denied
@@ -115,7 +117,7 @@ export declare class AnylineJS {
      * @throws {@link DisposedError}
      * This exception is thrown if anylineJS is already disposed
      */
-    startScanning(): Promise<HTMLVideoElement | null>;
+    startScanning(): Promise<HTMLVideoElement | undefined>;
     /**
      * Stops the scan process
      */

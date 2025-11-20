@@ -1,6 +1,7 @@
-import { PluginConfig, PresetName, ViewConfig } from './types';
-declare function mergePresetToConfigs(config: PluginConfig | undefined, viewConfig: ViewConfig | undefined, preset: PresetName | undefined): {
+import { PluginConfig, ViewConfig, AnylineJSParams, PluginId } from './types';
+declare function mergePresetToConfigs(params: AnylineJSParams): {
     viewConfig: ViewConfig;
     config: PluginConfig;
+    pluginId?: PluginId;
 };
 export default mergePresetToConfigs;
