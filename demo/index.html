@@ -2,65 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0b0f14" />
   <meta name="description" content="Anyline Web SDK Demo showcasing various scanning presets" />
   <title>Anyline Web SDK Demo</title>
-  
+
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="icon" href="data:," />
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
   <div id="root" style="height: 100%"></div>
+
+  <!-- Loading Indicator -->
+  <output id="loading-indicator" class="loading-indicator" aria-live="polite">
+    Initializing...
+  </output>
+
+  <!-- Result Modal -->
+  <dialog id="result-modal" class="result-modal" aria-labelledby="result-modal-title">
+    <div class="result-modal-content">
+      <button class="result-modal-close" onclick="closeResultModal()" aria-label="Close modal">&times;</button>
+      <h2 id="result-modal-title">Scan Result</h2>
+      <pre id="result-modal-text" aria-live="polite"></pre>
+    </div>
+  </dialog>
+
   <div class="toolbar">
     <div id="main">
-      <button class="open-sidebar" onclick="openSidebar()">☰</button>  
+      <button class="open-sidebar" onclick="openSidebar()" aria-label="Open menu" aria-controls="sidebar">&#9776;</button>
     </div>
-    <aside id="sidebar" class="sidebar" role="complementary" aria-label="Demo controls">
-      <a href="javascript:void(0)" class="close-sidebar" onclick="closeSidebar()">×</a>      <div class="title">Demo</div>
-      <select id="preset-select" class="preset-select" onchange="mountAnylineWebSDK(this)">
+    <aside id="sidebar" class="sidebar" aria-label="Demo controls" aria-hidden="true">
+      <button type="button" class="close-sidebar" onclick="closeSidebar()" aria-label="Close menu">&times;</button>
+      <div class="title">Demo</div>
+
+      <!-- State Indicator -->
+      <div id="state-indicator" class="state-indicator state-idle" aria-live="polite">Not Started</div>
+
+      <!-- Preset Selector -->
+      <label for="preset-select" class="visually-hidden">Select use case</label>
+      <select id="preset-select" class="preset-select" onchange="mountAnylineWebSDK(this)" aria-label="Select scanning use case">
         <option value="" selected>Select Use-Case</option>
-        <option value="lpt">License Plate</option>
-        <option value="lpt_eu">License Plate (EU)</option>
-        <option value="lpt_us">License Plate (US)</option>
-        <option value="lpt_canada">License Plate (Canada)</option>
-        <option value="universalid_mrz">Universal MRZ</option>
-        <option value="universalid_dl_at_de">UID DE/AT DL</option>
-        <option value="universalid_dl_at_de_strict">UID DE/AT DL Strict</option>
-        <option value="universalid_es_it_pt">UID IT/ES/PT</option>
-        <option value="meter">Meter</option>
-        <option value="dialmeter">Dial Meter</option>
-        <option value="verbund">Verbund</option>
-        <option value="vin">VIN</option>
-        <option value="vin_with_user_guidance">VIN With User Guidance</option>
-        <option value="ocr">Serial Number</option>
-        <option value="qr">QR Code</option>
-        <option value="barcode_pdf417_parsed">PDF417 (Parsed)</option>
-        <option value="barcode_pdf417">PDF417 (Raw)</option>
-        <option value="all_barcode_formats">All Barcode Formats</option>
-        <option value="legacy_barcode">Legacy Barcode</option>
-        <option value="container">Container (Horizontal)</option>
-        <option value="containerVertical">Container (Vertical)</option>
-        <option value="tire_size">Tire Size</option>
-        <option value="tin">TIN</option>
-        <option value="tin_dot">TIN DOT</option>
-        <option value="tire_id">Tire ID</option>
+        <optgroup label="License Plates">
+          <option value="lpt">License Plate (Auto-detect)</option>
+          <option value="lpt_eu">License Plate (EU)</option>
+          <option value="lpt_us">License Plate (US)</option>
+          <option value="lpt_canada">License Plate (Canada)</option>
+        </optgroup>
+        <optgroup label="ID Documents">
+          <option value="universalid_mrz">Universal MRZ</option>
+          <option value="universalid_dl_at_de">UID DE/AT DL</option>
+          <option value="universalid_dl_at_de_strict">UID DE/AT DL Strict</option>
+          <option value="universalid_es_it_pt">UID IT/ES/PT</option>
+        </optgroup>
+        <optgroup label="Meters">
+          <option value="meter">Meter</option>
+          <option value="dialmeter">Dial Meter</option>
+          <option value="verbund">Verbund</option>
+        </optgroup>
+        <optgroup label="Vehicles">
+          <option value="vin">VIN</option>
+          <option value="vin_with_user_guidance">VIN With User Guidance</option>
+        </optgroup>
+        <optgroup label="Barcodes">
+          <option value="qr">QR Code</option>
+          <option value="barcode_pdf417_parsed">PDF417 (Parsed)</option>
+          <option value="barcode_pdf417">PDF417 (Raw)</option>
+          <option value="all_barcode_formats">All Barcode Formats</option>
+          <option value="legacy_barcode">Legacy Barcode</option>
+        </optgroup>
+        <optgroup label="Containers">
+          <option value="container">Container (Horizontal)</option>
+          <option value="containerVertical">Container (Vertical)</option>
+        </optgroup>
+        <optgroup label="Tires">
+          <option value="tire_size">Tire Size</option>
+          <option value="tin">TIN</option>
+          <option value="tin_dot">TIN DOT</option>
+          <option value="tire_id">Tire ID</option>
+        </optgroup>
+        <optgroup label="Other">
+          <option value="ocr">Serial Number (OCR)</option>
+          <option value="japanese_landing_permission">Japanese Landing Permission</option>
+        </optgroup>
       </select>
 
-      <div class="button-group">
-        <button onclick="remountWebSDK()">Remount</button>
-        <button onclick="stopWebSDK()">Stop</button>
-        <button onclick="pauseWebSDK()">Pause</button>
-        <button onclick="resumeWebSDK()">Resume</button>
-      </div>
+      <!-- Scanning Controls -->
+      <fieldset class="button-group">
+        <legend class="visually-hidden">Scanning controls</legend>
+        <button id="btn-remount" onclick="remountWebSDK()" disabled class="btn-disabled" aria-label="Remount SDK">Remount</button>
+        <button id="btn-stop" onclick="stopWebSDK()" disabled class="btn-disabled" aria-label="Stop scanning">Stop</button>
+        <button id="btn-pause" onclick="pauseWebSDK()" disabled class="btn-disabled" aria-label="Pause scanning">Pause</button>
+        <button id="btn-resume" onclick="resumeWebSDK()" disabled class="btn-disabled" aria-label="Resume scanning">Resume</button>
+      </fieldset>
 
-      <div class="button-group">
-        <button onclick="refocus()">Refocus (chrome android)</button>
-        <button onclick="enableFlash()">Flash On (chrome android)</button>
-        <button onclick="disableFlash()">Flash Off (chrome android)</button>
-        <button onclick="mirrorCamera()">Mirror Camera</button>
-        <button onclick="reappendCamera()">Reappend Camera</button>
-      </div>
+      <!-- Camera Controls -->
+      <fieldset class="button-group">
+        <legend class="visually-hidden">Camera controls</legend>
+        <button id="btn-refocus" onclick="refocus()" disabled class="btn-disabled" title="Chrome Android only" aria-label="Refocus camera">Refocus</button>
+        <button id="btn-flash-on" onclick="enableFlash()" disabled class="btn-disabled" title="Chrome Android, Safari 18.4+" aria-label="Turn flash on">Flash On</button>
+        <button id="btn-flash-off" onclick="disableFlash()" disabled class="btn-disabled" style="display:none" title="Chrome Android, Safari 18.4+" aria-label="Turn flash off">Flash Off</button>
+        <button id="btn-mirror" onclick="mirrorCamera()" disabled class="btn-disabled" aria-label="Mirror camera">Mirror Camera</button>
+        <button id="btn-reappend" onclick="reappendCamera()" disabled class="btn-disabled" title="Reattach video to DOM" aria-label="Reappend camera">Reappend Camera</button>
+      </fieldset>
     </aside>
   </div>
 
@@ -68,11 +115,5 @@
   <script src="../anyline.js" defer></script>
   <script src="license.js" defer></script>
   <script src="index.js" defer></script>
-
-  <script>
-    window.onload = () => {
-      document.getElementById('sidebar').style.marginLeft = '-250px';
-    };
-  </script>
 </body>
 </html>

@@ -4,7 +4,7 @@ type Dependencies = {
     imageService: ImageService;
 };
 export default class ReportingService {
-    private dependencies;
+    private readonly dependencies;
     constructor(dependencies: Dependencies);
     prepareReporting(msg: any): void;
     sendReporting(json: any, url: string, sendAsync: boolean): void;

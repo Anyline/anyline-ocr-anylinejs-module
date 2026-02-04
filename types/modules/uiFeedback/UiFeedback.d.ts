@@ -1,6 +1,6 @@
 import React from 'react';
-import { GlobalState, StoredCutout } from "../store/global-state";
-import { UiFeedbackImageUpdate, UiFeedbackStore } from "./uiFeedback.service";
+import { GlobalState, StoredCutout } from '../store/global-state';
+import { UiFeedbackImageUpdate, UiFeedbackStore } from './uiFeedback.service';
 export interface UiFeedbackConfig {
     readonly staticFeedback?: {
         textContent?: string;

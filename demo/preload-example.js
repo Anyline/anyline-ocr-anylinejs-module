@@ -4,7 +4,7 @@ let anyline;
 let mirrored = false;
 
 const DEFAULT_PRESET = {
-  value: 'barcode'
+  value: 'barcode',
 };
 
 async function preload(preset = DEFAULT_PRESET) {

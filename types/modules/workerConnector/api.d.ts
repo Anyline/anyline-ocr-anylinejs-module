@@ -14,17 +14,20 @@ type Dependencies = {
     uiService: UiServiceInterface;
     anylineWorker: any;
     uiFeedbackService?: UiFeedbackService;
-    window?: Window;
 };
-type ImageObject = {
+/**
+ * Object containing captured image data from the camera frame.
+ */
+export type ImageObject = {
+    /** The full camera frame as ImageData */
     fullImage: ImageData;
+    /** The cropped cutout area as ImageData, if available */
     cutoutImage?: ImageData;
 };
 export declare class AnylineJS {
     private readonly params;
     private readonly dependencies;
     private preloadDone;
-    private readonly window;
     private readonly uiFeedbackService;
     /**
      * Mounts anylineJS into the DOM and exposes api
@@ -111,10 +114,10 @@ export declare class AnylineJS {
      * @throws PermissionError
      * This exception is thrown if the camera access was denied
      *
-     * @throws {@link AnylineError}
+     * @throws `AnylineError`
      * This exception is thrown if something internally is wrong like licensing issues
      *
-     * @throws {@link DisposedError}
+     * @throws `DisposedError`
      * This exception is thrown if anylineJS is already disposed
      */
     startScanning(): Promise<HTMLVideoElement | undefined>;

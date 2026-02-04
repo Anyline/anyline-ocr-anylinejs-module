@@ -1,46 +1,162 @@
+/* =============================================================================
+   SIDEBAR STYLES
+   ============================================================================= */
+
 .sidebar {
   height: 100%;
-  width: 250px;
+  width: min(280px, 85vw);
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #646464;
+  background: linear-gradient(180deg, rgba(11, 18, 24, 0.95), rgba(7, 12, 16, 0.95));
   overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: margin-left 0.3s ease-in-out;
+  /* Safe area insets for notched devices */
+  padding: max(70px, calc(60px + env(safe-area-inset-top, 0px))) 6px max(24px, env(safe-area-inset-bottom, 24px)) max(6px, env(safe-area-inset-left, 6px));
   z-index: 99999;
-}
-
-.sidebar a {
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-  z-index: 999999;
-}
-
-.sidebar a:hover {
-  color: #f1f1f1;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 12px 0 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  /* Prevent scroll chaining to body */
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }
 
 .sidebar .close-sidebar {
   position: absolute;
-  top: 0;
+  top: 6px;
   right: 6px;
-  font-size: 36px;
-  margin-left: 50px;
+  font-size: 30px;
+  cursor: pointer;
+  /* Reset button styles */
+  background: none;
+  border: none;
+  color: rgba(244, 246, 248, 0.75);
+  /* Improve touch target for mobile */
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  width: auto;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+  z-index: 999999;
+  box-shadow: none;
 }
+
+.sidebar .close-sidebar:hover,
+.sidebar .close-sidebar:focus {
+  color: #f4f6f8;
+  background: none;
+  border: none;
+}
+
+.sidebar .close-sidebar:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   OPEN SIDEBAR BUTTON
+   ============================================================================= */
 
 .open-sidebar {
   font-size: 20px;
   cursor: pointer;
-  background-color: #111;
-  color: rgb(170, 170, 170);
-  padding: 10px 15px;  
-  border: solid 2px rgb(170, 170, 170);
+  background: rgba(14, 22, 30, 0.86);
+  color: rgba(244, 246, 248, 0.85);
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  /* Ensure good touch target */
+  min-width: 44px;
+  min-height: 44px;
+  width: auto;
+  margin: 0;
 }
 
-.openbtn:hover {
-  background-color: #0066cc;
+.open-sidebar:hover,
+.open-sidebar:focus {
+  border-color: rgba(31, 209, 200, 0.6);
+  box-shadow: 0 14px 36px rgba(31, 209, 200, 0.3);
+  transform: translateY(-1px);
+}
+
+.open-sidebar:focus {
+  outline: 2px solid rgba(31, 209, 200, 0.8);
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   REDUCED MOTION PREFERENCE
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar {
+    transition: none;
+    backdrop-filter: none;
+  }
+
+  .sidebar .close-sidebar {
+    transition: none;
+  }
+
+  .open-sidebar {
+    transition: none;
+  }
+}
+
+/* =============================================================================
+   TABLET RESPONSIVE (768px - 1024px)
+   ============================================================================= */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sidebar {
+    width: min(320px, 50vw);
+  }
+}
+
+/* =============================================================================
+   MOBILE RESPONSIVE (max 768px)
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: min(280px, 90vw);
+    padding-top: max(60px, calc(50px + env(safe-area-inset-top, 0px)));
+  }
+
+  .sidebar .close-sidebar {
+    top: max(10px, env(safe-area-inset-top, 10px));
+    right: 10px;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+  .sidebar {
+    width: min(260px, 45vw);
+    padding-top: max(50px, calc(40px + env(safe-area-inset-top, 0px)));
+  }
+}
+
+/* Small mobile (max 480px) */
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100vw;
+    border-right: none;
+    border-radius: 0;
+  }
+
+  .open-sidebar {
+    padding: 8px 12px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
 }

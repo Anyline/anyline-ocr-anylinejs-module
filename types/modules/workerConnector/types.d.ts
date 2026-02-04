@@ -141,7 +141,7 @@ export interface CameraAPI {
     /**
      * Reappends the camera. This can help in case you experience a camera stream failure when resuming to the webapp after sleep / longer suspension.
      *
-     * @remarks example: window.onfocus = () => anyline.camera.reappend();
+     * @remarks example: globalThis.onfocus = () => anyline.camera.reappend();
      *
      */
     reappend(): void;
@@ -152,7 +152,7 @@ export interface CameraAPI {
      *
      * @returns A promise
      *
-     * @throws {@link OnlyAndroidChromeError}
+     * @throws `OnlyAndroidChromeError`
      * This exception is thrown if the browser is not capabale of this feature
      *
      */
@@ -160,17 +160,20 @@ export interface CameraAPI {
     /**
      * Activates the camera flash light
      *
-     * @remarks This feature works currently only on Google Chrome for Android
+     * @remarks This feature works on Google Chrome for Android and Safari 18.4+
      *
      * @returns A promise
      *
-     * @throws {@link OnlyAndroidChromeError}
-     * This exception is thrown if the browser is not capabale of this feature
+     * @throws `OnlyAndroidChromeError`
+     * This exception is thrown if the browser does not support this feature
      *
      */
     activateFlash(state: boolean): Promise<void>;
 }
-interface StartVariable {
+/**
+ * A key-value pair used to pass custom variables to the scanning plugin.
+ */
+export interface StartVariable {
     key: string;
     value: string | number | boolean;
 }
@@ -215,6 +218,10 @@ export interface PluginConfig {
      * mrzConfig - Configuration for scanning machine-readable zones (MRZ) of passports and other IDs
      */
     mrzConfig?: KeyAble;
+    /**
+     * japaneseLandingPermissionConfig - Configuration for scanning Japanese landing permission
+     */
+    japaneseLandingPermissionConfig?: KeyAble;
     /**
      * licensePlateConfig - Configuration for scanning license plates
      */
@@ -394,6 +401,5 @@ export interface AnylineJSParams {
      */
     developmentFlags?: object;
 }
-export type PresetName = 'lpt' | 'lpt_eu' | 'lpt_us' | 'lpt_canada' | 'universalid_mrz' | 'universalid_dl_at_de' | 'universalid_dl_at_de_strict' | 'universalid_es_it_pt' | 'meter' | 'dialmeter' | 'verbund' | 'vin' | 'vin_with_user_guidance' | 'ocr' | 'qr' | 'barcode_pdf417_parsed' | 'barcode_pdf417' | 'all_barcode_formats' | 'legacy_barcode' | 'container' | 'containerVertical' | 'tire_size' | 'tin' | 'tin_dot' | 'tire_id';
-export type PluginId = 'barcode' | 'meter' | 'universal_id' | 'mrz' | 'license_plate' | 'tin' | 'tire_size' | 'commercial_tire_id' | 'tire_make' | 'vin_with_user_guidance' | 'vin' | 'container' | 'ocr' | 'verbund';
-export {};
+export type PresetName = 'lpt' | 'lpt_eu' | 'lpt_us' | 'lpt_canada' | 'universalid_mrz' | 'japanese_landing_permission' | 'universalid_dl_at_de' | 'universalid_dl_at_de_strict' | 'universalid_es_it_pt' | 'meter' | 'dialmeter' | 'verbund' | 'vin' | 'vin_with_user_guidance' | 'ocr' | 'qr' | 'barcode_pdf417_parsed' | 'barcode_pdf417' | 'all_barcode_formats' | 'legacy_barcode' | 'container' | 'containerVertical' | 'tire_size' | 'tin' | 'tin_dot' | 'tire_id';
+export type PluginId = 'barcode' | 'meter' | 'universal_id' | 'japanese_landing_permission' | 'mrz' | 'license_plate' | 'tin' | 'tire_size' | 'commercial_tire_id' | 'tire_make' | 'vin_with_user_guidance' | 'vin' | 'container' | 'ocr' | 'verbund';

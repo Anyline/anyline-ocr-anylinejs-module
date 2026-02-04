@@ -1,136 +1,134 @@
-# Web SDK
+# Anyline Web SDK
 
-[Anyline](https://www.anyline.com) is a mobile OCR SDK, which can be customized to scan all kinds of numbers, characters, text and codes.
+[![npm version](https://img.shields.io/npm/v/@anyline/anyline-js.svg)](https://www.npmjs.com/package/@anyline/anyline-js)
+[![License](https://img.shields.io/badge/license-commercial-blue.svg)](LICENSE.md)
 
-Web SDK is a standalone Anyline version for the browser.
+[Anyline](https://www.anyline.com) Web SDK enables OCR and barcode scanning directly in the browser.
 
-Visit [web-trial.anyline.com](https://web-trial.com) for an official demo of Web SDK.
+**[Live Demo](https://web-trial.anyline.com)** | **[Documentation](https://documentation.anyline.com/web-sdk-component/latest/index.html)** | **[API Reference](https://documentation.anyline.com/web-sdk-component/latest/api-reference.html)**
 
-## Supported Usecases
+## Supported Use Cases
 
-- Tire Size
-- Commercial Tire ID
-- Tire Identification Number
-- Vehicle Identification Number (VIN)
-- Shipping Container (Horizontal and Vertical)
-- 1D and 2D Barcode
-- Serial Number
-- License Plate
-- MRZ
-- Austrian, German and Southern European Drivers Licenses
-- Meter Scanning
+- **Barcode** - QR Code, Data Matrix, Aztec, PDF417, Code 128, EAN, UPC, and more
+- **ID Scanning** - MRZ (passports, ID cards) and driving licenses
+- **Tire & Automotive** - VIN, TIN, tire size, license plates
+- **Meters** - Analog, digital, and dial meters
+- **OCR** - Shipping containers and custom OCR
 
-## Content
+See the [documentation](https://documentation.anyline.com/web-sdk-component/latest/index.html) for the full list of supported formats and regions.
 
-- **anylinejs**: Contains the files needed to self-host **Web SDK**
-- **demo**: Contains **Web SDK** implementation examples
-- **LICENSE**: The Third Party License Agreements
-- **README**: Information about the repository
+## Installation
+
+```bash
+npm install @anyline/anyline-js
+```
+
+Or via CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@anyline/anyline-js/anyline.js"></script>
+```
+
+## Quick Start
+
+**HTML:**
+
+```html
+<div id="scanner-root" style="width: 100%; height: 100vh;"></div>
+```
+
+**TypeScript/JavaScript:**
+
+```typescript
+import { init } from '@anyline/anyline-js';
+
+// Initialize the scanner
+const anyline = init({
+  // Your Anyline license key (obtain at anyline.com/request/contact)
+  license: 'YOUR_LICENSE_KEY',
+  // DOM element where the scanner will be mounted
+  element: document.getElementById('scanner-root'),
+  // Preset for the scan type (see documentation for all presets)
+  preset: 'vin',
+});
+
+// Handle scan results
+anyline.onResult = ({ result }) => {
+  console.log('Scanned:', result);
+};
+
+// Start the camera and begin scanning
+anyline.startScanning().catch((error) => {
+  console.error('Failed to start:', error);
+});
+
+// Clean up resources when done
+window.addEventListener('beforeunload', () => {
+  anyline.dispose();
+});
+```
+
+> **Note:** Web SDK requires HTTPS (except localhost) and camera permissions. The browser will prompt the user to allow camera access.
+
+For available presets and configuration options, see the [Getting Started Guide](https://documentation.anyline.com/web-sdk-component/latest/getting_started.html).
+
+## Self-Hosting Assets
+
+By default, the SDK loads assets from Anyline's CDN. To self-host these assets for better performance or to comply with network restrictions:
+
+1. Copy the `anylinejs/` folder to your web server
+2. Set the `anylinePath` option to point to the folder location
+
+```typescript
+const anyline = init({
+  license: 'YOUR_LICENSE_KEY',
+  element: document.getElementById('scanner-root'),
+  preset: 'vin',
+  anylinePath: '/path/to/anylinejs',
+});
+```
+
+See [Performance Optimization](https://documentation.anyline.com/web-sdk-component/latest/performance_notes.html) for CDN configuration and caching details.
 
 ## Documentation
 
-[API documentation](https://js.anyline.com/release/55.8.1/docs/index.html)
+- [Getting Started](https://documentation.anyline.com/web-sdk-component/latest/getting_started.html) - Installation, presets, and configuration
+- [Examples](https://documentation.anyline.com/web-sdk-component/latest/examples.html) - Code examples for common use cases
+- [API Reference](https://documentation.anyline.com/web-sdk-component/latest/api-reference.html) - Complete API documentation
+- [Configuration Guide](https://documentation.anyline.com/web-sdk-component/latest/configurations.html) - Plugin and view configuration
 
-For full documentation visit: [https://documentation.anyline.com/web-sdk-component/latest/index.html](https://documentation.anyline.com/web-sdk-component/latest/index.html)
+## Try it Locally
 
-To test Anyline download the Example Sheets with testing material: [https://anyline.com/samples](https://anyline.com/samples)
+The package includes a demo application. To run it:
 
-## Install
+1. [Request a test license](https://anyline.com/request/contact) for your domain
+2. Edit your hosts file to route your domain to localhost (licenses are domain-restricted)
+3. Run the demo:
 
-`npm install @anyline/anyline-js`
-
-## Usage
-
-1. Copy the content of `anylinejs` to your webserver. In some cases you need to configure your webserver to serve `data` and `wasm.gz` files.
-
-Web SDK has to be served from a web server that supports HTTPS.
-
-2. Import Web SDK
-
-```JavaScript
-import { init } from '@anyline/anyline-js';
+```bash
+npm run demo
 ```
 
-Alternatively you can also directly import `anyline.js` using a script tag:
+4. Visit `http://yourdomain.com:8080/demo`
 
-```HTML
-<script src="anyline.js"></script>
-```
+For smartphone testing, use `npm run demo:network` (HTTPS on port 8443).
 
-This will expose anylinejs to the window scope:
+## Package Contents
 
-```JavaScript
-const { init } = window.anylinejs;
-```
+- **anylinejs/** - Assets for self-hosting
+- **docs/** - API documentation
+- **types/** - TypeScript type definitions
+- **anyline.js** - Main SDK library
+- **LICENSE.md** - Third-party license agreements
 
-3. Initialize Web SDK
+## Resources
 
-```JavaScript
-const anyline = init({
-  preset: 'meter', // universalid_mrz, ocr, ...
-  license: 'enter_your_license_key_here',
-  // html container where anylineJS should be mounted to
-  element: document.getElementById('root'),
-  // location of the data files from step 1 (can also be an https link)
-  anylinePath: '../anylinejs',
-});
-```
+- [Live Demo](https://web-trial.anyline.com)
+- [Example Sheets](https://anyline.com/example-sheets) - Test materials for scanning
+- [Request a License](https://anyline.com/request/contact)
 
-4. Start scanning
+## License
 
-```JavaScript
-anyline.startScanning().catch((e) => {
-  alert(e.message);
-});
-```
+This SDK requires a commercial license from Anyline. [Request a trial license](https://anyline.com/request/contact) to get started.
 
-5. Handle the scan result
-
-```JavaScript
-anyline.onResult = (result) => {
-  console.log(result)
-};
-```
-
-### Preload assets
-
-In order to use preloading update your configuration as shown below and call the preload method. [Example](demo/preload-example.js)
-
-```JavaScript
-const anyline = init({
-  ...
-  preload: true,
-  ...
-});
-
-anyline.preload();
-```
-
-## Try it locally
-
-**Go to https://anyline.com/request/contact for a test-license**
-When you've received a license for your domain, edit your host file to route your domain to localhost. Then:
-
-`npm run demo`
-
-Visit http://yourdomain.com:8080/demo
-
-or
-
-`npm run demo:network`
-
-In this case the HTTPS server uses a self-generated certificate so you might need to bypass the security measures of your browser. With a proper test-license issued for your internal ip-address you can test it on other devices on the network (i.E. for smartphone testing).
-
-### Typescript support
-
-You can access the types by importing the `Types` object
-
-```JavaScript
-import { Types } from '@anyline/anyline-js';
-```
-
-## Available links:
-
-<br>
-Demo link -- https://web-trial.anyline.com 
-<br>
+See [LICENSE.md](LICENSE.md) for third-party license agreements.
