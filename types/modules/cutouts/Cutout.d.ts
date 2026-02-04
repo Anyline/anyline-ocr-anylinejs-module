@@ -1,6 +1,6 @@
 import React from 'react';
 import './cutout-enter-animations.css';
-import { StoredCutout } from "../store/global-state";
+import { StoredCutout } from '../store/global-state';
 interface CutoutProps {
     onEnter?: () => void;
     onEntered?: () => void;

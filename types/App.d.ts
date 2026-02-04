@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewConfig } from "./modules/workerConnector/types";
+import { ViewConfig } from './modules/workerConnector/types';
 interface AppProps {
     parentEl: HTMLElement;
     mediaConstraints?: MediaStreamConstraints;

@@ -1,7 +1,7 @@
 export declare class AnylineError extends Error {
-    private messageText;
-    private code;
-    private error;
+    private readonly messageText;
+    private readonly code;
+    private readonly error;
     constructor(code: number, message: string, error?: Error);
     toString(): string;
 }
@@ -80,4 +80,7 @@ export declare class CutoutRenderError extends AnylineError {
 }
 export declare class InvalidColorFormatError extends AnylineError {
     constructor(e?: Error);
+}
+export declare class FeatureNotAvailableError extends AnylineError {
+    constructor(feature_name: string, e?: Error);
 }

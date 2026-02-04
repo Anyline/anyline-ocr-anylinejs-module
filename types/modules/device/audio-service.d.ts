@@ -1,9 +1,3 @@
-declare global {
-    interface Window {
-        AudioContext: typeof AudioContext;
-        webkitAudioContext: typeof AudioContext;
-    }
-}
 type CustomAudioNode = Sound & {
     gainNode: GainNode;
 };
