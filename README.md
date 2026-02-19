@@ -111,7 +111,13 @@ npm run demo
 
 4. Visit `http://yourdomain.com:8080/demo`
 
-For smartphone testing, use `npm run demo:network` (HTTPS on port 8443).
+For smartphone testing over the network (HTTPS on port 8443):
+
+```bash
+npm run demo:network
+```
+
+Open `https://<your-ip>:8443/` on your phone and accept the self-signed certificate warning, then choose the demo folder for running demo.
 
 ## Package Contents
 

@@ -7,6 +7,7 @@
  */
 
 const rootElement = document.getElementById('root');
+const ANYLINE_PATH = '../anylinejs';
 
 /**
  * SDK State enum mirrors the internal SDK states.
@@ -373,7 +374,7 @@ function updateFeatureSupportUI() {
  *   preset: 'vin',
  *   license: yourLicense,
  *   element: rootElement,
- *   anylinePath: '../anylinejs',
+ *   anylinePath: '/anylinejs',
  * });
  *
  * // 2. Call preload() - WASM downloads without starting camera
@@ -428,10 +429,10 @@ async function mountAnylineWebSDK(selectElement) {
       config,
       hapticFeedback: true,
       preset: currentPreset,
-      license: demoLicense,
+      license: globalThis.demoLicense,
       element: rootElement,
       debugAnyline: false,
-      anylinePath: '../anylinejs',
+      anylinePath: ANYLINE_PATH,
       viewConfig: {
         uiFeedback: getUiFeedbackConfig(currentPreset),
       },

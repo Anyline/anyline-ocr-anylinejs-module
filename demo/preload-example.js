@@ -2,6 +2,7 @@ const root = document.getElementById('root');
 let selectedPreset = undefined;
 let anyline;
 let mirrored = false;
+const ANYLINE_PATH = '../anylinejs';
 
 const DEFAULT_PRESET = {
   value: 'barcode',
@@ -22,7 +23,7 @@ async function preload(preset = DEFAULT_PRESET) {
       element: root,
       debugAnyline: true,
       enableCaching: false,
-      anylinePath: '../anylinejs',
+      anylinePath: ANYLINE_PATH,
     });
 
     anyline.onResult = (result) => {

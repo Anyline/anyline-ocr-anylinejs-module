@@ -1,12 +1,12 @@
 {
   "name": "@anyline/anyline-js",
-  "version": "55.9.0",
+  "version": "55.9.1",
   "description": "Anyline Web SDK",
-  "types": "./types/index.d.ts",
+  "types": "./anyline.d.ts",
   "main": "anyline.js",
   "scripts": {
     "demo": "npx http-server --port 8080 -o /demo",
-    "demo:network": "npx http-server -S -C demo/cert/cert.pem -K demo/cert/key.pem --port 8443 -o /demo"
+    "demo:network": "npx local-web-server --https --port 8443"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "scanner",
     "reader"
   ],
-  "author": "Independence Team <independence-team@anyline.com>",
+  "author": "Cloud Team <cloud-team@anyline.com>",
   "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
     "url": "https://github.com/Anyline/anyline-ocr-anylinejs-module/issues"
