@@ -644,7 +644,7 @@ export declare interface PluginConfig {
     ocrConfig?: KeyAble;
 }
 
-declare type PluginId = 'barcode' | 'meter' | 'universal_id' | 'japanese_landing_permission' | 'mrz' | 'license_plate' | 'tin' | 'tire_size' | 'commercial_tire_id' | 'tire_make' | 'vin_with_user_guidance' | 'vin' | 'container' | 'ocr' | 'verbund';
+declare type PluginId = 'barcode' | 'meter' | 'universal_id' | 'japanese_landing_permission' | 'mrz' | 'license_plate' | 'tin' | 'tire_size' | 'commercial_tire_id' | 'tire_make' | 'vin_with_user_guidance' | 'vin' | 'container' | 'ocr' | 'verbund' | 'mdbilling';
 
 export declare type PresetName = 'lpt' | 'lpt_eu' | 'lpt_us' | 'lpt_canada' | 'universalid_mrz' | 'japanese_landing_permission' | 'universalid_dl_at_de' | 'universalid_dl_at_de_strict' | 'universalid_es_it_pt' | 'meter' | 'dialmeter' | 'verbund' | 'vin' | 'vin_with_user_guidance' | 'ocr' | 'qr' | 'barcode_pdf417_parsed' | 'barcode_pdf417' | 'all_barcode_formats' | 'legacy_barcode' | 'container' | 'containerVertical' | 'tire_size' | 'tin' | 'tin_dot' | 'tire_id';
 

@@ -122,8 +122,7 @@ Open `https://<your-ip>:8443/` on your phone and accept the self-signed certific
 ## Package Contents
 
 - **anylinejs/** - Assets for self-hosting
-- **docs/** - API documentation
-- **types/** - TypeScript type definitions
+- **anyline.d.ts** - TypeScript type definitions
 - **anyline.js** - Main SDK library
 - **LICENSE.md** - Third-party license agreements
 
