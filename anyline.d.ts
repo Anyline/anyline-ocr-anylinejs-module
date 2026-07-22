@@ -231,6 +231,14 @@ export declare interface AnylineJSParams {
      */
     mirrorOnDesktop?: boolean;
     /**
+     * enableFlipFramesLeftRight - (default: false) Mirrors the frame sideways (left-right) before it is sent to the OCR, equivalent to a horizontal flip. The camera preview is not affected.
+     */
+    enableFlipFramesLeftRight?: boolean;
+    /**
+     * enableFlipFramesTopBottom - (default: false) Turns the frame upside down (top-bottom) before it is sent to the OCR, equivalent to a vertical flip. Combine with enableFlipFramesLeftRight for a 180° rotation. The camera preview is not affected.
+     */
+    enableFlipFramesTopBottom?: boolean;
+    /**
      * correlationId -  UUIDv4 string to define user Correlation ID
      */
     correlationId?: string;
@@ -264,6 +272,29 @@ export declare interface CameraAPI {
      *
      */
     mirrorStream(state: boolean): void;
+    /**
+     * Returns whether the on-screen preview is currently mirrored (left-right).
+     */
+    isMirrored(): boolean;
+    /**
+     * Flips the on-screen preview upside down (top-bottom). Preview only — does not
+     * affect the frame sent to the OCR.
+     *
+     * @param state - if the preview should be flipped upside down or not
+     */
+    flipStream(state: boolean): void;
+    /**
+     * (Processing only) Flips the frame sent to the OCR left-right (horizontal). Does not affect the preview.
+     *
+     * @param state - if the OCR frame should be flipped left-right or not
+     */
+    flipFramesLeftRight(state: boolean): void;
+    /**
+     * (Processing only) Flips the frame sent to the OCR upside down (top-bottom). Does not affect the preview.
+     *
+     * @param state - if the OCR frame should be flipped upside down or not
+     */
+    flipFramesTopBottom(state: boolean): void;
     /**
      * Sets a specific camera as input
      *
@@ -457,12 +488,19 @@ declare class ImageService {
     private lastFullImage;
     private lastCutoutImage;
     cutoutFrame: CutoutFrame;
+    private flipFramesLeftRight;
+    private flipFramesTopBottom;
+    private previewFlipTopBottom;
     constructor(params: Params, dependencies: Dependencies_3);
     getCutoutList(): StoredCutouts;
     setNextCamera(): Promise<void>;
     setCamera(deviceId: string): Promise<void>;
     private provideStream;
     mirrorStream(value: boolean): void;
+    private applyPreviewTransform;
+    setFlipFramesLeftRight(value: boolean): void;
+    setFlipFramesTopBottom(value: boolean): void;
+    flipStream(value: boolean): void;
     appendVideoSrc(src: MediaStream | string, srcAttribute?: 'srcObject' | 'src'): void;
     /**
      * Reappends the last stream. This may help with possible issues when reentering the webapp after sleep
@@ -480,6 +518,7 @@ declare class ImageService {
      */
     clearMemory(): void;
     getVideoInstanceVisual(): HTMLVideoElement | undefined;
+    private screenToFrameReflection;
     applyScalingFactor(data: {
         points: number[][];
     }[]): {
@@ -563,6 +602,10 @@ declare type Params = {
     scaleDown?: boolean;
     /** @default true */
     mirrorOnDesktop?: boolean;
+    /** @default false */
+    enableFlipFramesLeftRight?: boolean;
+    /** @default false */
+    enableFlipFramesTopBottom?: boolean;
 };
 
 export declare interface PluginConfig {
