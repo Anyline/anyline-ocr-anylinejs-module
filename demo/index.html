@@ -105,8 +105,21 @@
         <button id="btn-refocus" onclick="refocus()" disabled class="btn-disabled" title="Chrome Android only" aria-label="Refocus camera">Refocus</button>
         <button id="btn-flash-on" onclick="enableFlash()" disabled class="btn-disabled" title="Chrome Android, Safari 18.4+" aria-label="Turn flash on">Flash On</button>
         <button id="btn-flash-off" onclick="disableFlash()" disabled class="btn-disabled" style="display:none" title="Chrome Android, Safari 18.4+" aria-label="Turn flash off">Flash Off</button>
-        <button id="btn-mirror" onclick="mirrorCamera()" disabled class="btn-disabled" aria-label="Mirror camera">Mirror Camera</button>
         <button id="btn-reappend" onclick="reappendCamera()" disabled class="btn-disabled" title="Reattach video to DOM" aria-label="Reappend camera">Reappend Camera</button>
+      </fieldset>
+
+      <!-- Flip the preview only (what the operator sees, not the OCR frame) -->
+      <fieldset class="button-group">
+        <legend class="visually-hidden">Flip preview</legend>
+        <button id="btn-mirror" onclick="mirrorCamera()" disabled class="btn-disabled" aria-label="Mirror preview left-right">Flip Preview Mirror: Off</button>
+        <button id="btn-flip-preview-tb" onclick="toggleFlipPreviewTopBottom()" disabled class="btn-disabled" aria-label="Flip preview upside down">Flip Preview Upside Down: Off</button>
+      </fieldset>
+
+      <!-- Flip the OCR frame (processing only) -->
+      <fieldset class="button-group">
+        <legend class="visually-hidden">Flip OCR frame</legend>
+        <button id="btn-flip-frames-lr" onclick="toggleFlipFramesLeftRight()" disabled class="btn-disabled" aria-label="Flip OCR frame left-right">Flip OCR Frame L-R: Off</button>
+        <button id="btn-flip-frames-tb" onclick="toggleFlipFramesTopBottom()" disabled class="btn-disabled" aria-label="Flip OCR frame upside down">Flip OCR Frame T-B: Off</button>
       </fieldset>
     </aside>
   </div>

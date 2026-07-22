@@ -24,7 +24,9 @@ const SDK_STATES = {
 };
 
 let anylineInstance = null;
-let isMirrored = false;
+let flipFramesLeftRight = false;
+let flipFramesTopBottom = false;
+let flipPreviewTopBottom = false;
 let isFlashOn = false;
 let currentPreset = 'tin';
 let currentState = SDK_STATES.UNINITIALIZED;
@@ -259,6 +261,10 @@ function updateButtonStates() {
   setButtonEnabled('btn-flash-off', isScanning && supportsFlash && isFlashOn);
   setButtonEnabled('btn-mirror', isScanning || isPaused);
   setButtonEnabled('btn-reappend', isScanning || isPaused);
+  setButtonEnabled('btn-flip-frames-lr', isScanning || isPaused);
+  setButtonEnabled('btn-flip-frames-tb', isScanning || isPaused);
+  setButtonEnabled('btn-flip-preview-tb', isScanning || isPaused);
+  refreshFlipButtons();
 
   // Update flash button visibility based on current state
   updateFlashButtonVisibility();
@@ -326,16 +332,6 @@ function detectFeatureSupport() {
  *
  * @returns {boolean} - True if SDK would auto-mirror
  */
-function detectInitialMirrorState() {
-  const ua = navigator.userAgent;
-  const isAndroid = /Android/i.test(ua);
-  const isIOS = /iPad|iPhone|iPod/.test(ua);
-  const isMobile = isAndroid || isIOS;
-
-  // SDK auto-mirrors on desktop by default (mirrorOnDesktop = true)
-  return !isMobile;
-}
-
 /**
  * Updates UI elements to show feature availability.
  */
@@ -433,6 +429,8 @@ async function mountAnylineWebSDK(selectElement) {
       element: rootElement,
       debugAnyline: false,
       anylinePath: ANYLINE_PATH,
+      enableFlipFramesLeftRight: flipFramesLeftRight,
+      enableFlipFramesTopBottom: flipFramesTopBottom,
       viewConfig: {
         uiFeedback: getUiFeedbackConfig(currentPreset),
       },
@@ -461,10 +459,9 @@ async function mountAnylineWebSDK(selectElement) {
     await anylineInstance.startScanning();
     updateState(SDK_STATES.SCANNING);
 
-    // Sync UI state with SDK's auto-detection
-    // The SDK auto-mirrors on desktop (mirrorOnDesktop = true by default)
     isFlashOn = false;
-    isMirrored = detectInitialMirrorState();
+    anylineInstance.camera.flipStream(flipPreviewTopBottom);
+    refreshFlipButtons();
 
     hideLoadingState();
   } catch (error) {
@@ -607,6 +604,47 @@ function remountWebSDK() {
   }
 }
 
+function toggleFlipFramesLeftRight() {
+  if (!anylineInstance) return closeSidebar();
+  flipFramesLeftRight = !flipFramesLeftRight;
+  anylineInstance.camera.flipFramesLeftRight(flipFramesLeftRight);
+  refreshFlipButtons();
+  closeSidebar();
+}
+
+function toggleFlipFramesTopBottom() {
+  if (!anylineInstance) return closeSidebar();
+  flipFramesTopBottom = !flipFramesTopBottom;
+  anylineInstance.camera.flipFramesTopBottom(flipFramesTopBottom);
+  refreshFlipButtons();
+  closeSidebar();
+}
+
+function toggleFlipPreviewTopBottom() {
+  if (!anylineInstance) return closeSidebar();
+  flipPreviewTopBottom = !flipPreviewTopBottom;
+  anylineInstance.camera.flipStream(flipPreviewTopBottom);
+  refreshFlipButtons();
+  closeSidebar();
+}
+
+function refreshFlipButtons() {
+  const set = (id, base, on) => {
+    const b = document.getElementById(id);
+    if (!b) return;
+    b.textContent = `${base}: ${on ? 'On' : 'Off'}`;
+    b.setAttribute('aria-pressed', String(on));
+  };
+  set(
+    'btn-mirror',
+    'Flip Preview Mirror',
+    anylineInstance?.camera?.isMirrored() ?? false,
+  );
+  set('btn-flip-preview-tb', 'Flip Preview Upside Down', flipPreviewTopBottom);
+  set('btn-flip-frames-lr', 'Flip OCR Frame L-R', flipFramesLeftRight);
+  set('btn-flip-frames-tb', 'Flip OCR Frame T-B', flipFramesTopBottom);
+}
+
 /**
  * Refocus the camera.
  *
@@ -690,12 +728,11 @@ function mirrorCamera() {
   }
 
   try {
-    isMirrored = !isMirrored;
-    anylineInstance.camera.mirrorStream(isMirrored);
+    anylineInstance.camera.mirrorStream(!anylineInstance.camera.isMirrored());
+    refreshFlipButtons();
     closeSidebar();
   } catch (error) {
-    // Revert state on failure
-    isMirrored = !isMirrored;
+    refreshFlipButtons();
     closeSidebar();
     const { title, message } = handleError(error);
     displayError(message, title);
