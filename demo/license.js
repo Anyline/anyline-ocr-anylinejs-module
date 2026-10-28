@@ -1,1 +1,1 @@
-const demoLicense = 'YOUR LICENSE KEY';
+var demoLicense = 'YOUR LICENSE KEY';
