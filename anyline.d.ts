@@ -361,6 +361,15 @@ declare class CameraManager {
     private currentTryOutIndex?;
     private cameras?;
     constructor(dependencies: Dependencies_2);
+    /**
+     * Restart continuous autofocus after opening an Android camera stream.
+     *
+     * WSDK-299: some Android devices leave the main lens focused at infinity
+     * even though the track reports continuous focus. This is best effort: a
+     * missing ImageCapture implementation or unsupported focus constraint must
+     * never prevent the new stream from being used.
+     */
+    private refocusAndroidCamera;
     nextCameraStream(): Promise<MediaStream>;
     setCamera(deviceId: string): Promise<MediaStream>;
     collectCameras(): Promise<MediaDeviceInfo[]>;
