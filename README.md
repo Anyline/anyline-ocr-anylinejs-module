@@ -12,7 +12,7 @@
 - **Barcode** - QR Code, Data Matrix, Aztec, PDF417, Code 128, EAN, UPC, and more
 - **ID Scanning** - MRZ (passports, ID cards) and driving licenses
 - **Tire & Automotive** - VIN, TIN, tire size, license plates
-- **Meters** - Analog, digital, and dial meters
+- **Meters** - Analog, digital, dial, and multi-field (OBIS) meters
 - **OCR** - Shipping containers and custom OCR
 
 See the [documentation](https://documentation.anyline.com/web-sdk-component/latest/index.html) for the full list of supported formats and regions.
@@ -99,17 +99,18 @@ See [Performance Optimization](https://documentation.anyline.com/web-sdk-compone
 
 ## Try it Locally
 
-The package includes a demo application. To run it:
+The [GitHub repository](https://github.com/Anyline/anyline-ocr-anylinejs-module) includes a demo application. The npm package does not include it. To run it:
 
 1. [Request a test license](https://anyline.com/request/contact) for your domain
-2. Edit your hosts file to route your domain to localhost (licenses are domain-restricted)
-3. Run the demo:
+2. Clone the GitHub repository and set your license key in `demo/license.js`
+3. Edit your hosts file to route your domain to localhost (licenses are domain-restricted)
+4. Run the demo:
 
 ```bash
 npm run demo
 ```
 
-4. Visit `http://yourdomain.com:8080/demo`
+5. Visit `http://yourdomain.com:8080/demo`
 
 For smartphone testing over the network (HTTPS on port 8443):
 

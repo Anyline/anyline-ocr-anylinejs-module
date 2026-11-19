@@ -61,6 +61,7 @@ export declare class AnylineJS {
     getFrame(): ImageObject | undefined;
     private state;
     private timeBeforeImageSend;
+    private textBoxReported;
     private fullImage;
     private log2debug;
     isLoaded: boolean;
@@ -140,7 +141,7 @@ export declare interface AnylineJSParams {
     /**
      * pluginId - Specifies the scanning plugin to use (auto-set when using a preset, can be overridden).
      *
-     * Available plugins: barcode, meter, universal_id, mrz, license_plate, tin, tire_size,
+     * Available plugins: barcode, meter, multi_field_meter, universal_id, mrz, license_plate, tin, tire_size,
      * commercial_tire_id, tire_make, vin, container, ocr, vin_with_user_guidance
      *
      * @example { preset: 'vin', pluginId: 'vin_with_user_guidance' } // Override preset's plugin
@@ -425,10 +426,15 @@ export declare class DisposedError extends AnylineError {
  */
 export declare type FeedbackAnimationStyle = 'blink' | 'path';
 
+declare type FrameCrop = {
+    cropPadding?: Point;
+    cropOffset?: Point;
+};
+
 export declare interface ICutout {
+    id?: number | string;
     cutoutConfig: {
-        alignment?: 'center' | 'top_half' | 'bottom_half';
-        style?: 'contour_rect' | 'rect';
+        alignment?: 'top' | 'top_half' | 'center' | 'bottom_half' | 'bottom';
         ratioFromSize?: {
             width: number;
             height: number;
@@ -452,18 +458,22 @@ export declare interface ICutout {
             y: number;
         };
         offset?: {
-            x: number;
-            y: number;
+            x?: number;
+            y?: number;
         };
         strokeWidth?: number;
         cornerRadius?: number;
         feedbackStrokeColor?: string;
     };
     scanFeedback?: {
-        style?: 'contour_rect' | 'rect';
-        animation?: 'traverse_multi';
+        style?: 'rect' | 'contour_rect' | 'contour_point' | 'contour_underline';
+        animation?: 'none' | 'blink' | 'pulse' | 'kitt' | 'traverse_multi' | 'traverse_single' | 'resize' | 'resize_point' | 'resize_underline';
         animationDuration?: number;
         timeout?: number;
+        /**
+         * Mobile SDK name of `timeout`. Use one of them, not both.
+         */
+        redrawTimeout?: number;
         strokeWidth?: number;
         strokeColor?: string;
         fillColor?: string;
@@ -472,6 +482,10 @@ export declare interface ICutout {
         vibrateOnResult?: boolean;
         blinkAnimationOnResult?: boolean;
     };
+    /**
+     * Mobile SDK name of `scanFeedback`. Use one of them, not both.
+     */
+    scanFeedbackConfig?: NonNullable<ICutout['scanFeedback']>;
 }
 
 /**
@@ -497,6 +511,8 @@ declare class ImageService {
     private lastFullImage;
     private lastCutoutImage;
     cutoutFrame: CutoutFrame;
+    private cropRect;
+    private cropShift;
     private flipFramesLeftRight;
     private flipFramesTopBottom;
     private previewFlipTopBottom;
@@ -540,7 +556,7 @@ declare class ImageService {
         y?: number | undefined;
         width?: number | undefined;
         height?: number | undefined;
-    }): ImageData;
+    }, crop?: FrameCrop): ImageData;
     private getCutoutImages;
     getCutout({ scaled }: {
         scaled: boolean;
@@ -552,8 +568,8 @@ declare class ImageService {
         width: number;
         height: number;
     } | {
-        x: any;
-        y: any;
+        x: number;
+        y: number;
         width: number;
         height: number;
         top?: undefined;
@@ -572,6 +588,10 @@ declare enum InfoMessageType {
 }
 
 export declare const init: (params: AnylineJSParams) => AnylineJS;
+
+export declare class InvalidViewConfigError extends AnylineError {
+    constructor(path: string, reason: string, e?: Error);
+}
 
 export declare interface KeyAble {
     [key: string]: any;
@@ -615,6 +635,8 @@ declare type Params = {
     enableFlipFramesLeftRight?: boolean;
     /** @default false */
     enableFlipFramesTopBottom?: boolean;
+    /** @default true */
+    coverVideo?: boolean;
 };
 
 export declare interface PluginConfig {
@@ -696,9 +718,14 @@ export declare interface PluginConfig {
     ocrConfig?: KeyAble;
 }
 
-declare type PluginId = 'barcode' | 'meter' | 'universal_id' | 'japanese_landing_permission' | 'mrz' | 'license_plate' | 'tin' | 'tire_size' | 'commercial_tire_id' | 'tire_make' | 'vin_with_user_guidance' | 'vin' | 'container' | 'ocr' | 'verbund' | 'mdbilling';
+declare type PluginId = 'barcode' | 'meter' | 'multi_field_meter' | 'universal_id' | 'japanese_landing_permission' | 'mrz' | 'license_plate' | 'tin' | 'tire_size' | 'commercial_tire_id' | 'tire_make' | 'vin_with_user_guidance' | 'vin' | 'container' | 'ocr' | 'verbund' | 'mdbilling';
 
-export declare type PresetName = 'lpt' | 'lpt_eu' | 'lpt_us' | 'lpt_canada' | 'universalid_mrz' | 'japanese_landing_permission' | 'universalid_dl_at_de' | 'universalid_dl_at_de_strict' | 'universalid_es_it_pt' | 'meter' | 'dialmeter' | 'verbund' | 'vin' | 'vin_with_user_guidance' | 'ocr' | 'qr' | 'barcode_pdf417_parsed' | 'barcode_pdf417' | 'all_barcode_formats' | 'legacy_barcode' | 'container' | 'containerVertical' | 'tire_size' | 'tin' | 'tin_dot' | 'tire_id';
+declare type Point = {
+    x: number;
+    y: number;
+};
+
+export declare type PresetName = 'lpt' | 'lpt_eu' | 'lpt_us' | 'lpt_canada' | 'universalid_mrz' | 'japanese_landing_permission' | 'universalid_dl_at_de' | 'universalid_dl_at_de_strict' | 'universalid_es_it_pt' | 'universalid_dl_uk' | 'meter' | 'dialmeter' | 'multi_field_meter' | 'verbund' | 'vin' | 'vin_with_user_guidance' | 'ocr' | 'qr' | 'barcode_pdf417_parsed' | 'barcode_pdf417' | 'all_barcode_formats' | 'legacy_barcode' | 'container' | 'containerVertical' | 'tire_size' | 'tin' | 'tin_dot' | 'tire_id';
 
 /**
  * A key-value pair used to pass custom variables to the scanning plugin.
@@ -724,13 +751,8 @@ declare interface StoredCutout extends ICutout {
         width: number;
         height: number;
     };
-    cropPadding: {
-        x: number;
-        y: number;
-    };
-    cropOffset: {
-        x: number;
-        y: number;
+    scanFeedback?: ICutout['scanFeedback'] & {
+        feedbackStyle?: string;
     };
 }
 
@@ -864,8 +886,6 @@ export declare interface ViewConfig {
      */
     feedbackAnimationStyle?: FeedbackAnimationStyle;
     cutouts?: ICutout[];
-    feedbackStyle?: string;
-    animation?: string;
     uiFeedback?: {
         dynamic?: UiFeedbackConfig;
         static?: {
